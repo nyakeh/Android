@@ -2,11 +2,18 @@ package com.example.activity101;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	String tag = "Lifecycle";
+	CharSequence[] items = { "Google", "Apple", "Microsoft" };
+	boolean[] itemsChecked = new boolean [items.length];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -15,6 +22,46 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         Log.d(tag, "In the onCreate() event");
     }
+    
+    public void onClick(View v) {
+    	showDialog(0);
+    	}
+    
+    @Override
+    protected Dialog onCreateDialog(int id) {
+	    switch (id) {
+		    case 0:
+		    return new AlertDialog.Builder(this)
+		    .setIcon(R.drawable.ic_launcher)
+		    .setTitle("This is a dialog with some simple text...")
+		    .setPositiveButton("OK",
+							    new DialogInterface.OnClickListener() {
+								    public void onClick(DialogInterface dialog, int whichButton)
+								    {
+									    Toast.makeText(getBaseContext(),"OK clicked!", Toast.LENGTH_SHORT).show();
+								    }
+							    }
+		    )
+		    .setNegativeButton("Cancel",
+		    new DialogInterface.OnClickListener() {
+			    public void onClick(DialogInterface dialog, int whichButton)
+			    {
+			    Toast.makeText(getBaseContext(),"Cancel clicked!", Toast.LENGTH_SHORT).show();
+			    }
+		    }
+		    )
+		    .setMultiChoiceItems(items, itemsChecked,
+		    new DialogInterface.OnMultiChoiceClickListener() {
+			    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+				    Toast.makeText(getBaseContext(), items[which] + (isChecked ? " checked!":" unchecked!"), Toast.LENGTH_SHORT).show();
+			    }
+		    }
+		    ).create();
+		    }
+	    return null;
+    }
+    
+    
     public void onStart()
     {
     super.onStart();
@@ -22,7 +69,7 @@ public class MainActivity extends Activity {
     }
     public void onRestart()
     {
-    super.onRestart();  
+    super.onRestart();
     Log.d(tag, "In the onRestart() event");
     }
     public void onResume()
