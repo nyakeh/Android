@@ -16,5 +16,11 @@
 		android:onClick="onClick" 
 	/>
     
+    <Button
+		android:id="@+id/btn_dialog2"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Click to display a progress dialog"
+		android:onClick="onClick2" />
     
 </RelativeLayout>
