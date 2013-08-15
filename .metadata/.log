@@ -152,3 +152,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2013-08-15 13:48:41.136
 !MESSAGE Failed to load properties file for project 'UsintIntent'
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-08-15 14:37:41.313
+!MESSAGE Failed to load properties file for project 'PassingData'

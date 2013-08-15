@@ -17,17 +17,16 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onClick(View view) {
-		//Navigate to 'SecondActivity' page
-		/*startActivity(new Intent("net.example.SecondActivity"));*/
-		//Navigate to 'SecondActivity' page and return the result of the page/activity
+		//---Navigate to 'SecondActivity' page
+		//startActivity(new Intent("net.example.SecondActivity"));
+		//---Navigate to 'SecondActivity' page and return the result of the page/activity
 		startActivityForResult(new Intent("net.example.SecondActivity"), request_Code);
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == request_Code) {
 			if (resultCode == RESULT_OK) {
-				Toast.makeText(this,data.getData().toString(),
-				Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
