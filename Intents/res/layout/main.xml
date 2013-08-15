@@ -29,5 +29,12 @@
 		android:layout_height="wrap_content"
 		android:text="Show Map"
 		android:onClick="onClickShowMap" />
+	
+	<Button
+		android:id="@+id/btn_launchMyBrowser"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Launch My Browser"
+		android:onClick="onClickLaunchMyBrowser" />
 
 </LinearLayout>
