@@ -155,3 +155,9 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2013-08-15 14:37:41.313
 !MESSAGE Failed to load properties file for project 'PassingData'
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-08-15 15:41:19.179
+!MESSAGE Failed to load properties file for project 'Intents'
+
+!ENTRY org.eclipse.ui 4 4 2013-08-15 15:48:27.727
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.
