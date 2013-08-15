@@ -17,9 +17,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onClick(View view) {
-		//Navigate to 'SecondActivity' page
-		/*startActivity(new Intent("net.example.SecondActivity"));*/
-		//Navigate to 'SecondActivity' page and return the result of the page/activity
+		startActivity(new Intent("net.example.SecondActivity"));
 		startActivityForResult(new Intent("net.example.SecondActivity"), request_Code);
 	}
 	

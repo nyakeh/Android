@@ -23,6 +23,6 @@ public class SecondActivity extends Activity{
 		setResult(RESULT_OK, data);
 		//---closes the activity---
 		finish();
-	}
+		}
 				
 }
