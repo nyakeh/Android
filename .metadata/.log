@@ -705,3 +705,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2013-08-18 16:24:07.588
 !MESSAGE Failed to load properties file for project 'Orientations'
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-08-18 17:18:35.169
+!MESSAGE Failed to load properties file for project 'MyActionBar'
