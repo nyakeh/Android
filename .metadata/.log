@@ -736,3 +736,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2013-09-12 16:52:55.945
 !MESSAGE Failed to load properties file for project 'UiActivity'
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-09-12 17:43:33.684
+!MESSAGE Failed to load properties file for project 'PreferenceFragmentExample'
