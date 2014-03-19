@@ -8,5 +8,6 @@
     <string name="title_activity_calculate">CalculateActivity</string>
     <string name="title_activity_calculation_result">CalculationResultActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
 
 </resources>

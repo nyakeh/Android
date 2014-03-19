@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends Activity {
+public class MainActivity extends NavigationDrawerActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
