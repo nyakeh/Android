@@ -1,20 +1,19 @@
 package com.example.gauge;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends NavigationDrawerActivity {
-
+public class MainActivity extends DrawerActivity {
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+        
 		Button loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
@@ -28,7 +27,7 @@ public class MainActivity extends NavigationDrawerActivity {
 		skipBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  Intent intent = new Intent(MainActivity.this, CalculateActivity.class);
+		    	  Intent intent = new Intent(MainActivity.this, DrawerActivity.class);
 		    	  startActivity(intent);
 		      }
 		});
@@ -39,7 +38,6 @@ public class MainActivity extends NavigationDrawerActivity {
 		      public void onClick(View v) {
 		    	  Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
 		    	  EditText username = (EditText) findViewById(R.id.fld_username);
-		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
 		 	      intent.putExtra("Username", username.getText().toString());
 		    	  startActivity(intent);
 		      }
@@ -52,5 +50,4 @@ public class MainActivity extends NavigationDrawerActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
 }

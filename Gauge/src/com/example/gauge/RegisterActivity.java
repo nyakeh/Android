@@ -1,18 +1,18 @@
 package com.example.gauge;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-public class RegisterActivity extends Activity {
+public class RegisterActivity  extends DrawerActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		Bundle extras = getIntent().getExtras();
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_register, null);
 		
@@ -27,5 +27,4 @@ public class RegisterActivity extends Activity {
 		getMenuInflater().inflate(R.menu.register, menu);
 		return true;
 	}
-
 }
