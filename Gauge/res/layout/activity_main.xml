@@ -45,7 +45,7 @@
             android:id="@+id/fld_username"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="email address"
+            android:hint="your@email.com"
             android:layout_marginLeft="8dp"
 	        android:inputType="textEmailAddress"
 	        android:paddingLeft="5dp"

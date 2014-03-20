@@ -12,13 +12,13 @@ public class RegisterActivity  extends DrawerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Bundle extras = getIntent().getExtras();
+		String username = getIntent().getStringExtra("Username");
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_register, null);
 		
-		TextView username = (TextView) resultsView.findViewById(R.id.fld_username);
-		username.setText(extras.getString("Username"));
+		TextView fld_username = (TextView) resultsView.findViewById(R.id.fld_username);
+		fld_username.setText(username);
 		setContentView(resultsView);
-		buildSideNavigation(R.layout.activity_register);
+		buildSideNavigation(resultsView);
 	}
 
 	@Override

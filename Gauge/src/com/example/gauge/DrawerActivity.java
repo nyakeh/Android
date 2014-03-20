@@ -39,11 +39,11 @@ public class DrawerActivity extends Activity {
         getActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
-                R.string.drawer_open,  /* "open drawer" description for accessibility */
-                R.string.drawer_close  /* "close drawer" description for accessibility */
+                this,
+                mDrawerLayout,
+                R.drawable.ic_drawer,
+                R.string.drawer_open,
+                R.string.drawer_close  
                 ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
@@ -79,6 +79,24 @@ public class DrawerActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+	public void buildSideNavigation(View resultsView) {
+    	setContentView(resultsView);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                mDrawerLayout,
+                R.drawable.ic_drawer,
+                R.string.drawer_open,
+                R.string.drawer_close
+                );
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+		
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -117,19 +135,14 @@ public class DrawerActivity extends Activity {
     	Intent intent;
     	
     	switch(position) {
-    		case 1:
-    			intent = new Intent(DrawerActivity.this, CalculateActivity.class);
-    			startActivity(intent);
-    			break;
-    		case 2:
-    		case 3:
-    			intent = new Intent(DrawerActivity.this, RegisterActivity.class);
-    			startActivity(intent);
-    			break;
-    		case 4:
+			case 1: {
+				intent = new Intent(DrawerActivity.this, CalculateActivity.class);
+				startActivity(intent);
+				break; }
+    		case 2: {
     			intent = new Intent(DrawerActivity.this, MainActivity.class);
     			startActivity(intent);
-    			break;
+    			break; }
     	}
     	
         mDrawerList.setItemChecked(position, true);
@@ -153,7 +166,7 @@ public class DrawerActivity extends Activity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
+        // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 }
