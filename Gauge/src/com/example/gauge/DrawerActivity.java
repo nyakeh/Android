@@ -15,13 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.example.gauge.R;
 
-public abstract class DrawerActivity extends Activity {
+public class DrawerActivity extends Activity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mPlanetTitles;
 
@@ -29,15 +28,11 @@ public abstract class DrawerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
-
-        mTitle = mDrawerTitle = getTitle();
-        mPlanetTitles = getResources().getStringArray(R.array.menu_array);
+        
+        mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mPlanetTitles = getResources().getStringArray(R.array.menu_array);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-        // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -67,6 +62,16 @@ public abstract class DrawerActivity extends Activity {
         if (savedInstanceState == null) {
             selectItem(0);
         }
+    }
+    
+    public void navigation(int layoutResId) {
+    	setContentView(layoutResId);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        // set up the drawer's list view with items and click listener
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());    	
     }
 
     @Override
@@ -110,17 +115,19 @@ public abstract class DrawerActivity extends Activity {
     	
     	switch(position) {
     		case 1:
-    		case 2:
     			intent = new Intent(DrawerActivity.this, CalculateActivity.class);
     			startActivity(intent);
     			break;
+    		case 2:
     		case 3:
+    			intent = new Intent(DrawerActivity.this, RegisterActivity.class);
+    			startActivity(intent);
+    			break;
     		case 4:
     			intent = new Intent(DrawerActivity.this, MainActivity.class);
     			startActivity(intent);
     			break;
     	}
-    	
     	
         mDrawerList.setItemChecked(position, true);
         setTitle(mPlanetTitles[position]);

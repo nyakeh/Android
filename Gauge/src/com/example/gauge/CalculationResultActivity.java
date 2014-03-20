@@ -14,10 +14,10 @@ public class CalculationResultActivity extends DrawerActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		Bundle extras = this.getIntent().getExtras();		
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_calculation_result, null);
 		
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		TextView property_value = (TextView) resultsView.findViewById(R.id.property_value);
 		TextView deposit = (TextView) resultsView.findViewById(R.id.deposit);
@@ -32,6 +32,7 @@ public class CalculationResultActivity extends DrawerActivity {
 		fees.setText(extras.getString("Fees"));
 		
 		setContentView(resultsView);
+		navigation(R.layout.activity_calculation_result);
 	}
 
 	@Override

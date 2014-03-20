@@ -13,7 +13,8 @@ public class MainActivity extends DrawerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-        
+		navigation(R.layout.activity_main);
+		
 		Button loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
@@ -27,7 +28,7 @@ public class MainActivity extends DrawerActivity {
 		skipBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  Intent intent = new Intent(MainActivity.this, DrawerActivity.class);
+		    	  Intent intent = new Intent(MainActivity.this, CalculateActivity.class);
 		    	  startActivity(intent);
 		      }
 		});

@@ -123,14 +123,15 @@
         android:textStyle="bold"        
      />
 </RelativeLayout>
-    <!-- The navigation drawer --><ListView
-    android:id="@+id/left_drawer"
-    android:layout_width="260dp"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:background="#111"
-    android:choiceMode="singleChoice"
-    android:divider="#CCCCCC"
-    android:dividerHeight="1dp" ></ListView>
-
+    <!-- The navigation drawer -->
+    <ListView
+	    android:id="@+id/left_drawer"
+	    android:layout_width="260dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="start"
+	    android:background="#111"
+	    android:choiceMode="singleChoice"
+	    android:divider="#CCCCCC"
+	    android:dividerHeight="0dp" >        
+    </ListView>
 </android.support.v4.widget.DrawerLayout>

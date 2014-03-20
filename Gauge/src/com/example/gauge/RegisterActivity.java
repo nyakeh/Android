@@ -11,14 +11,14 @@ public class RegisterActivity  extends DrawerActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		Bundle extras = getIntent().getExtras();
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_register, null);
 		
 		TextView username = (TextView) resultsView.findViewById(R.id.fld_username);
 		username.setText(extras.getString("Username"));
-		setContentView(resultsView);		
+		setContentView(resultsView);
+		navigation(R.layout.activity_register);
 	}
 
 	@Override
