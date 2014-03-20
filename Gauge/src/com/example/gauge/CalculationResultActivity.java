@@ -32,7 +32,7 @@ public class CalculationResultActivity extends DrawerActivity {
 		fees.setText(extras.getString("Fees"));
 		
 		setContentView(resultsView);
-		navigation(R.layout.activity_calculation_result);
+		buildSideNavigation(R.layout.activity_calculation_result);
 	}
 
 	@Override

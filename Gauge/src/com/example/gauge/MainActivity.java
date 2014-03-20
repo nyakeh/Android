@@ -13,7 +13,7 @@ public class MainActivity extends DrawerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		navigation(R.layout.activity_main);
+		buildSideNavigation(R.layout.activity_main);
 		
 		Button loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {

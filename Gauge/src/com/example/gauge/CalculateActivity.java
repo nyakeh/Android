@@ -13,7 +13,7 @@ public class CalculateActivity extends DrawerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculate);
-		navigation(R.layout.activity_calculate);
+		buildSideNavigation(R.layout.activity_calculate);
 		
 		Button _loginBtn = ( Button ) findViewById(R.id.btn_calculate);		
 		_loginBtn.setOnClickListener(new View.OnClickListener() {
