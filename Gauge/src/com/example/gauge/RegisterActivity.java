@@ -17,7 +17,6 @@ public class RegisterActivity  extends DrawerActivity {
 		
 		TextView fld_username = (TextView) resultsView.findViewById(R.id.fld_username);
 		fld_username.setText(username);
-		setContentView(resultsView);
 		buildSideNavigation(resultsView);
 	}
 

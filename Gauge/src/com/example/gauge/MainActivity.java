@@ -12,7 +12,6 @@ public class MainActivity extends DrawerActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
 		buildSideNavigation(R.layout.activity_main);
 		
 		Button loginBtn = ( Button ) findViewById(R.id.btn_login);		

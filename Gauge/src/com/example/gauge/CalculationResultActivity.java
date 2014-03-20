@@ -31,7 +31,6 @@ public class CalculationResultActivity extends DrawerActivity {
 		interest_rate.setText(extras.getString("Interest_rate"));
 		fees.setText(extras.getString("Fees"));
 		
-		setContentView(resultsView);
 		buildSideNavigation(resultsView);
 	}
 
