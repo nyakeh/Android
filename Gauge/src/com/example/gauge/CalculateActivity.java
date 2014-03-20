@@ -38,36 +38,6 @@ public class CalculateActivity extends DrawerActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.calculate, menu);
-		/*String[] as = {"Mortgage", "Compare", "Budget", "Borrow", "Account"};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActionBar().getThemedContext(), android.R.layout.simple_list_item_1, as);
-		final DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
-		final ListView drawerList = (ListView) findViewById(R.id.drawer_list);
-		// Set the adapter for the list view -- Uses a view to get fancy looking list items 
-		drawerList.setAdapter(adapter);
-        // Set the list's click listener
-		drawerList.setOnItemClickListener(new OnItemClickListener()
-		{			 
-	        @Override
-	        public void onItemClick(AdapterView<?> parent, View view, final int pos, long id)
-	        {
-	        	Intent intent;
-	        	
-	        	switch(pos) {
-	        		case 1:
-	        		case 2:
-	        		case 3:
-	        		case 4:
-	        			intent = new Intent(CalculateActivity.this, MainActivity.class);
-	        			break;
-        			default:
-        				drawer.closeDrawers();
-        				return;
-	        	}
-	        	startActivity(intent);
-	        	drawer.closeDrawers();
-	        }
-	    });*/
 		return true;
 	}
-
 }

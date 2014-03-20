@@ -3,10 +3,12 @@ package com.example.gauge;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class CalculationResultActivity extends DrawerActivity {
@@ -30,8 +32,17 @@ public class CalculationResultActivity extends DrawerActivity {
 		term.setText(extras.getString("Term"));
 		interest_rate.setText(extras.getString("Interest_rate"));
 		fees.setText(extras.getString("Fees"));
+
 		
 		buildSideNavigation(resultsView);
+
+		Button editBtn = ( Button ) findViewById(R.id.btn_edit);		
+		editBtn.setOnClickListener(new View.OnClickListener() {
+		      @Override
+		      public void onClick(View v) {
+		    	  finish();
+		      }
+		});
 	}
 
 	@Override

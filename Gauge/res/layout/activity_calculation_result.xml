@@ -4,147 +4,190 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="#FFFFFF" >
-<RelativeLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+	<RelativeLayout 
+	    	android:layout_width="fill_parent"
+		    android:layout_height="fill_parent">
+    
+	<LinearLayout android:id="@+id/buttons_block"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center"
+	    android:layout_alignParentBottom="true">
+	    <Button
+	    android:id="@+id/btn_edit"  
+	    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:background="@android:color/holo_blue_dark"
+	    android:padding="10dp"
+	    android:text="Edit"
+	    style="?android:attr/buttonBarButtonStyle"	 />	
+	 <Button
+	    android:id="@+id/btn_favourite"	    
+	    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:background="@android:color/holo_blue_dark"
+	    android:padding="10dp"
+	    android:text="Favourite"
+	    style="?android:attr/buttonBarButtonStyle"	 />		 
+	 <Button
+	    android:id="@+id/btn_Email"	    
+	    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:background="@android:color/holo_blue_dark"
+	    android:padding="10dp"
+	    android:text="Email"
+	    style="?android:attr/buttonBarButtonStyle"	 />	
+	 </LinearLayout>
+<ScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 	
-	<TextView
-        android:id="@+id/header" 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Your calculation is"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:background="@android:color/holo_blue_dark" 
-        />
-	
-    <LinearLayout android:id="@+id/property_value_block"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal" 
-        android:layout_below="@id/header">  
-        
-	    <TextView
-	        android:id="@+id/lbl_property_value"
-	        android:layout_width="110dp"
+    <RelativeLayout 
+	    	android:layout_width="fill_parent"
+		    android:layout_height="wrap_content">
+			    
+		<TextView
+	        android:id="@+id/header" 
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:text="Property value: " 
-	        android:gravity="right"/>
-	    
-	    <TextView
-	        android:id="@+id/property_value"
-	        android:layout_width="170dp"
-	        android:layout_height="wrap_content"
-	        android:text="" 
+	        android:text="Your calculation is"
+	        android:padding="10dp"
+	        android:textSize="20sp"
+	        android:textColor="@android:color/white"
 	        android:textStyle="bold"
-	        android:paddingLeft="15dp"/>
-    </LinearLayout>
-	
-    <LinearLayout android:id="@+id/deposit_block"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal" 
-        android:layout_below="@id/property_value_block">  
-        
-	    <TextView
-	        android:id="@+id/lbl_deposit"
-	        android:layout_width="110dp"
+	        android:background="@android:color/holo_blue_dark" 
+	        />
+		
+	    <LinearLayout android:id="@+id/property_value_block"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="Deposit: " 
-	        android:gravity="right"/>
-	    
-	    <TextView
-	        android:id="@+id/deposit"
-	        android:layout_width="170dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/header">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_property_value"
+		        android:layout_width="110dp"
+		        android:layout_height="wrap_content"
+		        android:text="Property value: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/property_value"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/deposit_block"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="" 
-	        android:textStyle="bold"
-	        android:paddingLeft="15dp"/>
-    </LinearLayout>
-	
-    <LinearLayout android:id="@+id/term_block"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal" 
-        android:layout_below="@id/deposit_block">  
-        
-	    <TextView
-	        android:id="@+id/lbl_term"
-	        android:layout_width="110dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/property_value_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_deposit"
+		        android:layout_width="110dp"
+		        android:layout_height="wrap_content"
+		        android:text="Deposit: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/deposit"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/term_block"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="Term: " 
-	        android:gravity="right"/>
-	    
-	    <TextView
-	        android:id="@+id/term"
-	        android:layout_width="170dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/deposit_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_term"
+		        android:layout_width="110dp"
+		        android:layout_height="wrap_content"
+		        android:text="Term: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/term"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/interest_rate_block"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="" 
-	        android:textStyle="bold"
-	        android:paddingLeft="15dp"/>
-    </LinearLayout>
-	
-    <LinearLayout android:id="@+id/interest_rate_block"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal" 
-        android:layout_below="@id/term_block">  
-        
-	    <TextView
-	        android:id="@+id/lbl_interest_rate"
-	        android:layout_width="110dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/term_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_interest_rate"
+		        android:layout_width="110dp"
+		        android:layout_height="wrap_content"
+		        android:text="Interest rate: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/interest_rate"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/fees_block"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="Interest rate: " 
-	        android:gravity="right"/>
-	    
-	    <TextView
-	        android:id="@+id/interest_rate"
-	        android:layout_width="170dp"
-	        android:layout_height="wrap_content"
-	        android:text="" 
-	        android:textStyle="bold"
-	        android:paddingLeft="15dp"/>
-    </LinearLayout>
-	
-    <LinearLayout android:id="@+id/fees_block"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal" 
-        android:layout_below="@id/interest_rate_block">  
-        
-	    <TextView
-	        android:id="@+id/lbl_fees"
-	        android:layout_width="110dp"
-	        android:layout_height="wrap_content"
-	        android:text="Fees: " 
-	        android:gravity="right"/>
-	    
-	    <TextView
-	        android:id="@+id/fees"
-	        android:layout_width="170dp"
-	        android:layout_height="wrap_content"
-	        android:text="" 
-	        android:textStyle="bold"
-	        android:paddingLeft="15dp"/>
-    </LinearLayout>
-
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/interest_rate_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_fees"
+		        android:layout_width="110dp"
+		        android:layout_height="wrap_content"
+		        android:text="Fees: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/fees"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>		
 </RelativeLayout>
+</ScrollView>
+    </RelativeLayout>
     <!-- The navigation drawer -->
     <ListView
 	    android:id="@+id/left_drawer"
