@@ -146,10 +146,7 @@
 	        android:layout_below="@id/pwd_block"
 	        android:text="Register"
 	        android:layout_centerHorizontal="true"
-	        android:gravity="center"
-	        android:layout_marginTop="15dp"
-	        android:textSize="13sp"
-	        android:textStyle="bold"        
+	        style="@style/TextButton"       
 	     />	
 	</RelativeLayout>
 </ScrollView>
