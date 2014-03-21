@@ -165,4 +165,6 @@ public class DrawerActivity extends Activity {
         // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+	public void handleResponse(String results) { }
 }

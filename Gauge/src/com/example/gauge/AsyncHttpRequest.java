@@ -21,10 +21,10 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
-	MainActivity mainActivity;
-	public AsyncHttpRequest(MainActivity mainActivity) {
+	DrawerActivity activity;
+	public AsyncHttpRequest(DrawerActivity mainActivity) {
 		super();
-		this.mainActivity = mainActivity;
+		this.activity = mainActivity;
 	}
 	protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
 
@@ -60,7 +60,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
 			jsonArg.put("Forename", forename);
 			jsonArg.put("Surname", surname);
 			jsonArg.put("Password", password);
-			jsonArg.put("AccountTypeId", 1);
+			jsonArg.put("AccountTypeId", "1");
 			jsonArg.put("Active", true);
 		} catch (JSONException e) {
 			Log.d("Json building register JSON object exception", e.getMessage());
@@ -137,6 +137,6 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
 	}
 
 	protected void onPostExecute(String results) {
-		this.mainActivity.handleResponse(results);
+		this.activity.handleResponse(results);
 	}
 }

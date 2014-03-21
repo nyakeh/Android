@@ -61,7 +61,8 @@ public class MainActivity extends DrawerActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}	
-
+	
+	@Override
 	public void handleResponse(String response) {
 		Toast toast = Toast.makeText(getApplicationContext(), "Stacked It", Toast.LENGTH_LONG);
 		if (response!=null) {
@@ -77,10 +78,10 @@ public class MainActivity extends DrawerActivity {
 			} catch (JSONException e) {
 				Log.d("Json parse exception", e.getMessage());
 			}			
+	  	    Intent intent = new Intent(MainActivity.this, CalculateActivity.class);		    	  
+		    startActivity(intent);
 		}
   	  	toast.show();
   	  	loginBtn.setClickable(true);
-  	    Intent intent = new Intent(MainActivity.this, CalculateActivity.class);		    	  
-	    startActivity(intent);
 	}
 }
