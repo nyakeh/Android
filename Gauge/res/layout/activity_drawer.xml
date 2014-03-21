@@ -2,7 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+	android:fitsSystemWindows="true"
+	android:paddingTop="@dimen/paddingTop">
     <!-- The main content view -->
     <RelativeLayout
         android:id="@+id/content_frame"
@@ -16,5 +18,17 @@
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:background="#111"/>
+        android:background="#111"
+	android:paddingTop="@dimen/paddingTop"/>
+    <ListView
+	    android:id="@+id/left_drawer_second"
+	    android:layout_width="260dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="start"
+	    android:background="#911"
+	    android:choiceMode="singleChoice"
+	    android:divider="#CCCCCC"
+	    android:dividerHeight="0dp"
+		android:paddingTop="@dimen/paddingTop" >        
+    </ListView>
 </android.support.v4.widget.DrawerLayout>

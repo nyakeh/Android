@@ -3,16 +3,20 @@ package com.example.gauge;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CalculationResultActivity extends DrawerActivity {
-
+	private AlertDialog.Builder alert;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +45,33 @@ public class CalculationResultActivity extends DrawerActivity {
 		      @Override
 		      public void onClick(View v) {
 		    	  finish();
+		      }
+		});
+		
+		Button favouriteBtn = ( Button ) findViewById(R.id.btn_favourite);		
+		favouriteBtn.setOnClickListener(new View.OnClickListener() {
+		      @Override
+		      public void onClick(View v) {
+		    	  Toast toast = Toast.makeText(getApplicationContext(), "Calculation saved into favourites.", Toast.LENGTH_LONG);
+		    	  toast.show();
+		      }
+		});  
+   	    
+		Button emailBtn = ( Button ) findViewById(R.id.btn_email);		
+		emailBtn.setOnClickListener(new View.OnClickListener() {
+		      @Override
+		      public void onClick(View v) {
+		    	  alert = new AlertDialog.Builder(CalculationResultActivity.this);
+		     	    final EditText editText = new EditText(CalculationResultActivity.this);
+		     	    alert.setTitle("Email");
+		     	    alert.setMessage("Please enter the email address you wish to send this calculation to");
+		     	    alert.setView(editText);
+		     	    alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
+		  		  public void onClick(DialogInterface dialog, int btn) { 
+		  			  String emailAddress = editText.getText().toString();		    			  
+		  		  } });
+		     	    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){ public void onClick(DialogInterface dialog, int btn) {  } });
+		    	  alert.show();
 		      }
 		});
 	}

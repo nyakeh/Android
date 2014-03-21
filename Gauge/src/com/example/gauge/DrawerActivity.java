@@ -19,10 +19,11 @@ public class DrawerActivity extends Activity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private ListView mDrawerListSecond;
     private ActionBarDrawerToggle mDrawerToggle;
 
     private CharSequence mTitle;
-    private String[] mPlanetTitles;
+    private String[] menuTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class DrawerActivity extends Activity {
         
         mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mPlanetTitles = getResources().getStringArray(R.array.menu_array);
+        menuTitles = getResources().getStringArray(R.array.menu_array);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -64,28 +65,20 @@ public class DrawerActivity extends Activity {
     
     public void buildSideNavigation(int layoutResId) {
     	setContentView(layoutResId);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,
-                mDrawerLayout,
-                R.drawable.ic_drawer,
-                R.string.drawer_open,
-                R.string.drawer_close
-                );
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        generateLists();
     }
 
 	public void buildSideNavigation(View resultsView) {
     	setContentView(resultsView);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        generateLists();		
+	}
+
+	private void generateLists() {
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        
+                
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -94,7 +87,6 @@ public class DrawerActivity extends Activity {
                 R.string.drawer_close
                 );
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-		
 	}
 	
     @Override
@@ -146,7 +138,7 @@ public class DrawerActivity extends Activity {
     	}
     	
         mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
+        setTitle(menuTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 

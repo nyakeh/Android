@@ -18,12 +18,13 @@
         <item>Compare</item>
         <item>Budget</item>
         <item>Borrow</item>
+    </string-array>
+    
+	<string-array name="second_menu_array">
         <item>Account</item>
         <item>Settings</item>
     </string-array>
-
+   
     <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="title_activity_drawer">DrawerActivity</string>
-
 </resources>
