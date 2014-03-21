@@ -19,7 +19,6 @@ import com.example.gauge.R;
 public class DrawerActivity extends Activity {
 
     private DrawerLayout mDrawerLayout;
-    private LinearLayout drawerBlock;
     private ListView drawerList;
     private ListView adminDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -106,14 +105,6 @@ public class DrawerActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /* Called whenever we call invalidateOptionsMenu() */
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        //boolean drawerOpen = mDrawerLayout.isDrawerOpen(drawerList);
-        //menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
          // The action bar home/up action should open or close the drawer.
@@ -142,6 +133,10 @@ public class DrawerActivity extends Activity {
 				startActivity(intent);
 				break; }
     		case 2: {
+    			intent = new Intent(DrawerActivity.this, CompareActivity.class);
+    			startActivity(intent);
+    			break; }
+    		case 3: {
     			intent = new Intent(DrawerActivity.this, MainActivity.class);
     			startActivity(intent);
     			break; }

@@ -29,27 +29,27 @@
         </activity>
         <activity
             android:name="com.example.gauge.CalculationResultActivity"
-            android:label="@string/title_activity_calculation_result" 
-	        android:parentActivityName="com.example.gauge.CalculateActivity" >
-	        <meta-data
-	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.example.gauge.CalculateActivity" />
+            android:label="@string/title_activity_calculation_result"
+            android:parentActivityName="com.example.gauge.CalculateActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gauge.CalculateActivity" />
         </activity>
         <activity
             android:name="com.example.gauge.RegisterActivity"
-            android:label="@string/title_activity_register" 
-	        android:parentActivityName="com.example.gauge.MainActivity" >
-	        <meta-data
-	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.example.gauge.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.gauge.NavigationDrawerActivity"
-            android:label="@string/title_activity_navigation_drawer" >
+            android:label="@string/title_activity_register"
+            android:parentActivityName="com.example.gauge.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gauge.MainActivity" />
         </activity>
         <activity
             android:name="com.example.gauge.DrawerActivity"
             android:label="@string/title_activity_drawer" >
+        </activity>
+        <activity
+            android:name="com.example.gauge.CompareActivity"
+            android:label="@string/title_activity_compare" >
         </activity>
     </application>
 

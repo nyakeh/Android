@@ -8,23 +8,23 @@
     <string name="title_activity_calculate">CalculateActivity</string>
     <string name="title_activity_calculation_result">CalculationResultActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="menu">Sidebar</string>
 
     <string-array name="menu_array">
+        <item>Budget</item>
         <item>Calculate</item>
         <item>Compare</item>
-        <item>Budget</item>
         <item>Borrow</item>
     </string-array>
-    
-	<string-array name="second_menu_array">
+    <string-array name="second_menu_array">
         <item>Account</item>
         <item>Settings</item>
     </string-array>
-   
+
     <string name="action_websearch">Web search</string>
     <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="title_activity_compare">CompareActivity</string>
+
 </resources>
