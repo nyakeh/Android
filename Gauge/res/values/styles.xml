@@ -10,10 +10,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style> 
-    <dimen name="paddingBottom">
-        0dp
-    </dimen>
+    </style>
     <dimen name="paddingTop">
         0dp
     </dimen>

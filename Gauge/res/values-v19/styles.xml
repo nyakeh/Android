@@ -6,8 +6,7 @@
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">  
         <item name="android:windowBackground">@android:color/holo_blue_dark</item>
-		<item name="android:windowTranslucentStatus">true</item>
-		<item name="android:windowTranslucentNavigation">true</item>              
+		<item name="android:windowTranslucentStatus">true</item>           
 		<item name="android:fitsSystemWindows">true</item>
         <item name="android:actionBarStyle">@style/ActionBar.Solid.GaugeStyle</item>
     </style>
@@ -19,10 +18,7 @@
     <style name="ActionBar.Solid.GaugeStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
         <item name="android:background">@android:color/holo_blue_dark</item>
     </style>
-    <dimen name="paddingBottom">
-        45dp
-    </dimen>
     <dimen name="paddingTop">
-        68dp
+        71dp
     </dimen>
 </resources>

@@ -9,26 +9,26 @@
     <RelativeLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" 
+		android:paddingTop="@dimen/paddingTop"/>
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#111"
+        android:divider="#CCCCCC"
+        android:dividerHeight="1dp"
+        android:background="#33B5E5"
 	android:paddingTop="@dimen/paddingTop"/>
     <ListView
 	    android:id="@+id/left_drawer_second"
 	    android:layout_width="260dp"
 	    android:layout_height="match_parent"
 	    android:layout_gravity="start"
-	    android:background="#911"
 	    android:choiceMode="singleChoice"
-	    android:divider="#CCCCCC"
-	    android:dividerHeight="0dp"
+	    android:divider="#333333"
+	    android:dividerHeight="1dp"
 		android:paddingTop="@dimen/paddingTop" >        
     </ListView>
 </android.support.v4.widget.DrawerLayout>
