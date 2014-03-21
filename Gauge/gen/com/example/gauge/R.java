@@ -35,9 +35,9 @@ public final class R {
         public static final int btn_edit=0x7f090012;
         public static final int btn_email=0x7f090014;
         public static final int btn_favourite=0x7f090013;
-        public static final int btn_login=0x7f090024;
-        public static final int btn_register=0x7f090026;
-        public static final int btn_skip=0x7f090025;
+        public static final int btn_login=0x7f090026;
+        public static final int btn_register=0x7f09001e;
+        public static final int btn_skip=0x7f09001f;
         public static final int buttons_block=0x7f090011;
         public static final int content_frame=0x7f09001c;
         public static final int deposit=0x7f090005;
@@ -51,10 +51,10 @@ public final class R {
         public static final int fld_first_name=0x7f090028;
         public static final int fld_interest_rate=0x7f09000b;
         public static final int fld_property_value=0x7f090003;
-        public static final int fld_pwd=0x7f090023;
+        public static final int fld_pwd=0x7f090025;
         public static final int fld_surname=0x7f09002b;
         public static final int fld_term=0x7f090008;
-        public static final int fld_username=0x7f090020;
+        public static final int fld_username=0x7f090022;
         public static final int header=0x7f090015;
         public static final int image=0x7f09002c;
         public static final int interest_rate=0x7f09000a;
@@ -68,15 +68,15 @@ public final class R {
         public static final int left_drawer_admin=0x7f09001d;
         public static final int property_value=0x7f090002;
         public static final int property_value_block=0x7f090001;
-        public static final int pwd=0x7f090022;
-        public static final int pwd_block=0x7f090021;
+        public static final int pwd=0x7f090024;
+        public static final int pwd_block=0x7f090023;
         public static final int surname=0x7f09002a;
         public static final int surname_block=0x7f090029;
         public static final int term=0x7f090019;
         public static final int term_block=0x7f090007;
         public static final int title=0x7f09002d;
-        public static final int uname_block=0x7f09001e;
-        public static final int username=0x7f09001f;
+        public static final int uname_block=0x7f090020;
+        public static final int username=0x7f090021;
     }
     public static final class layout {
         public static final int activity_calculate=0x7f030000;
@@ -111,7 +111,7 @@ public final class R {
         public static final int welcome=0x7f050003;
     }
     public static final class style {
-        public static final int ActionBar_Solid_GaugeStyle=0x7f070002;
+        public static final int ActionBar_Solid_GaugeStyle=0x7f070003;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -139,5 +139,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int TextButton=0x7f070002;
     }
 }

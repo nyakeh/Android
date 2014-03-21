@@ -5,9 +5,41 @@
 	android:layout_height="match_parent"
 	android:background="@android:color/holo_blue_dark" 
 	android:fitsSystemWindows="true" >
+	
+    <RelativeLayout 
+   	android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+	android:background="@android:color/white"
+	android:fitsSystemWindows="true" >
+    
+	<LinearLayout android:id="@+id/buttons_block"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center"
+	    android:layout_alignParentBottom="true">
+	    <Button
+		    android:id="@+id/btn_register"  
+		    android:layout_width="0dip"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+		    android:background="@android:color/holo_blue_dark"
+		    android:padding="10dp"
+		    android:text="Register"
+		    style="?android:attr/buttonBarButtonStyle"	 />	
+		 <Button
+		    android:id="@+id/btn_skip"	    
+		    android:layout_width="0dip"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+		    android:background="@android:color/holo_blue_dark"
+		    android:padding="10dp"
+		    android:text="Skip"
+		    style="?android:attr/buttonBarButtonStyle"	 />
+	 </LinearLayout>
 <ScrollView 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 	android:paddingTop="@dimen/paddingTop"    
 	android:background="@android:color/white" >
 
@@ -93,39 +125,11 @@
 	        android:layout_below="@id/pwd_block"
 	        android:text="Login"
 	        android:layout_centerHorizontal="true"
-	        android:gravity="center"
-	        android:layout_marginTop="15dp"
-	        android:textSize="13sp"
-	        android:textStyle="bold"        
-	     />
-	    
-	     <Button
-	        android:id="@+id/btn_skip"
-	        android:layout_width="290dp"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/btn_login"
-	        android:text="Skip Login"
-	        android:layout_centerHorizontal="true"
-	        android:gravity="center"
-	        android:layout_marginTop="15dp"
-	        android:textSize="13sp"
-	        android:textStyle="bold"        
-	     />
-	    
-	     <Button
-	        android:id="@+id/btn_register"
-	        android:layout_width="290dp"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/btn_skip"
-	        android:text="Register"
-	        android:layout_centerHorizontal="true"
-	        android:gravity="center"
-	        android:layout_marginTop="15dp"
-	        android:textSize="13sp"
-	        android:textStyle="bold"        
+	        style="@style/TextButton"
 	     />
 	</RelativeLayout>
 </ScrollView>
+</RelativeLayout>
     <!-- The navigation drawer -->
     <ListView
 	    android:id="@+id/left_drawer"
