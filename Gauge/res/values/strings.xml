@@ -26,5 +26,6 @@
     </string-array>
 
     <string name="action_websearch">Web search</string>
+    <string name="title_activity_landing">LandingActivity</string>
 
 </resources>

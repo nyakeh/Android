@@ -19,6 +19,6 @@
         <item name="android:background">@android:color/holo_blue_dark</item>
     </style>
     <dimen name="paddingTop">
-        71dp
+        72dp
     </dimen>
 </resources>
