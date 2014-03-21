@@ -12,18 +12,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.example.gauge.R;
 
 public class DrawerActivity extends Activity {
 
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ListView mDrawerListSecond;
+    private LinearLayout drawerBlock;
+    private ListView drawerList;
+    private ListView adminDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
     private CharSequence mTitle;
     private String[] menuTitles;
+    private String[] adminMenuTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,9 @@ public class DrawerActivity extends Activity {
         mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menuTitles = getResources().getStringArray(R.array.menu_array);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        adminMenuTitles = getResources().getStringArray(R.array.second_menu_array);
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+        adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -75,9 +80,14 @@ public class DrawerActivity extends Activity {
 
 	private void generateLists() {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+        drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+        
+
+        adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
+        adminDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.admin_drawer_list_item, adminMenuTitles));
+        adminDrawerList.setOnItemClickListener(new DrawerItemClickListener());
                 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -99,8 +109,8 @@ public class DrawerActivity extends Activity {
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        //boolean drawerOpen = mDrawerLayout.isDrawerOpen(drawerList);
+        //menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -137,9 +147,9 @@ public class DrawerActivity extends Activity {
     			break; }
     	}
     	
-        mDrawerList.setItemChecked(position, true);
+        drawerList.setItemChecked(position, true);
         setTitle(menuTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
+        mDrawerLayout.closeDrawers();
     }
 
     @Override

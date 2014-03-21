@@ -151,14 +151,31 @@
 	</RelativeLayout>
 </ScrollView>
     <!-- The navigation drawer -->
+    <LinearLayout 
+        android:id="@+id/drawer_block"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+	    android:layout_gravity="start"
+        android:orientation="vertical" 
+        android:background="#f7f7f7">
+        
     <ListView
 	    android:id="@+id/left_drawer"
 	    android:layout_width="260dp"
-	    android:layout_height="match_parent"
+	    android:layout_height="wrap_content"
 	    android:layout_gravity="start"
 	    android:choiceMode="singleChoice"
         android:divider="#969696"
         android:dividerHeight="0dp"
-        android:background="#f7f7f7"
+        android:background="@android:color/transparent"
 		android:paddingTop="@dimen/paddingTop" />
+    <ListView
+	    android:id="@+id/left_drawer_admin"
+	    android:layout_width="260dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="left"
+	    android:choiceMode="singleChoice"
+	    android:divider="#e5e5e5"
+	    android:dividerHeight="1dp"/>  
+    </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
