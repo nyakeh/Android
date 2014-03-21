@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.example.gauge.R;
 
@@ -86,7 +85,7 @@ public class DrawerActivity extends Activity {
 
         adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
         adminDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.admin_drawer_list_item, adminMenuTitles));
-        adminDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        //adminDrawerList.setOnItemClickListener(new DrawerItemClickListener());
                 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -143,7 +142,7 @@ public class DrawerActivity extends Activity {
     	}
     	
         drawerList.setItemChecked(position, true);
-        setTitle(menuTitles[position]);
+        //setTitle(menuTitles[position]);
         mDrawerLayout.closeDrawers();
     }
 

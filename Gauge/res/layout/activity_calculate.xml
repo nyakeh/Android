@@ -134,7 +134,7 @@
 	            android:layout_height="wrap_content"
 	            android:hint="4.5%"
 	            android:layout_marginLeft="8dp"
-		        android:inputType="number"
+		        android:inputType="numberDecimal"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
 		        android:layout_gravity="center_vertical"
