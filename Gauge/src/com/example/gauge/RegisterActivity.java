@@ -53,11 +53,11 @@ public class RegisterActivity  extends DrawerActivity {
 	}
 	
 	@Override
-	public void handleResponse(String response) {
-		Toast toast = Toast.makeText(getApplicationContext(), "Stacked It", Toast.LENGTH_LONG);
-		if (response!=null) {
+	public void handleResponse(GaugeHttpResponse response) {
+		Toast toast = Toast.makeText(getApplicationContext(), "Error, Try again", Toast.LENGTH_LONG);
+		if (response.statusCode == 200 || response.statusCode == 201) {
 			try {
-				JSONObject jsonResult = new JSONObject(response);
+				JSONObject jsonResult = new JSONObject(response.content);
 				Editor edit = prefs.edit();
 				String accountId = (String) jsonResult.get("AccountId").toString();
 				String forename = (String) jsonResult.get("Forename");

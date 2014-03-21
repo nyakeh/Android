@@ -68,7 +68,8 @@ public class CalculationResultActivity extends DrawerActivity {
 		     	    alert.setView(editText);
 		     	    alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
 		  		  public void onClick(DialogInterface dialog, int btn) { 
-		  			  String emailAddress = editText.getText().toString();		    			  
+		  			  String emailAddress = editText.getText().toString();
+		  			  // Null check & call email Async function
 		  		  } });
 		     	    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){ public void onClick(DialogInterface dialog, int btn) {  } });
 		    	  alert.show();

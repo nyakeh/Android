@@ -166,5 +166,5 @@ public class DrawerActivity extends Activity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-	public void handleResponse(String results) { }
+	public void handleResponse(GaugeHttpResponse results) { }
 }

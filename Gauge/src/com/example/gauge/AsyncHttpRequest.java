@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
+public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse> {
 	DrawerActivity activity;
 	public AsyncHttpRequest(DrawerActivity mainActivity) {
 		super();
@@ -104,9 +104,10 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
 	}
 
 	@Override
-	protected String doInBackground(String... params) {
+	protected GaugeHttpResponse doInBackground(String... params) {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpContext localContext = new BasicHttpContext();
+		GaugeHttpResponse reponseObject = new GaugeHttpResponse(0, "");
 		
 		HttpRequestBase request = null;
 		
@@ -128,15 +129,17 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
 		String text = null;
 		try {	
 			HttpResponse response = httpClient.execute(request, localContext);
+			int statusCode = response.getStatusLine().getStatusCode();
 			HttpEntity entity = response.getEntity();
 			text = getASCIIContentFromEntity(entity);
-		} catch (Exception e) {
-			return e.getLocalizedMessage();
+			reponseObject = new GaugeHttpResponse(statusCode, text);
+		} catch (Exception ex) {
+			Log.d("Building httpPost - Unable to encode JsoArgs as StringEntity", ex.getMessage());
 		}
-		return text;
+		return reponseObject;
 	}
 
-	protected void onPostExecute(String results) {
+	protected void onPostExecute(GaugeHttpResponse results) {
 		this.activity.handleResponse(results);
 	}
 }
