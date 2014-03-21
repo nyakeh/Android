@@ -22,7 +22,7 @@ public class MainActivity extends DrawerActivity {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_main);
 		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
-		
+		if(prefs.getString("username", null) != null) {}
 		loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
@@ -30,7 +30,7 @@ public class MainActivity extends DrawerActivity {
 		    	  loginBtn.setClickable(false);
 		    	  EditText username = (EditText) findViewById(R.id.fld_username);
 		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
-		    	  new AsyncUserLogin(MainActivity.this).LoginToService(username.getText().toString(),password.getText().toString());
+		    	  new AsyncHttpRequest(MainActivity.this).Login(username.getText().toString(),password.getText().toString());
 		      }
 		});
 

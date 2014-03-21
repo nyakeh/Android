@@ -20,9 +20,9 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class AsyncUserLogin extends AsyncTask <String, Void, String> {
+public class AsyncHttpRequest extends AsyncTask <String, Void, String> {
 	MainActivity mainActivity;
-	public AsyncUserLogin(MainActivity mainActivity) {
+	public AsyncHttpRequest(MainActivity mainActivity) {
 		super();
 		this.mainActivity = mainActivity;
 	}
@@ -40,16 +40,67 @@ public class AsyncUserLogin extends AsyncTask <String, Void, String> {
 		return out.toString();
 	}
 	
-	public void LoginToService(String email, String password)
+	public void Login(String email, String password)
 	{
 		JSONObject jsonArg = new JSONObject();
 		try {
 			jsonArg.put("Email", email);
 			jsonArg.put("Password", password);
 		} catch (JSONException e) {
-			Log.d("Json building login object exception", e.getMessage());
+			Log.d("Json building login JSON object exception", e.getMessage());
 		}
 		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/login", jsonArg.toString());
+	}
+	
+	public void Register(String email, String forename, String surname, String password)
+	{
+		JSONObject jsonArg = new JSONObject();
+		try {
+			jsonArg.put("Email", email);
+			jsonArg.put("Forename", forename);
+			jsonArg.put("Surname", surname);
+			jsonArg.put("Password", password);
+			jsonArg.put("AccountTypeId", 1);
+			jsonArg.put("Active", true);
+		} catch (JSONException e) {
+			Log.d("Json building register JSON object exception", e.getMessage());
+		}
+		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/account", jsonArg.toString());
+	}
+	
+	public void Calculate(String property_value, String deposit, String term, String interest_rate, String fees, String accountId)
+	{
+		JSONObject jsonArg = new JSONObject();
+		try {
+			jsonArg.put("AccountId", accountId);
+			jsonArg.put("CustomerReference", "00000000-0000-0000-0000-000000000000");
+			jsonArg.put("HouseValue", property_value);
+			jsonArg.put("Deposit", deposit);
+			jsonArg.put("InterestRate", interest_rate);
+			jsonArg.put("Term", term);
+			jsonArg.put("Fees", fees);
+			jsonArg.put("MortgageType", "1");
+			jsonArg.put("Source", "Gauge Android App");
+		} catch (JSONException e) {
+			Log.d("Json building calculate JSON object exception", e.getMessage());
+		}
+		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/mortgage", jsonArg.toString());
+	}
+	
+	public void Compare(String property_value, String deposit, String term, String accountId)
+	{
+		JSONObject jsonArg = new JSONObject();
+		try {
+			jsonArg.put("AccountId", accountId);
+			jsonArg.put("CustomerReference", "00000000-0000-0000-0000-000000000000");
+			jsonArg.put("HouseValue", property_value);
+			jsonArg.put("Deposit", deposit);
+			jsonArg.put("MortgageType", "1");
+			jsonArg.put("Source", "Gauge Android App");
+		} catch (JSONException e) {
+			Log.d("Json building calculate JSON object exception", e.getMessage());
+		}
+		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/mortgage", jsonArg.toString());
 	}
 
 	@Override
