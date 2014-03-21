@@ -136,17 +136,5 @@
         android:divider="#969696"
         android:dividerHeight="0dp"
         android:background="#f7f7f7"
-		android:paddingTop="@dimen/paddingTop" >        
-    </ListView>    
-    <ListView
-	    android:id="@+id/left_drawer_second"
-	    android:layout_width="260dp"
-	    android:layout_height="match_parent"
-	    android:layout_gravity="start"
-	    android:background="#911"
-	    android:choiceMode="singleChoice"
-	    android:divider="#CCCCCC"
-	    android:dividerHeight="0dp"
-		android:paddingTop="@dimen/paddingTop" >        
-    </ListView>
+		android:paddingTop="@dimen/paddingTop" />
 </android.support.v4.widget.DrawerLayout>

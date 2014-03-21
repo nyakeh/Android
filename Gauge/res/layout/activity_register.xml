@@ -163,7 +163,5 @@
         android:divider="#969696"
         android:dividerHeight="0dp"
         android:background="#f7f7f7"
-		android:paddingTop="@dimen/paddingTop" >        
-    </ListView>
-
+		android:paddingTop="@dimen/paddingTop" />
 </android.support.v4.widget.DrawerLayout>

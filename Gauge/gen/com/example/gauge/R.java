@@ -65,7 +65,7 @@ public final class R {
         public static final int lbl_property_value=0x7f090016;
         public static final int lbl_term=0x7f090018;
         public static final int left_drawer=0x7f090010;
-        public static final int left_drawer_second=0x7f09001d;
+        public static final int left_drawer_admin=0x7f09001d;
         public static final int property_value=0x7f090002;
         public static final int property_value_block=0x7f090001;
         public static final int pwd=0x7f090022;
