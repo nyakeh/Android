@@ -1,7 +1,11 @@
 package com.example.gauge;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +24,9 @@ public class MainActivity extends DrawerActivity {
 		      @Override
 		      public void onClick(View v) {
 		    	  loginBtn.setClickable(false);
-		    	  new AsyncUserLogin(MainActivity.this).execute();
+		    	  EditText username = (EditText) findViewById(R.id.fld_username);
+		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
+		    	  new AsyncUserLogin(MainActivity.this).LoginToService(username.getText().toString(),password.getText().toString());
 		      }
 		});
 
@@ -55,7 +61,12 @@ public class MainActivity extends DrawerActivity {
 	public void handleResponse(String response) {
 		Toast toast = Toast.makeText(getApplicationContext(), "Stacked It", Toast.LENGTH_LONG);
 		if (response!=null) {
-			toast = Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG);
+			try {
+				JSONObject jsonResult = new JSONObject(response);
+				toast = Toast.makeText(getApplicationContext(), jsonResult.toString(), Toast.LENGTH_LONG);
+			} catch (JSONException e) {
+				Log.d("Json parse exception", e.getMessage());
+			}			
 		}
   	  	toast.show();
   	  	loginBtn.setClickable(true);
