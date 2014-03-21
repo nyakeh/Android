@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -14,10 +16,12 @@ import android.widget.Toast;
 
 public class MainActivity extends DrawerActivity {
 	Button loginBtn;
+	SharedPreferences prefs;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_main);
+		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
 		
 		loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,14 +67,20 @@ public class MainActivity extends DrawerActivity {
 		if (response!=null) {
 			try {
 				JSONObject jsonResult = new JSONObject(response);
-				toast = Toast.makeText(getApplicationContext(), jsonResult.toString(), Toast.LENGTH_LONG);
+				Editor edit = prefs.edit();
+				String accountId = (String) jsonResult.get("AccountId").toString();
+				String forename = (String) jsonResult.get("Forename");
+				edit.putString("AccountId", accountId);
+				edit.putString("Forename", forename);
+				edit.commit();
+				toast = Toast.makeText(getApplicationContext(), "Welcome back " + forename, Toast.LENGTH_LONG);
 			} catch (JSONException e) {
 				Log.d("Json parse exception", e.getMessage());
 			}			
 		}
   	  	toast.show();
   	  	loginBtn.setClickable(true);
-  	  //Intent intent = new Intent(MainActivity.this, CalculateActivity.class);		    	  
-	  //startActivity(intent);
+  	    Intent intent = new Intent(MainActivity.this, CalculateActivity.class);		    	  
+	    startActivity(intent);
 	}
 }
