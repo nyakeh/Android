@@ -3,14 +3,13 @@
 	android:id="@+id/drawer_layout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@android:color/holo_blue_dark" 
 	android:fitsSystemWindows="true" >
 	
     <RelativeLayout 
    	android:layout_width="fill_parent"
     android:layout_height="match_parent"
-	android:background="@android:color/white"
-	android:fitsSystemWindows="true" >
+	android:fitsSystemWindows="true"    
+	android:background="@android:color/white" >
     
 	<LinearLayout android:id="@+id/buttons_block"
 	    android:layout_width="fill_parent"
@@ -40,8 +39,7 @@
 <ScrollView 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-	android:paddingTop="@dimen/paddingTop"    
-	android:background="@android:color/white" >
+	android:paddingTop="@dimen/paddingTop" >
 
     	<RelativeLayout 
 	    	android:layout_width="match_parent"

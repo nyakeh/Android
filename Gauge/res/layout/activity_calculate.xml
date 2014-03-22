@@ -2,17 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/drawer_layout" 
-	android:background="@android:color/holo_blue_dark" 
+    android:id="@+id/drawer_layout"
 	android:fitsSystemWindows="true"   
 	android:paddingTop="@dimen/paddingTop" >
 	
-<ScrollView
+    <RelativeLayout 
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@android:color/white"
+	android:paddingTop="@dimen/paddingTop" >
+<ScrollView
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-	android:paddingTop="@dimen/paddingTop"
-    tools:context=".CalculateActivity" 
-	android:background="@android:color/white">
+    android:fillViewport="true" >
     
     <RelativeLayout 
     android:layout_width="match_parent"
@@ -183,7 +186,7 @@
 	     />
      </RelativeLayout>
 </ScrollView>
-
+</RelativeLayout>
 <!-- The navigation drawer -->
     <LinearLayout 
         android:id="@+id/drawer_block"

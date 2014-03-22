@@ -136,7 +136,7 @@ public class DrawerActivity extends Activity {
     			startActivity(intent);
     			break; }
     		case 3: {
-    			intent = new Intent(DrawerActivity.this, LandingActivity.class);
+    			intent = new Intent(DrawerActivity.this, MainActivity.class);
     			startActivity(intent);
     			break; }
     	}
