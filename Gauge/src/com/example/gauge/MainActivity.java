@@ -71,7 +71,7 @@ public class MainActivity extends DrawerActivity {
 			try {
 				JSONObject jsonResult = new JSONObject(response.content);
 				int accountId = Integer.parseInt(jsonResult.get("AccountId").toString());
-				String forename = (String) jsonResult.get("Forename");
+				String forename = jsonResult.get("Forename").toString();
 				Editor edit = prefs.edit();
 				edit.putInt("AccountId", accountId);
 				edit.putString("Forename", forename);

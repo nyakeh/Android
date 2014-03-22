@@ -22,7 +22,7 @@
 	        style="@style/PageTitle"
 	        />
 
-	    <LinearLayout android:id="@+id/property_value_block"
+	    <LinearLayout android:id="@+id/house_value_block"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_centerHorizontal="true"
@@ -30,10 +30,10 @@
 	        android:orientation="horizontal"
 	        android:layout_below="@id/header">  
 	        
-	        <TextView android:id="@+id/property_value"
+	        <TextView android:id="@+id/house_value"
 	   		        android:layout_width="110dp"
 	                android:layout_height="wrap_content"
-	                android:text="Property value"
+	                android:text="House value"
 	                android:textSize="16sp"
 			        android:textColor="@android:color/black"
 			        android:layout_gravity="center_vertical"
@@ -41,7 +41,7 @@
 	        />
 	
 	        <EditText
-	            android:id="@+id/fld_property_value"
+	            android:id="@+id/fld_house_value"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
 	            android:hint="£250,000"
@@ -59,7 +59,7 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="25dp"
 	        android:orientation="horizontal" 
-	        android:layout_below="@id/property_value_block" > 
+	        android:layout_below="@id/house_value_block" > 
 	        
 	        <TextView android:id="@+id/deposit"
 	   		        android:layout_width="110dp"

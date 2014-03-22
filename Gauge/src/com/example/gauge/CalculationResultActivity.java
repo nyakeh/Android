@@ -24,20 +24,26 @@ public class CalculationResultActivity extends DrawerActivity {
 		Bundle extras = this.getIntent().getExtras();		
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_calculation_result, null);
 		
-		
+		TextView monthly_Repayment = (TextView) resultsView.findViewById(R.id.monthly_repayment);
+		TextView loan_To_Value = (TextView) resultsView.findViewById(R.id.ltv);
+		TextView total_Paid = (TextView) resultsView.findViewById(R.id.total_paid);
+		TextView total_interest = (TextView) resultsView.findViewById(R.id.total_interest);
 		TextView property_value = (TextView) resultsView.findViewById(R.id.property_value);
 		TextView deposit = (TextView) resultsView.findViewById(R.id.deposit);
 		TextView term = (TextView) resultsView.findViewById(R.id.term);
 		TextView interest_rate = (TextView) resultsView.findViewById(R.id.interest_rate);
 		TextView fees = (TextView) resultsView.findViewById(R.id.fees);
 
-		property_value.setText(extras.getString("Property_value"));
+		monthly_Repayment.setText(extras.getString("Monthly_Repayment"));
+		loan_To_Value.setText(extras.getString("Loan_To_Value"));
+		total_Paid.setText(extras.getString("Total_Paid"));
+		total_interest.setText(extras.getString("Total_Interest"));
+		property_value.setText(extras.getString("House_Value"));
 		deposit.setText(extras.getString("Deposit"));
 		term.setText(extras.getString("Term"));
-		interest_rate.setText(extras.getString("Interest_rate"));
+		interest_rate.setText(extras.getString("Interest_Rate"));
 		fees.setText(extras.getString("Fees"));
 
-		
 		buildSideNavigation(resultsView);
 
 		Button editBtn = ( Button ) findViewById(R.id.btn_edit);		

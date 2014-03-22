@@ -55,7 +55,7 @@ public class RegisterActivity  extends DrawerActivity {
 	@Override
 	public void handleResponse(GaugeHttpResponse response) {
 		Toast toast = Toast.makeText(getApplicationContext(), "Error, Try again", Toast.LENGTH_LONG);
-		if (response.statusCode == 200 || response.statusCode == 201) {
+		if (response.statusCode == 201) {
 			try {
 				JSONObject jsonResult = new JSONObject(response.content);
 				Editor edit = prefs.edit();
