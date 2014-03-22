@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.gauge.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,12 +28,12 @@
         <activity
             android:name="com.example.gauge.CalculateActivity"
             android:label="@string/title_activity_calculate"
-            android:windowSoftInputMode="adjustResize" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.gauge.CalculationResultActivity"
             android:label="@string/title_activity_calculation_result"
-            android:parentActivityName="com.example.gauge.CalculateActivity" >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gauge.CalculateActivity" />
@@ -40,22 +41,25 @@
         <activity
             android:name="com.example.gauge.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:parentActivityName="com.example.gauge.MainActivity" >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gauge.MainActivity" />
         </activity>
         <activity
             android:name="com.example.gauge.DrawerActivity"
-            android:label="@string/title_activity_drawer" >
+            android:label="@string/title_activity_drawer"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.gauge.CompareActivity"
-            android:label="@string/title_activity_compare" >
+            android:label="@string/title_activity_compare"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.gauge.LandingActivity"
-            android:label="@string/title_activity_landing" >
+            android:label="@string/title_activity_landing"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

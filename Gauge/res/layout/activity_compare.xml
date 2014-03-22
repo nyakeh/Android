@@ -18,12 +18,19 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
 
+	    <TextView
+	        android:id="@+id/header"
+	        android:text="@string/compare_header"
+	        style="@style/PageTitle"
+	        />
+	    
 	    <LinearLayout android:id="@+id/property_value_block"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="25dp"
-	        android:orientation="horizontal">  
+	        android:orientation="horizontal"
+	        android:layout_below="@id/header" >  
 	        
 	        <TextView android:id="@+id/property_value"
 	   		        android:layout_width="110dp"
@@ -54,7 +61,7 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="25dp"
 	        android:orientation="horizontal" 
-	        android:layout_below="@id/property_value_block">
+	        android:layout_below="@id/property_value_block" >
 	        
 	        <TextView android:id="@+id/deposit"
 	   		        android:layout_width="110dp"

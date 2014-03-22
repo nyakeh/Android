@@ -63,12 +63,12 @@ public class CalculationResultActivity extends DrawerActivity {
 		      public void onClick(View v) {
 		    	  alert = new AlertDialog.Builder(CalculationResultActivity.this);
 		     	    final EditText editText = new EditText(CalculationResultActivity.this);
-		     	    alert.setTitle("Email");
-		     	    alert.setMessage("Please enter the email address you wish to send this calculation to");
+		     	    editText.setHint("email@address.com");
+		     	    alert.setTitle("Share with friend");
 		     	    alert.setView(editText);
 		     	    alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
 		  		  public void onClick(DialogInterface dialog, int btn) { 
-		  			  String emailAddress = editText.getText().toString();
+		  			  // String emailAddress = editText.getText().toString();
 		  			  // Null check & call email Async function
 		  		  } });
 		     	    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){ public void onClick(DialogInterface dialog, int btn) {  } });

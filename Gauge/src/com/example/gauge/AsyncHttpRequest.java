@@ -3,6 +3,7 @@ package com.example.gauge;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -68,18 +69,18 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/account", jsonArg.toString());
 	}
 	
-	public void Calculate(String property_value, String deposit, String term, String interest_rate, String fees, String accountId)
+	public void Calculate(String property_value, String deposit, String term, String interest_rate, String fees, int accountId, UUID customerReference)
 	{
 		JSONObject jsonArg = new JSONObject();
 		try {
 			jsonArg.put("AccountId", accountId);
-			jsonArg.put("CustomerReference", "00000000-0000-0000-0000-000000000000");
+			jsonArg.put("CustomerReference", customerReference);
 			jsonArg.put("HouseValue", property_value);
 			jsonArg.put("Deposit", deposit);
 			jsonArg.put("InterestRate", interest_rate);
 			jsonArg.put("Term", term);
 			jsonArg.put("Fees", fees);
-			jsonArg.put("MortgageType", "1");
+			jsonArg.put("MortgageType", "repayment");
 			jsonArg.put("Source", "Gauge Android App");
 		} catch (JSONException e) {
 			Log.d("Json building calculate JSON object exception", e.getMessage());
@@ -95,7 +96,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			jsonArg.put("CustomerReference", "00000000-0000-0000-0000-000000000000");
 			jsonArg.put("HouseValue", property_value);
 			jsonArg.put("Deposit", deposit);
-			jsonArg.put("MortgageType", "1");
+			jsonArg.put("MortgageType", "repayment");
 			jsonArg.put("Source", "Gauge Android App");
 		} catch (JSONException e) {
 			Log.d("Json building calculate JSON object exception", e.getMessage());

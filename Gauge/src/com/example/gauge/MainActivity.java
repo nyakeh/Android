@@ -22,7 +22,9 @@ public class MainActivity extends DrawerActivity {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_main);
 		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
-		if(prefs.getString("username", null) != null) {}
+		
+		//if(prefs.getString("AccountId", null) != null) {} // if logged in...
+		
 		loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
@@ -60,7 +62,7 @@ public class MainActivity extends DrawerActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}	
+	}
 	
 	@Override
 	public void handleResponse(GaugeHttpResponse response) {
@@ -68,10 +70,10 @@ public class MainActivity extends DrawerActivity {
 		if (response.statusCode == 200 || response.statusCode == 201) {
 			try {
 				JSONObject jsonResult = new JSONObject(response.content);
-				Editor edit = prefs.edit();
-				String accountId = (String) jsonResult.get("AccountId").toString();
+				int accountId = Integer.parseInt(jsonResult.get("AccountId").toString());
 				String forename = (String) jsonResult.get("Forename");
-				edit.putString("AccountId", accountId);
+				Editor edit = prefs.edit();
+				edit.putInt("AccountId", accountId);
 				edit.putString("Forename", forename);
 				edit.commit();
 				toast = Toast.makeText(getApplicationContext(), "Welcome back " + forename, Toast.LENGTH_LONG);
