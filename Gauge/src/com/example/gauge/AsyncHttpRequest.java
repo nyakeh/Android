@@ -103,6 +103,18 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		}
 		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/mortgage", jsonArg.toString());
 	}
+	
+	public void Email(int calculationId, String emailAddress)
+	{
+		JSONObject jsonArg = new JSONObject();
+		try {
+			jsonArg.put("CalculationId", calculationId);
+			jsonArg.put("Address", emailAddress);
+		} catch (JSONException e) {
+			Log.d("Json building email JSON object exception", e.getMessage());
+		}
+		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/email", jsonArg.toString());
+	}
 
 	@Override
 	protected GaugeHttpResponse doInBackground(String... params) {

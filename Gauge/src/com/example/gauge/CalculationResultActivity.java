@@ -1,5 +1,8 @@
 package com.example.gauge;
 
+import java.text.AttributedCharacterIterator.Attribute;
+import java.util.jar.Attributes;
+
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -7,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Editable;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -68,15 +72,21 @@ public class CalculationResultActivity extends DrawerActivity {
 		      @Override
 		      public void onClick(View v) {
 		    	  alert = new AlertDialog.Builder(CalculationResultActivity.this);
-		     	    final EditText editText = new EditText(CalculationResultActivity.this);
-		     	    editText.setHint("email@address.com");
-		     	    alert.setTitle("Share with friend");
-		     	    alert.setView(editText);
-		     	    alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
-		  		  public void onClick(DialogInterface dialog, int btn) { 
-		  			  // String emailAddress = editText.getText().toString();
-		  			  // Null check & call email Async function
-		  		  } });
+		    	    	 		    	  
+		    	  final EditText inputEmailAddress = new EditText(CalculationResultActivity.this);
+		    	  inputEmailAddress.setHint("email@address.com");
+		    	  alert.setTitle("Share with friend");
+		    	  alert.setView(inputEmailAddress);
+		    	  alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
+			  		  public void onClick(DialogInterface dialog, int btn) { 
+			  			  String emailAddress = inputEmailAddress.getText().toString().toLowerCase();
+			  			  Toast toast = Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_LONG);
+			  			  if(emailAddress.matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
+				  			  // call email Async function			  				  
+			  				  toast = Toast.makeText(getApplicationContext(), "Nice Email Address.", Toast.LENGTH_LONG);
+			  			  } 
+			  			  toast.show();
+			  		  }});
 		     	    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){ public void onClick(DialogInterface dialog, int btn) {  } });
 		    	  alert.show();
 		      }
