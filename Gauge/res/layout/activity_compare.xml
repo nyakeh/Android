@@ -39,8 +39,7 @@
 	                android:textSize="16sp"
 			        android:textColor="@android:color/black"
 			        android:layout_gravity="center_vertical"
-			        android:gravity="right"
-	        />
+			        android:gravity="right" />
 	
 	        <EditText
 	            android:id="@+id/fld_house_value"
@@ -52,7 +51,7 @@
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
 		        android:layout_gravity="center_vertical"
-	        />
+		        android:drawableLeft="@drawable/ic_drawer" />
 	  	</LinearLayout>
 	  	
 	    <LinearLayout android:id="@+id/deposit_block"
@@ -82,8 +81,7 @@
 		        android:inputType="number"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
-		        android:layout_gravity="center_vertical"
-	        />
+		        android:layout_gravity="center_vertical" />
 	  	</LinearLayout>
 	  	
 	    <LinearLayout android:id="@+id/term_block"
@@ -92,7 +90,7 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="25dp"
 	        android:orientation="horizontal" 
-	        android:layout_below="@id/deposit_block"> 
+	        android:layout_below="@id/deposit_block" > 
 	        
 	        <TextView android:id="@+id/term"
 	   		        android:layout_width="110dp"

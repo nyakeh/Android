@@ -14,6 +14,9 @@ public class ComparisonResultActivity extends Activity {
 		setContentView(R.layout.activity_comparison_result);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		//Bundle extras = this.getIntent().getExtras();
+		
 	}
 
 	/**
