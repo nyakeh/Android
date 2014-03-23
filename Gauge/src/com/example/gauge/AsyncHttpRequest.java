@@ -10,6 +10,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -115,17 +116,21 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		}
 		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/email", jsonArg.toString());
 	}
+	
+	public void Favourite(int calculationId)
+	{
+		this.execute("PUT",String.format("http://mortgagecalculator.cloudapp.net/api/mortgage/%s", calculationId));
+	}
 
 	@Override
 	protected GaugeHttpResponse doInBackground(String... params) {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpContext localContext = new BasicHttpContext();
-		GaugeHttpResponse reponseObject = new GaugeHttpResponse(0, "");
+		GaugeHttpResponse reponseObject = new GaugeHttpResponse(0,params[0], "");
 		
 		HttpRequestBase request = null;
 		
-		if(params[0] == "POST") 
-		{
+		if(params[0] == "POST") {
 			HttpPost httpPost = new HttpPost(params[1]);
 			httpPost.setHeader("Content-Type", "application/json");
 			try {
@@ -134,7 +139,10 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 				Log.d("Building httpPost - Unable to encode JsoArgs as StringEntity", ex.getMessage());
 			}
 			request = httpPost;
-		}  else {
+		} else if(params[0] == "PUT") {
+			HttpPut httpPut = new HttpPut(params[1]);
+			request = httpPut;
+		} else {
 			HttpGet httpGet = new HttpGet(params[1]);
 			request = httpGet;	 
 		}
@@ -145,7 +153,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			int statusCode = response.getStatusLine().getStatusCode();
 			HttpEntity entity = response.getEntity();
 			text = getASCIIContentFromEntity(entity);
-			reponseObject = new GaugeHttpResponse(statusCode, text);
+			reponseObject = new GaugeHttpResponse(statusCode, params[0], text);
 		} catch (Exception ex) {
 			Log.d("Building httpPost - Unable to encode JsoArgs as StringEntity", ex.getMessage());
 		}

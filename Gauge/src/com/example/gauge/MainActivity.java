@@ -17,6 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends DrawerActivity {
 	Button loginBtn;
 	SharedPreferences prefs;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -1,16 +1,9 @@
 package com.example.gauge;
 
-import java.text.AttributedCharacterIterator.Attribute;
-import java.util.jar.Attributes;
-
 import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.InputType;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -21,11 +14,17 @@ import android.widget.Toast;
 
 public class CalculationResultActivity extends DrawerActivity {
 	private AlertDialog.Builder alert;
+	SharedPreferences prefs;
+	Bundle extras;
+	int calculationId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
 		
-		Bundle extras = this.getIntent().getExtras();		
+		extras = this.getIntent().getExtras();		
+		calculationId = extras.getInt("Calculation_Id");
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_calculation_result, null);
 		
 		TextView monthly_Repayment = (TextView) resultsView.findViewById(R.id.monthly_repayment);
@@ -60,36 +59,34 @@ public class CalculationResultActivity extends DrawerActivity {
 		
 		Button favouriteBtn = ( Button ) findViewById(R.id.btn_favourite);		
 		favouriteBtn.setOnClickListener(new View.OnClickListener() {
-		      @Override
-		      public void onClick(View v) {
-		    	  Toast toast = Toast.makeText(getApplicationContext(), "Calculation saved into favourites.", Toast.LENGTH_LONG);
-		    	  toast.show();
-		      }
+			@Override
+			public void onClick(View v) {
+				new AsyncHttpRequest(CalculationResultActivity.this).Favourite(calculationId);
+			}
 		});  
    	    
 		Button emailBtn = ( Button ) findViewById(R.id.btn_email);		
 		emailBtn.setOnClickListener(new View.OnClickListener() {
-		      @Override
-		      public void onClick(View v) {
-		    	  alert = new AlertDialog.Builder(CalculationResultActivity.this);
-		    	    	 		    	  
-		    	  final EditText inputEmailAddress = new EditText(CalculationResultActivity.this);
-		    	  inputEmailAddress.setHint("email@address.com");
-		    	  alert.setTitle("Share with friend");
-		    	  alert.setView(inputEmailAddress);
-		    	  alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
-			  		  public void onClick(DialogInterface dialog, int btn) { 
-			  			  String emailAddress = inputEmailAddress.getText().toString().toLowerCase();
-			  			  Toast toast = Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_LONG);
-			  			  if(emailAddress.matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
-				  			  // call email Async function			  				  
-			  				  toast = Toast.makeText(getApplicationContext(), "Nice Email Address.", Toast.LENGTH_LONG);
-			  			  } 
-			  			  toast.show();
-			  		  }});
-		     	    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){ public void onClick(DialogInterface dialog, int btn) {  } });
-		    	  alert.show();
-		      }
+			@Override
+			public void onClick(View v) {
+				alert = new AlertDialog.Builder(CalculationResultActivity.this);
+				final EditText inputEmailAddress = new EditText(CalculationResultActivity.this);
+				inputEmailAddress.setHint("email@address.com");
+				alert.setTitle("Share with friend");
+				alert.setView(inputEmailAddress);
+				alert.setPositiveButton("Send", new DialogInterface.OnClickListener(){ 
+		  		  	public void onClick(DialogInterface dialog, int btn) { 
+		  		  		String emailAddress = inputEmailAddress.getText().toString().toLowerCase();	
+		  		  		if(emailAddress.matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {		  			  
+		  		  			new AsyncHttpRequest(CalculationResultActivity.this).Email(calculationId, emailAddress);
+		  			  	} else {
+		  			  		Toast toast = Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_LONG);
+			  				toast.show();
+		  			  	}
+		  		  	}});
+	     	    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){ public void onClick(DialogInterface dialog, int btn) {  } });
+	     	    alert.show();
+			}
 		});
 	}
 
@@ -98,6 +95,19 @@ public class CalculationResultActivity extends DrawerActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.calculation_result, menu);
 		return true;
+	}
+		
+	@Override
+	public void handleResponse(GaugeHttpResponse response) {
+		Toast toast = Toast.makeText(getApplicationContext(), "Error, Try again", Toast.LENGTH_LONG);
+		if (response.statusCode == 200) {
+			if(response.httpMethod == "PUT") {
+				toast = Toast.makeText(getApplicationContext(), "Calculation saved to favourites.", Toast.LENGTH_LONG);				
+			} else {
+				toast = Toast.makeText(getApplicationContext(), "Email sent", Toast.LENGTH_LONG);				
+			}
+		}
+  	  	toast.show();
 	}
 
 }

@@ -16,7 +16,8 @@
     </style>
     
     <style name="ActionBar.Solid.GaugeStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@android:color/holo_blue_dark</item>
+        <item name="android:background">#0099CC</item>
+	    <item name="android:textColor">@android:color/white</item>
     </style>
     <dimen name="paddingTop">
         72dp
