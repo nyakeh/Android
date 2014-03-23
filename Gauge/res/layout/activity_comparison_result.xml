@@ -1,0 +1,143 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:paddingTop="@dimen/paddingTop"
+	android:fitsSystemWindows="true" >
+	
+    <RelativeLayout 
+    	android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+		android:background="@android:color/white" >
+			    
+		<TextView
+	        android:id="@+id/header" 
+	        android:text="@string/comparison_results_header"
+	        style="@style/PageTitle" />		
+	        
+        <TableLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:stretchColumns="1"
+	        android:layout_below="@id/header" >
+
+		    <TableRow
+		        android:layout_width="fill_parent" >
+		        <TextView
+            		android:layout_column="1"		            
+		            android:text="Bank"
+		            android:padding="3dip" 
+					android:background="#e5e5e5" />
+		        <TextView
+		            android:text="Natwest"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="Barclays"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		        <TextView
+		            android:text="Nationwide"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="Post Office"
+		            android:gravity="right"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		    </TableRow>
+		    <TableRow
+		        android:layout_width="fill_parent" >
+		        <TextView
+            		android:layout_column="1"	
+		            android:text="Monthly Repayment"
+		            android:padding="3dip" 
+					android:background="#e5e5e5" />
+		        <TextView
+		            android:text="$1,250.32"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$1,250.32"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		        <TextView
+		            android:text="$5,096.00"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$3,096.00"
+		            android:gravity="right"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		    </TableRow>
+		    <TableRow
+		        android:layout_width="fill_parent" >
+		        <TextView
+            		android:layout_column="1"	
+		            android:text="Total Paid"
+		            android:padding="3dip" 
+					android:background="#e5e5e5" />
+		        <TextView
+		            android:text="375,096.00"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="275,096.00"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		        <TextView
+		            android:text="234,096.00"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$375,096.00"
+		            android:gravity="right"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		    </TableRow>
+		    
+		    <TableRow
+		        android:layout_width="fill_parent" >
+		        <TextView
+            		android:layout_column="1"	
+		            android:text="Total Interest"
+		            android:padding="3dip" 
+					android:background="#e5e5e5" />
+		        <TextView
+		            android:text="$131,250.32"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$123,250.32"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		        <TextView
+		            android:text="$175,096.00"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$175,096.00"
+		            android:gravity="right"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		    </TableRow>
+		    
+		    <TableRow
+		        android:layout_width="fill_parent" >
+		        <TextView
+            		android:layout_column="1"	
+		            android:text="Fees"
+		            android:padding="3dip" 
+					android:background="#e5e5e5" />
+		        <TextView
+		            android:text="$250.32"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$150.32"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		        <TextView
+		            android:text="$75.00"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="$196.00"
+		            android:gravity="right"
+		            android:padding="3dip" 
+					android:background="#f7f7f7" />
+		    </TableRow>
+		</TableLayout>
+	</RelativeLayout>
+</ScrollView>

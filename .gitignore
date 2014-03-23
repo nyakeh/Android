@@ -80,3 +80,7 @@ Gauge/bin/resources.ap_
 Gauge/bin/classes/com/example/gauge/R$xml.class
 Gauge/bin/classes/com/example/gauge/R$style.class
 Gauge/bin/classes.dex
+Gauge/bin/classes/com/example/gauge/ComparisonResultActivity.class
+Gauge/bin/classes/com/example/gauge/CompareActivity.class
+Gauge/bin/classes/com/example/gauge/DrawerActivity.class
+Gauge/bin/classes/com/example/gauge/MainActivity$3.class

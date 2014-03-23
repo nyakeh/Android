@@ -89,18 +89,18 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/mortgage", jsonArg.toString());
 	}
 	
-	public void Compare(String property_value, String deposit, String term, String accountId)
+	public void Compare(String property_value, String deposit, String term, int accountId, UUID customerReference)
 	{
 		JSONObject jsonArg = new JSONObject();
 		try {
 			jsonArg.put("AccountId", accountId);
-			jsonArg.put("CustomerReference", "00000000-0000-0000-0000-000000000000");
+			jsonArg.put("CustomerReference", customerReference);
 			jsonArg.put("HouseValue", property_value);
 			jsonArg.put("Deposit", deposit);
 			jsonArg.put("MortgageType", "repayment");
 			jsonArg.put("Source", "Gauge Android App");
 		} catch (JSONException e) {
-			Log.d("Json building calculate JSON object exception", e.getMessage());
+			Log.d("Json building compare JSON object exception", e.getMessage());
 		}
 		this.execute("POST","http://mortgagecalculator.cloudapp.net/api/mortgage", jsonArg.toString());
 	}
