@@ -164,6 +164,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int MyTheme_ActionBar_TitleTextStyle=0x7f080005;
         public static final int PageTitle=0x7f080003;
         public static final int TextButton=0x7f080002;
     }
