@@ -42,7 +42,7 @@
 			        android:gravity="right" />
 	
 	        <EditText
-	            android:id="@+id/fld_house_value"
+	            android:id="@+id/fld_compare_house_value"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
 	            android:hint="£250,000"
@@ -73,7 +73,7 @@
 	        />
 	
 	        <EditText
-	            android:id="@+id/fld_deposit"
+	            android:id="@+id/fld_compare_deposit"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
 	            android:hint="£20,000"
@@ -103,7 +103,7 @@
 	        />
 	
 	        <EditText
-	            android:id="@+id/fld_term"
+	            android:id="@+id/fld_compare_term"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
 	            android:hint="25 years"

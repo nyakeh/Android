@@ -27,8 +27,8 @@ public class RegisterActivity  extends DrawerActivity {
 		String username = getIntent().getStringExtra("Username");
 		View resultsView = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_register, null);
 		
-		TextView fld_username = (TextView) resultsView.findViewById(R.id.fld_username);
-		fld_username.setText(username);
+		TextView fld_email = (TextView) resultsView.findViewById(R.id.fld_email);
+		fld_email.setText(username);
 		buildSideNavigation(resultsView);
 		
 		registerBtn = ( Button ) findViewById(R.id.btn_register);		
@@ -36,11 +36,17 @@ public class RegisterActivity  extends DrawerActivity {
 		      @Override
 		      public void onClick(View v) {
 		    	  registerBtn.setClickable(false);
-		    	  EditText username = (EditText) findViewById(R.id.fld_username);
+		    	  EditText email = (EditText) findViewById(R.id.fld_email);
+		    	  if(!email.getText().toString().toLowerCase().matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
+	  			  		Toast toast = Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_LONG);
+		  				toast.show();
+		  		  	    registerBtn.setClickable(true);
+		  				return;
+		    	  }
 		    	  EditText forename = (EditText) findViewById(R.id.fld_forename);
 		    	  EditText surname = (EditText) findViewById(R.id.fld_surname);
 		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
-		    	  new AsyncHttpRequest(RegisterActivity.this).Register(username.getText().toString(),forename.getText().toString(),surname.getText().toString(),password.getText().toString());
+		    	  new AsyncHttpRequest(RegisterActivity.this).Register(email.getText().toString(),forename.getText().toString(),surname.getText().toString(),password.getText().toString());
 		      }
 		});
 	}
