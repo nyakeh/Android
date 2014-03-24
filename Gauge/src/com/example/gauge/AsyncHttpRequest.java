@@ -97,6 +97,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			jsonArg.put("CustomerReference", customerReference);
 			jsonArg.put("HouseValue", property_value);
 			jsonArg.put("Deposit", deposit);
+			jsonArg.put("Term", term);
 			jsonArg.put("MortgageType", "repayment");
 			jsonArg.put("Source", "Gauge Android App");
 		} catch (JSONException e) {

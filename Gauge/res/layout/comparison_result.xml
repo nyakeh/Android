@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   	style="@style/CardLayout" >
+		
+	<LinearLayout
+	    android:padding="5dp"
+       	style="@style/CardLayoutLine" >
+       	
+    <TextView
+        android:id="@+id/compare_bank"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+  		android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_vertical" />
+    
+    <TextView
+        android:id="@+id/compare_monthly_repayment"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text=""
+  		android:textStyle="bold"
+   		android:gravity="left" />
+    </LinearLayout>
+    
+	<LinearLayout
+       	style="@style/CardLayoutLine" >
+    <TextView
+        android:text="Total Paid: "
+   		style="@style/CardText" />
+    
+    <TextView
+        android:id="@+id/compare_total_paid"
+        android:text=""
+   		android:textStyle="bold"
+   		android:gravity="left"
+   		style="@style/CardText"/>
+    </LinearLayout>
+    
+	<LinearLayout
+       	style="@style/CardLayoutLine" >
+    <TextView
+        android:text="Total Interest: "
+   		style="@style/CardText" />		    
+    <TextView
+        android:id="@+id/compare_total_interest"
+        android:text=""
+   		android:textStyle="bold"
+   		android:gravity="left"
+   		style="@style/CardText" />
+    </LinearLayout>
+</LinearLayout>

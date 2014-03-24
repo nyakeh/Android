@@ -1,9 +1,19 @@
 package com.example.gauge;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 
 public class ComparisonResultActivity extends Activity {
@@ -13,10 +23,36 @@ public class ComparisonResultActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparison_result);
 		// Show the Up button in the action bar.
-		setupActionBar();
-		
-		//Bundle extras = this.getIntent().getExtras();
-		
+		setupActionBar(); 
+		Bundle extras = this.getIntent().getExtras();
+		String resultsSet = extras.getString("Json_Response");
+		LinearLayout linearLayout = (LinearLayout)findViewById(R.id.comparison_result_layout);
+		try {
+			JSONArray jsonArray = new JSONArray(resultsSet); 
+			for(int i = 0; i < jsonArray.length(); i++) {
+				JSONObject calculation = jsonArray.getJSONObject(i);
+				String bank = calculation.get("Bank").toString();				
+				String monthlyRepayment = calculation.get("MonthlyRepayment").toString();				
+				String totalPaid = calculation.get("TotalPaid").toString();				
+				String totalInterest = calculation.get("TotalInterest").toString();	
+				View compareResultView = LayoutInflater.from(getBaseContext()).inflate(R.layout.comparison_result, null);				
+				TextView tv_bank = (TextView) compareResultView.findViewById(R.id.compare_bank);
+				TextView tv_monthly_repayment = (TextView) compareResultView.findViewById(R.id.compare_monthly_repayment);
+				TextView tv_total_paid = (TextView) compareResultView.findViewById(R.id.compare_total_paid);
+				TextView tv_total_interest = (TextView) compareResultView.findViewById(R.id.compare_total_interest);
+				tv_bank.setText(bank);
+				tv_monthly_repayment.setText(monthlyRepayment);
+				tv_total_paid.setText(totalPaid);
+				tv_total_interest.setText(totalInterest);
+				LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				lp.setMargins(10, 0, 10, 10);
+				compareResultView.setLayoutParams(lp);
+				linearLayout.addView(compareResultView);
+			}
+		} catch (JSONException e) {
+			Log.d("Json parse exception - ComparisonResultActivity.java", e.getMessage());
+		}
+				
 	}
 
 	/**
