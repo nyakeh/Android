@@ -1,6 +1,7 @@
 package com.example.gauge;
 
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -12,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CalculationResultActivity extends DrawerActivity  implements IGaugeAsync{
+public class CalculationResultActivity extends Activity implements IGaugeAsync{
 	private AlertDialog.Builder alert;
 	SharedPreferences prefs;
 	Bundle extras;
@@ -47,7 +48,8 @@ public class CalculationResultActivity extends DrawerActivity  implements IGauge
 		interest_rate.setText(extras.getString("Interest_Rate")+"%");
 		fees.setText(extras.getString("Fees"));
 
-		buildSideNavigation(resultsView);
+		setContentView(resultsView);
+		setupActionBar(); 
 
 		Button editBtn = ( Button ) findViewById(R.id.btn_edit);		
 		editBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +90,10 @@ public class CalculationResultActivity extends DrawerActivity  implements IGauge
 	     	    alert.show();
 			}
 		});
+	}
+	
+	private void setupActionBar() {
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
