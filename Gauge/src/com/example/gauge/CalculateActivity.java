@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CalculateActivity extends DrawerActivity {
+public class CalculateActivity extends DrawerActivity  implements IGaugeAsync{
 	SharedPreferences prefs;
 	Button calculateBtn;
 	

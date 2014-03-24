@@ -23,8 +23,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse> {
-	DrawerActivity activity;
-	public AsyncHttpRequest(DrawerActivity mainActivity) {
+	IGaugeAsync activity;
+	public AsyncHttpRequest(IGaugeAsync mainActivity) {
 		super();
 		this.activity = mainActivity;
 	}

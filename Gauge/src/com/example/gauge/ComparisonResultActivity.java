@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
@@ -22,7 +21,6 @@ public class ComparisonResultActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparison_result);
-		// Show the Up button in the action bar.
 		setupActionBar(); 
 		Bundle extras = this.getIntent().getExtras();
 		String resultsSet = extras.getString("Json_Response");
@@ -43,7 +41,7 @@ public class ComparisonResultActivity extends Activity {
 				TextView tv_total_paid = (TextView) compareResultView.findViewById(R.id.compare_total_paid);
 				TextView tv_total_interest = (TextView) compareResultView.findViewById(R.id.compare_total_interest);
 				tv_bank.setText(bank);
-				tv_interest_rate.setText(interestRate+" APR");
+				tv_interest_rate.setText(interestRate+"% APR");
 				tv_monthly_repayment.setText(monthlyRepayment);
 				tv_total_paid.setText(totalPaid);
 				tv_total_interest.setText(totalInterest);

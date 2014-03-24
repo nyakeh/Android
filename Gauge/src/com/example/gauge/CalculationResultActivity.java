@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CalculationResultActivity extends DrawerActivity {
+public class CalculationResultActivity extends DrawerActivity  implements IGaugeAsync{
 	private AlertDialog.Builder alert;
 	SharedPreferences prefs;
 	Bundle extras;

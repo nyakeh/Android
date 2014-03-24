@@ -3,20 +3,23 @@ package com.example.gauge;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RegisterActivity  extends DrawerActivity {
+public class RegisterActivity  extends Activity implements IGaugeAsync {
 	Button registerBtn;
 	SharedPreferences prefs;
 	@Override
@@ -29,8 +32,9 @@ public class RegisterActivity  extends DrawerActivity {
 		
 		TextView fld_email = (TextView) resultsView.findViewById(R.id.fld_email);
 		fld_email.setText(username);
-		buildSideNavigation(resultsView);
-		
+
+		setContentView(resultsView);
+		setupActionBar(); 
 		registerBtn = ( Button ) findViewById(R.id.btn_register);		
 		registerBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
@@ -56,6 +60,20 @@ public class RegisterActivity  extends DrawerActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.register, menu);
 		return true;
+	}
+	
+	private void setupActionBar() {
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	@Override

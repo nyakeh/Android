@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends DrawerActivity {
+public class MainActivity extends DrawerActivity implements IGaugeAsync {
 	Button loginBtn;
 	SharedPreferences prefs;
 	
