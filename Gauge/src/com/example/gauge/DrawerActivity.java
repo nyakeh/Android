@@ -83,7 +83,7 @@ public class DrawerActivity extends Activity {
 
         adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
         adminDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.admin_drawer_list_item, adminMenuTitles));
-        //adminDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        adminDrawerList.setOnItemClickListener(new AdminDrawerItemClickListener());
                 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -138,7 +138,35 @@ public class DrawerActivity extends Activity {
 				break;
     	}
         drawerList.setItemChecked(position, true);
-        //setTitle(menuTitles[position]);
+        mDrawerLayout.closeDrawers();
+    }
+    
+
+
+    public class AdminDrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectAdminItem(position);
+        }
+    }
+
+    private void selectAdminItem(int position) {
+    	//Intent intent = null;
+        Toast toast = Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_LONG);
+    	switch(position) {
+	    	case 0: 
+				toast = Toast.makeText(getApplicationContext(), "0", Toast.LENGTH_SHORT);
+				//intent = new Intent(DrawerActivity.this, AccountActivity.class);
+				//startActivity(intent);
+				break;
+			case 1: 
+				toast = Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_SHORT);
+				//intent = new Intent(DrawerActivity.this, SettingsActivity.class);
+				//startActivity(intent);
+				break;
+    	}
+    	toast.show();
+        drawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawers();
     }
 
