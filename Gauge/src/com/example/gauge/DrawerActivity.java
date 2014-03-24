@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.gauge.R;
 
 public class DrawerActivity extends Activity {
@@ -60,10 +62,6 @@ public class DrawerActivity extends Activity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        if (savedInstanceState == null) {
-            selectItem(0);
-        }
     }
     
     public void buildSideNavigation(int layoutResId) {
@@ -124,23 +122,21 @@ public class DrawerActivity extends Activity {
     }
 
     private void selectItem(int position) {
-    	Intent intent;
-    	
+    	Intent intent = null;
     	switch(position) {
-			case 1: {
+	    	case 0: 
+				intent = new Intent(DrawerActivity.this, MainActivity.class);
+				startActivity(intent);
+				break;
+			case 1: 
 				intent = new Intent(DrawerActivity.this, CalculateActivity.class);
 				startActivity(intent);
-				break; }
-    		case 2: {
-    			intent = new Intent(DrawerActivity.this, CompareActivity.class);
-    			startActivity(intent);
-    			break; }
-    		case 3: {
-    			intent = new Intent(DrawerActivity.this, MainActivity.class);
-    			startActivity(intent);
-    			break; }
+				break; 
+			case 2: 
+				intent = new Intent(DrawerActivity.this, CompareActivity.class);
+				startActivity(intent);
+				break;
     	}
-    	
         drawerList.setItemChecked(position, true);
         //setTitle(menuTitles[position]);
         mDrawerLayout.closeDrawers();
