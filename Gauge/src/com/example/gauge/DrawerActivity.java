@@ -151,16 +151,15 @@ public class DrawerActivity extends Activity {
     }
 
     private void selectAdminItem(int position) {
-    	//Intent intent = null;
+    	Intent intent;
         Toast toast = Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_LONG);
     	switch(position) {
 	    	case 0: 
-				toast = Toast.makeText(getApplicationContext(), "0", Toast.LENGTH_SHORT);
-				//intent = new Intent(DrawerActivity.this, AccountActivity.class);
-				//startActivity(intent);
+				intent = new Intent(DrawerActivity.this, AccountActivity.class);
+				startActivity(intent);
 				break;
 			case 1: 
-				toast = Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_SHORT);
+				toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);
 				//intent = new Intent(DrawerActivity.this, SettingsActivity.class);
 				//startActivity(intent);
 				break;
