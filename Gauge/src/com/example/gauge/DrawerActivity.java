@@ -43,7 +43,7 @@ public class DrawerActivity extends Activity {
         drawerList = (ListView) findViewById(R.id.left_drawer);
         adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
 
-        // enable ActionBar app icon to behave as action to toggle nav drawer
+        // enable ActionBar app icon to behave as action to toggle sidebar
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
@@ -113,10 +113,13 @@ public class DrawerActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
          // The action bar home/up action should open or close the drawer.
          // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if(mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
+        } else if(item.getItemId() == R.id.action_settings) {
+        	Intent intent = new Intent(DrawerActivity.this, SettingActivity.class);
+			startActivity(intent);
+        	return true;
         }
-        // Handle action buttons
         return super.onOptionsItemSelected(item);
         
     }

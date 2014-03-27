@@ -66,12 +66,17 @@ public class RegisterActivity  extends Activity implements IGaugeAsync {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
+			case android.R.id.home:
+				NavUtils.navigateUpFromSameTask(this);
+				return true;
+			case R.id.action_settings:
+				Intent intent = new Intent(RegisterActivity.this, SettingActivity.class);
+				startActivity(intent);
+	        	return true;				
 		}
 		return super.onOptionsItemSelected(item);
 	}
