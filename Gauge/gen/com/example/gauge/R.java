@@ -33,8 +33,11 @@ public final class R {
         public static final int ic_launcher2=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f090052;
+        public static final int action_settings=0x7f090056;
+        public static final int btn_about=0x7f09004e;
+        public static final int btn_account=0x7f09004d;
         public static final int btn_account_update=0x7f09000f;
+        public static final int btn_api=0x7f090050;
         public static final int btn_borrow=0x7f090041;
         public static final int btn_budget=0x7f09003f;
         public static final int btn_calculate=0x7f090022;
@@ -46,12 +49,13 @@ public final class R {
         public static final int btn_logout=0x7f090002;
         public static final int btn_register=0x7f090043;
         public static final int btn_skip=0x7f090044;
+        public static final int btn_website=0x7f09004f;
         public static final int buttons_block=0x7f090001;
-        public static final int compare_bank=0x7f09004d;
-        public static final int compare_interest_rate=0x7f09004e;
-        public static final int compare_monthly_repayment=0x7f09004f;
-        public static final int compare_total_interest=0x7f090051;
-        public static final int compare_total_paid=0x7f090050;
+        public static final int compare_bank=0x7f090051;
+        public static final int compare_interest_rate=0x7f090052;
+        public static final int compare_monthly_repayment=0x7f090053;
+        public static final int compare_total_interest=0x7f090055;
+        public static final int compare_total_paid=0x7f090054;
         public static final int comparison_result_layout=0x7f09003d;
         public static final int content_frame=0x7f09003e;
         public static final int deposit=0x7f090018;
@@ -127,9 +131,10 @@ public final class R {
         public static final int activity_landing=0x7f030006;
         public static final int activity_main=0x7f030007;
         public static final int activity_register=0x7f030008;
-        public static final int admin_drawer_list_item=0x7f030009;
-        public static final int comparison_result=0x7f03000a;
-        public static final int drawer_list_item=0x7f03000b;
+        public static final int activity_setting=0x7f030009;
+        public static final int admin_drawer_list_item=0x7f03000a;
+        public static final int comparison_result=0x7f03000b;
+        public static final int drawer_list_item=0x7f03000c;
     }
     public static final class menu {
         public static final int account=0x7f080000;
@@ -142,6 +147,7 @@ public final class R {
         public static final int main=0x7f080007;
         public static final int navigation_drawer=0x7f080008;
         public static final int register=0x7f080009;
+        public static final int setting=0x7f08000a;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -163,6 +169,7 @@ public final class R {
         public static final int title_activity_drawer=0x7f05000b;
         public static final int title_activity_landing=0x7f050011;
         public static final int title_activity_register=0x7f05000a;
+        public static final int title_activity_setting=0x7f050014;
         public static final int welcome_header=0x7f050003;
     }
     public static final class style {

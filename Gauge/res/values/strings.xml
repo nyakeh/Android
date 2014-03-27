@@ -37,5 +37,6 @@
     <string name="title_activity_landing">LandingActivity</string>
     <string name="title_activity_comparison_results">ComparisonResultsActivity</string>
     <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>

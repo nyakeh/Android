@@ -21,8 +21,7 @@
 	    <TextView
 	        android:id="@+id/header"
 	        android:text="@string/compare_header"
-	        style="@style/PageTitle"
-	        />
+	        style="@style/PageTitle" />
 	    
 	    <LinearLayout android:id="@+id/house_value_block"
 	        android:layout_width="wrap_content"

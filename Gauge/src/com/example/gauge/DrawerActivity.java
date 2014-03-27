@@ -169,10 +169,8 @@ public class DrawerActivity extends Activity {
 	    		startActivity(intent);				
 				break;
 			case 1: 
-				Toast toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);
-		    	toast.show();
-				//intent = new Intent(DrawerActivity.this, SettingsActivity.class);
-				//startActivity(intent);
+				intent = new Intent(DrawerActivity.this, SettingActivity.class);
+				startActivity(intent);
 				break;
     	}
         drawerList.setItemChecked(position, true);

@@ -75,6 +75,10 @@
             android:name="com.example.gauge.AccountActivity"
             android:label="@string/title_activity_account" >
         </activity>
+        <activity
+            android:name="com.example.gauge.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>
