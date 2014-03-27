@@ -3,6 +3,7 @@ package com.example.gauge;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,6 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_account);
 		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
-		// Async GET /Account request
 
 		email = (EditText) findViewById(R.id.fld_account_email);
   	  	forename = (EditText) findViewById(R.id.fld_account_forename);
@@ -34,7 +34,7 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
   	  	password = (EditText) findViewById(R.id.fld_account_password);
   	  	accountId = prefs.getInt("AccountId", 0);
 		new AsyncHttpRequest(AccountActivity.this).RetrieveAccount(accountId);
-		// Update button PUT
+
 		updateBtn = ( Button ) findViewById(R.id.btn_account_update);		
 		updateBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
@@ -48,6 +48,20 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		    	  }
 		    	  new AsyncHttpRequest(AccountActivity.this).UpdateAccount(accountId,email.getText().toString(),forename.getText().toString(),surname.getText().toString(),password.getText().toString());
 		      }
+		});
+		
+		Button logoutBtn = ( Button ) findViewById(R.id.btn_logout);		
+		logoutBtn.setOnClickListener(new View.OnClickListener() {
+		      @Override
+		      public void onClick(View v) {
+		    	  SharedPreferences.Editor editor = prefs.edit();
+		    	  editor.clear();
+		    	  editor.commit();
+		    	  Intent intent = new Intent(AccountActivity.this, MainActivity.class);
+		    	  startActivity(intent);
+		    	  Toast toast = Toast.makeText(getApplicationContext(), "Logout successfull", Toast.LENGTH_LONG);
+		    	  toast.show();
+	    	  }
 		});
 	}
 

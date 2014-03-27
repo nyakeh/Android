@@ -2,6 +2,7 @@ package com.example.gauge;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -13,12 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gauge.R;
 
 public class DrawerActivity extends Activity {
-
+	SharedPreferences prefs;
     private DrawerLayout mDrawerLayout;
     private ListView drawerList;
     private ListView adminDrawerList;
@@ -32,11 +34,12 @@ public class DrawerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
+		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
         
         mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menuTitles = getResources().getStringArray(R.array.menu_array);
-        adminMenuTitles = getResources().getStringArray(R.array.second_menu_array);
+        adminMenuTitles = getResources().getStringArray(R.array.login_menu_array);
         drawerList = (ListView) findViewById(R.id.left_drawer);
         adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
 
@@ -82,9 +85,13 @@ public class DrawerActivity extends Activity {
         
 
         adminDrawerList = (ListView) findViewById(R.id.left_drawer_admin);
+        
+        if(prefs.getInt("AccountId", 0) != 0) {
+        	adminMenuTitles = getResources().getStringArray(R.array.account_menu_array);
+        }
         adminDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.admin_drawer_list_item, adminMenuTitles));
         adminDrawerList.setOnItemClickListener(new AdminDrawerItemClickListener());
-                
+        
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -146,16 +153,20 @@ public class DrawerActivity extends Activity {
     public class AdminDrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectAdminItem(position);
+        	TextView tv = (TextView) view;
+            selectAdminItem(position, tv.getText().toString());
         }
     }
 
-    private void selectAdminItem(int position) {
+    private void selectAdminItem(int position, String title) {
     	Intent intent;
     	switch(position) {
 	    	case 0: 
-				intent = new Intent(DrawerActivity.this, AccountActivity.class);
-				startActivity(intent);
+    			intent = new Intent(DrawerActivity.this, MainActivity.class);
+	    		if(title.equals("Account")) {
+	    			intent = new Intent(DrawerActivity.this, AccountActivity.class);
+	    		}
+	    		startActivity(intent);				
 				break;
 			case 1: 
 				Toast toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);

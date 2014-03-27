@@ -24,8 +24,12 @@
         <item>Compare</item>
         <item>Borrow</item>
     </string-array>
-    <string-array name="second_menu_array">
+    <string-array name="account_menu_array">
         <item>Account</item>
+        <item>Settings</item>
+    </string-array>
+    <string-array name="login_menu_array">
+        <item>Login</item>
         <item>Settings</item>
     </string-array>
 

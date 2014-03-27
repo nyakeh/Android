@@ -6,9 +6,32 @@
 	android:background="@android:color/holo_blue_dark" 
 	android:fitsSystemWindows="true">
 	
+<RelativeLayout 
+   	android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+	android:fitsSystemWindows="true"    
+	android:background="@android:color/white" >
+    
+	<LinearLayout android:id="@+id/buttons_block"
+    	android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center"
+	    android:layout_alignParentBottom="true">
+	    <Button
+		    android:id="@+id/btn_logout"  
+		    android:layout_width="0dip"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	    	android:background="#0099CC"
+	    	android:textColor="@android:color/white"
+		    android:padding="10dp"
+		    android:text="Logout"
+		    style="?android:attr/buttonBarButtonStyle"	 />	
+	</LinearLayout>
 <ScrollView 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 	android:background="@android:color/white" 
 	android:paddingTop="@dimen/paddingTop" >
     
@@ -150,6 +173,7 @@
 	     />	
 	</RelativeLayout>
 </ScrollView>
+</RelativeLayout>
     <!-- The navigation drawer -->
     <LinearLayout 
         android:id="@+id/drawer_block"
