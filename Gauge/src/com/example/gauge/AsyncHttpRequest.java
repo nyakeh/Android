@@ -80,9 +80,9 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		JSONObject jsonArg = new JSONObject();
 		try {
 			jsonArg.put("AccountId", accountId);
-			jsonArg.put("Email", email);
 			jsonArg.put("Forename", forename);
 			jsonArg.put("Surname", surname);
+			jsonArg.put("Email", email);
 			jsonArg.put("Password", password);
 		} catch (JSONException e) {
 			Log.d("Json building register JSON object exception", e.getMessage());
@@ -157,11 +157,17 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			try {
 				httpPost.setEntity(new StringEntity(params[2]));
 			} catch (UnsupportedEncodingException ex) {
-				Log.d("Building httpPost - Unable to encode JsoArgs as StringEntity", ex.getMessage());
+				Log.d("Building httpPost - Unable to encode JsonArgs as StringEntity", ex.getMessage());
 			}
 			request = httpPost;
 		} else if(params[0] == "PUT") {
 			HttpPut httpPut = new HttpPut(params[1]);
+			httpPut.setHeader("Content-Type", "application/json");
+			try {
+				httpPut.setEntity(new StringEntity(params[2]));
+			} catch (UnsupportedEncodingException ex) {
+				Log.d("Building httpPut - Unable to encode JsoAnrgs as StringEntity", ex.getMessage());
+			}
 			request = httpPut;
 		} else {
 			HttpGet httpGet = new HttpGet(params[1]);

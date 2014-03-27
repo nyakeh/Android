@@ -83,9 +83,9 @@ public class RegisterActivity  extends Activity implements IGaugeAsync {
 			try {
 				JSONObject jsonResult = new JSONObject(response.content);
 				Editor edit = prefs.edit();
-				String accountId = (String) jsonResult.get("AccountId").toString();
-				String forename = (String) jsonResult.get("Forename");
-				edit.putString("AccountId", accountId);
+				int accountId = Integer.parseInt(jsonResult.get("AccountId").toString());
+				String forename = jsonResult.get("Forename").toString();
+				edit.putInt("AccountId", accountId);
 				edit.putString("Forename", forename);
 				edit.commit();
 				toast = Toast.makeText(getApplicationContext(), "Welcome to Gauge " + forename, Toast.LENGTH_LONG);

@@ -152,19 +152,18 @@ public class DrawerActivity extends Activity {
 
     private void selectAdminItem(int position) {
     	Intent intent;
-        Toast toast = Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_LONG);
     	switch(position) {
 	    	case 0: 
 				intent = new Intent(DrawerActivity.this, AccountActivity.class);
 				startActivity(intent);
 				break;
 			case 1: 
-				toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);
+		    	toast.show();
 				//intent = new Intent(DrawerActivity.this, SettingsActivity.class);
 				//startActivity(intent);
 				break;
     	}
-    	toast.show();
         drawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawers();
     }
