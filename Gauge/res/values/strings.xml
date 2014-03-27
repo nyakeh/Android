@@ -14,6 +14,10 @@
     <string name="title_activity_register">Create Account</string>
     <string name="title_activity_drawer">DrawerActivity</string>
     <string name="title_activity_compare">Compare Mortgages</string>
+    <string name="title_activity_landing">Home</string>
+    <string name="title_activity_comparison_results">Comparison Results</string>
+    <string name="title_activity_account">Account</string>
+    <string name="title_activity_setting">Settings</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="menu">Sidebar</string>
@@ -34,9 +38,5 @@
     </string-array>
 
     <string name="action_websearch">Web search</string>
-    <string name="title_activity_landing">LandingActivity</string>
-    <string name="title_activity_comparison_results">ComparisonResultsActivity</string>
-    <string name="title_activity_account">AccountActivity</string>
-    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>
