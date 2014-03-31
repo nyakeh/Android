@@ -44,13 +44,13 @@
 	            android:id="@+id/fld_house_value"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
-	            android:hint="£250,000"
+	            android:hint="250,000"
 	            android:layout_marginLeft="8dp"
 		        android:inputType="number"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
 		        android:layout_gravity="center_vertical"
-	        />
+		        android:drawableLeft="@drawable/ic_pound" />
 	  	</LinearLayout>
 	  	
 	    <LinearLayout android:id="@+id/deposit_block"
@@ -75,13 +75,13 @@
 	            android:id="@+id/fld_deposit"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
-	            android:hint="£20,000"
+	            android:hint="20,000"
 	            android:layout_marginLeft="8dp"
 		        android:inputType="number"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
 		        android:layout_gravity="center_vertical"
-	        />
+		        android:drawableLeft="@drawable/ic_pound" />
 	  	</LinearLayout>
 	  	
 	    <LinearLayout android:id="@+id/term_block"
@@ -106,13 +106,13 @@
 	            android:id="@+id/fld_term"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
-	            android:hint="25 years"
+	            android:hint="25"
 	            android:layout_marginLeft="8dp"
 		        android:inputType="number"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
-		        android:layout_gravity="right"
-	        />
+		        android:layout_gravity="right"  
+		        android:drawableRight="@drawable/ic_years" />
 	  	</LinearLayout>
 	  	
 	    <LinearLayout android:id="@+id/interest_rate_block"
@@ -142,8 +142,7 @@
 		        android:inputType="numberDecimal"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
-		        android:layout_gravity="center_vertical"
-	        />
+		        android:layout_gravity="center_vertical" />
 	  	</LinearLayout>
 	  	
 	    <LinearLayout android:id="@+id/fees_block"
@@ -168,13 +167,13 @@
 	            android:id="@+id/fld_fees"
 	            android:layout_width="170dp"
 	            android:layout_height="wrap_content"
-	            android:hint="£199"
+	            android:hint="199"
 	            android:layout_marginLeft="8dp"
 		        android:inputType="number"
 		        android:paddingLeft="5dp"
 		        android:textSize="13sp"
 		        android:layout_gravity="center_vertical"
-	        />
+		        android:drawableLeft="@drawable/ic_pound" />
 	  	</LinearLayout>
 	    
 	     <Button
