@@ -1,5 +1,11 @@
 package com.example.gauge;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,17 +37,22 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		buildSideNavigation(R.layout.activity_main);
 		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
 		
-		//if(prefs.getString("AccountId", null) != null) {} // if logged in...
+		//if(prefs.getString("AccountId", null) != null) {} // if logged in... move forward to landing page
 		
 		loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  loginBtn.setClickable(false);
-		    	  EditText username = (EditText) findViewById(R.id.fld_username);
-		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
-		    	  new AsyncHttpRequest(MainActivity.this).Login(username.getText().toString(),password.getText().toString());
-		    	  createPopUp();
+		    	  EditText ET_username = (EditText) findViewById(R.id.fld_username);
+		    	  EditText ET_password = (EditText) findViewById(R.id.fld_pwd);
+		    	  String username = ET_username.getText().toString();
+		    	  String password = ET_password.getText().toString();
+		    	  
+		    	  if(inputValid(username, password)){
+			    	  loginBtn.setClickable(false);
+			    	  new AsyncHttpRequest(MainActivity.this).Login(username,password);
+			    	  createPopUp();		    		  
+		    	  }
 		      }		
 		});
 
@@ -64,6 +75,24 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    	  startActivity(intent);
 		      }
 		});
+	}
+	
+	private Boolean inputValid(String username, String password) {
+		ArrayList<String> invalidFields = new ArrayList<String>();
+		
+		if(!username.toLowerCase().matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
+			invalidFields.add("Username");
+		}
+		if(password.isEmpty()) {
+			invalidFields.add("Password");
+		}
+		if(invalidFields.size() > 0) {
+			String message = buildErrorMessage(invalidFields);
+			Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+			toast.show();
+			return false;
+		}
+		return true;
 	}
 	
 	private void createPopUp() {

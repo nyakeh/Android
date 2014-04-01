@@ -1,5 +1,7 @@
 package com.example.gauge;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -201,4 +203,15 @@ public class DrawerActivity extends Activity {
         // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+	public String buildErrorMessage(ArrayList<String> invalidFields) {
+		String message = "Invalid input for ";
+		for(int i=0; i < invalidFields.size(); i++) {
+			message += invalidFields.get(i);
+			if(i<invalidFields.size()-1) {
+				message += " & ";
+			}
+		}
+		return message;
+	}
 }

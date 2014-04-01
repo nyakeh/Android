@@ -1,5 +1,6 @@
 package com.example.gauge;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.json.JSONException;
@@ -33,12 +34,16 @@ public class CalculateActivity extends DrawerActivity  implements IGaugeAsync{
 		calculateBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  calculateBtn.setClickable(false);
-		    	  EditText house_value = (EditText) findViewById(R.id.fld_house_value);
-		    	  EditText deposit = (EditText) findViewById(R.id.fld_deposit);
-		    	  EditText term = (EditText) findViewById(R.id.fld_term);
-		    	  EditText interest_rate = (EditText) findViewById(R.id.fld_interest_rate);
-		    	  EditText fees = (EditText) findViewById(R.id.fld_fees);
+		    	  EditText ET_house_value = (EditText) findViewById(R.id.fld_house_value);
+		    	  EditText ET_deposit = (EditText) findViewById(R.id.fld_deposit);
+		    	  EditText ET_term = (EditText) findViewById(R.id.fld_term);
+		    	  EditText ET_interest_rate = (EditText) findViewById(R.id.fld_interest_rate);
+		    	  EditText ET_fees = (EditText) findViewById(R.id.fld_fees);
+		    	  String house_value = ET_house_value.getText().toString();
+		    	  String deposit = ET_deposit.getText().toString();
+		    	  String term = ET_term.getText().toString();
+		    	  String interest_rate = ET_interest_rate.getText().toString();
+		    	  String fees = ET_fees.getText().toString();
 		    	  int accountId = 0;
 		    	  UUID customerReference = UUID.fromString("00000000-0000-0000-0000-000000000000");
 		    	  if(prefs.getInt("AccountId", 0) != 0) {
@@ -50,11 +55,41 @@ public class CalculateActivity extends DrawerActivity  implements IGaugeAsync{
 		    		  Editor edit = prefs.edit();
 		    		  edit.putString("CustomerReference", customerReference.toString());
 		    		  edit.commit();
-		    	  }		    	  
-		    	  new AsyncHttpRequest(CalculateActivity.this).Calculate(house_value.getText().toString(),deposit.getText().toString(),term.getText().toString(),interest_rate.getText().toString(),fees.getText().toString(),accountId,customerReference);
-		    	  createPopUp();
+		    	  }		    
+		    	  if(inputValid(house_value, deposit, term, interest_rate, fees)){
+			    	  calculateBtn.setClickable(false);
+			    	  new AsyncHttpRequest(CalculateActivity.this).Calculate(house_value,deposit,term,interest_rate,fees,accountId,customerReference);
+			    	  createPopUp();
+		    	  }
 		      }
 		});
+	}
+	
+	private Boolean inputValid(String house_value, String deposit, String term, String interest_rate, String fees) {
+		ArrayList<String> invalidFields = new ArrayList<String>();
+		
+		if(house_value.isEmpty()) {
+			invalidFields.add("House value");
+		}
+		if(deposit.isEmpty()) {
+			invalidFields.add("Deposit");
+		}
+		if(term.isEmpty()) {
+			invalidFields.add("Term");
+		}
+		if(interest_rate.isEmpty()) {
+			invalidFields.add("Interest rate");
+		}
+		if(fees.isEmpty()) {
+			invalidFields.add("Fees");
+		}
+		if(invalidFields.size() > 0) {
+			String message = buildErrorMessage(invalidFields);
+			Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+			toast.show();
+			return false;
+		}
+		return true;
 	}
 	
 	private void createPopUp() {

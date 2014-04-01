@@ -1,5 +1,6 @@
 package com.example.gauge;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import android.os.Bundle;
@@ -28,14 +29,40 @@ public class CompareActivity extends DrawerActivity implements IGaugeAsync {
 		calculateBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  calculateBtn.setClickable(false);
-		    	  EditText house_value = (EditText) findViewById(R.id.fld_compare_house_value);
-		    	  EditText deposit = (EditText) findViewById(R.id.fld_compare_deposit);
-		    	  EditText term = (EditText) findViewById(R.id.fld_compare_term);
-		    	  new AsyncHttpRequest(CompareActivity.this).Compare(house_value.getText().toString(),deposit.getText().toString(),term.getText().toString(),0,UUID.fromString("00000000-0000-0000-0000-000000000000"));
-		    	  createPopUp();
+		    	  EditText ET_house_value = (EditText) findViewById(R.id.fld_compare_house_value);
+		    	  EditText ET_deposit = (EditText) findViewById(R.id.fld_compare_deposit);
+		    	  EditText ET_term = (EditText) findViewById(R.id.fld_compare_term);
+		    	  String house_value = ET_house_value.getText().toString();
+		    	  String deposit = ET_deposit.getText().toString();
+		    	  String term = ET_term.getText().toString();
+		    	  if(inputValid(house_value, deposit, term)) {
+			    	  calculateBtn.setClickable(false);
+			    	  new AsyncHttpRequest(CompareActivity.this).Compare(house_value,deposit,term,0,UUID.fromString("00000000-0000-0000-0000-000000000000"));
+			    	  createPopUp();
+		    	  }
 		      }
 		});
+	}
+	
+	private Boolean inputValid(String house_value, String deposit, String term) {
+		ArrayList<String> invalidFields = new ArrayList<String>();
+		
+		if(house_value.isEmpty()) {
+			invalidFields.add("House value");
+		}
+		if(deposit.isEmpty()) {
+			invalidFields.add("Deposit");
+		}
+		if(term.isEmpty()) {
+			invalidFields.add("Term");
+		}
+		if(invalidFields.size() > 0) {
+			String message = buildErrorMessage(invalidFields);
+			Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+			toast.show();
+			return false;
+		}
+		return true;
 	}
 	
 	private void createPopUp() {
