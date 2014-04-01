@@ -4,6 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,11 +14,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends DrawerActivity implements IGaugeAsync {
-	Button loginBtn;
+public class MainActivity extends DrawerActivity implements IGaugeAsync {	
 	SharedPreferences prefs;
+	Button loginBtn;
+	AlertDialog alert;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,14 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    	  EditText username = (EditText) findViewById(R.id.fld_username);
 		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
 		    	  new AsyncHttpRequest(MainActivity.this).Login(username.getText().toString(),password.getText().toString());
+		    	  AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+		    	  alert = alertBuilder.create();
+		    	  alert.setTitle("Authenticating");
+		    	  /*ImageView image = new ImageView(MainActivity.this);
+		    	  image.setImageResource(R.drawable.loader);
+		    	  alert.setView(image);*/
+		    	  alert.setCancelable(false);
+		    	  alert.show();
 		      }
 		});
 
@@ -67,6 +79,7 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 	
 	@Override
 	public void handleResponse(GaugeHttpResponse response) {
+		alert.cancel();
 		Toast toast = Toast.makeText(getApplicationContext(), "Error, Try again", Toast.LENGTH_LONG);
 		if (response.statusCode == 200 || response.statusCode == 201) {
 			try {
