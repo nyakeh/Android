@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class CompareActivity extends DrawerActivity implements IGaugeAsync {
 		    	  EditText deposit = (EditText) findViewById(R.id.fld_compare_deposit);
 		    	  EditText term = (EditText) findViewById(R.id.fld_compare_term);
 		    	  new AsyncHttpRequest(CompareActivity.this).Compare(house_value.getText().toString(),deposit.getText().toString(),term.getText().toString(),0,UUID.fromString("00000000-0000-0000-0000-000000000000"));
+		    	  closeKeyboard();
 		    	  createPopUp();
 		      }
 		});

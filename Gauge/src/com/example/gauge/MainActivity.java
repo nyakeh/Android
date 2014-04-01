@@ -6,12 +6,15 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,8 +41,9 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    	  EditText username = (EditText) findViewById(R.id.fld_username);
 		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
 		    	  new AsyncHttpRequest(MainActivity.this).Login(username.getText().toString(),password.getText().toString());
+		    	  closeKeyboard();
 		    	  createPopUp();
-		      }			
+		      }		
 		});
 
 		Button skipBtn = ( Button ) findViewById(R.id.btn_skip);		
