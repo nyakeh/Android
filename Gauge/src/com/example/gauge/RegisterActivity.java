@@ -1,5 +1,7 @@
 package com.example.gauge;
 
+import java.util.ArrayList;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,20 +41,55 @@ public class RegisterActivity  extends Activity implements IGaugeAsync {
 		registerBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  registerBtn.setClickable(false);
-		    	  EditText email = (EditText) findViewById(R.id.fld_email);
-		    	  if(!email.getText().toString().toLowerCase().matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
-	  			  		Toast toast = Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_LONG);
-		  				toast.show();
-		  		  	    registerBtn.setClickable(true);
-		  				return;
+		    	  EditText ET_email = (EditText) findViewById(R.id.fld_email);
+		    	  EditText ET_forename = (EditText) findViewById(R.id.fld_forename);
+		    	  EditText ET_surname = (EditText) findViewById(R.id.fld_surname);
+		    	  EditText ET_password = (EditText) findViewById(R.id.fld_pwd);
+		    	  String email = ET_email.getText().toString();
+		    	  String forename = ET_forename.getText().toString();
+		    	  String surname = ET_surname.getText().toString();
+		    	  String password = ET_password.getText().toString();
+		    	  if(inputValid(email, forename, surname, password)){
+			    	  registerBtn.setClickable(false);
+			    	  new AsyncHttpRequest(RegisterActivity.this).Register(email, forename, surname, password);
 		    	  }
-		    	  EditText forename = (EditText) findViewById(R.id.fld_forename);
-		    	  EditText surname = (EditText) findViewById(R.id.fld_surname);
-		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
-		    	  new AsyncHttpRequest(RegisterActivity.this).Register(email.getText().toString(),forename.getText().toString(),surname.getText().toString(),password.getText().toString());
 		      }
 		});
+	}
+	
+	private Boolean inputValid(String username, String forename, String surname, String password) {
+		ArrayList<String> invalidFields = new ArrayList<String>();
+		
+		if(!username.toLowerCase().matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
+			invalidFields.add("Email");
+		}
+		if(forename.isEmpty()) {
+			invalidFields.add("First name");
+		}
+		if(surname.isEmpty()) {
+			invalidFields.add("Last name");
+		}
+		if(password.isEmpty()) {
+			invalidFields.add("Password");
+		}
+		if(invalidFields.size() > 0) {
+			String message = buildErrors(invalidFields);
+			Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+			toast.show();
+			return false;
+		}
+		return true;
+	}
+
+	public String buildErrors(ArrayList<String> invalidFields) {
+		String message = "Invalid input for ";
+		for(int i=0; i < invalidFields.size(); i++) {
+			message += invalidFields.get(i);
+			if(i<invalidFields.size()-1) {
+				message += " & ";
+			}
+		}
+		return message;
 	}
 
 	@Override
