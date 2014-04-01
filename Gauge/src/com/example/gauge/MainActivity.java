@@ -41,7 +41,6 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    	  EditText username = (EditText) findViewById(R.id.fld_username);
 		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
 		    	  new AsyncHttpRequest(MainActivity.this).Login(username.getText().toString(),password.getText().toString());
-		    	  closeKeyboard();
 		    	  createPopUp();
 		      }		
 		});

@@ -52,7 +52,6 @@ public class CalculateActivity extends DrawerActivity  implements IGaugeAsync{
 		    		  edit.commit();
 		    	  }		    	  
 		    	  new AsyncHttpRequest(CalculateActivity.this).Calculate(house_value.getText().toString(),deposit.getText().toString(),term.getText().toString(),interest_rate.getText().toString(),fees.getText().toString(),accountId,customerReference);
-		    	  closeKeyboard();
 		    	  createPopUp();
 		      }
 		});
