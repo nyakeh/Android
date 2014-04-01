@@ -38,15 +38,8 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    	  EditText username = (EditText) findViewById(R.id.fld_username);
 		    	  EditText password = (EditText) findViewById(R.id.fld_pwd);
 		    	  new AsyncHttpRequest(MainActivity.this).Login(username.getText().toString(),password.getText().toString());
-		    	  AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
-		    	  alert = alertBuilder.create();
-		    	  alert.setTitle("Authenticating");
-		    	  /*ImageView image = new ImageView(MainActivity.this);
-		    	  image.setImageResource(R.drawable.loader);
-		    	  alert.setView(image);*/
-		    	  alert.setCancelable(false);
-		    	  alert.show();
-		      }
+		    	  createPopUp();
+		      }			
 		});
 
 		Button skipBtn = ( Button ) findViewById(R.id.btn_skip);		
@@ -68,6 +61,14 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    	  startActivity(intent);
 		      }
 		});
+	}
+	
+	private void createPopUp() {
+		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+  	  alert = alertBuilder.create();
+  	  alert.setTitle("Authenticating");
+  	  alert.setCancelable(false);
+  	  alert.show();
 	}
 
 	@Override
