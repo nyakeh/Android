@@ -38,29 +38,26 @@ public final class R {
         public static final int loader=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090056;
-        public static final int btn_about=0x7f09004e;
-        public static final int btn_account=0x7f09004d;
+        public static final int action_settings=0x7f090053;
+        public static final int btn_about=0x7f09004c;
+        public static final int btn_account=0x7f09004b;
         public static final int btn_account_update=0x7f09000f;
-        public static final int btn_api=0x7f090050;
-        public static final int btn_borrow=0x7f090041;
-        public static final int btn_budget=0x7f09003f;
+        public static final int btn_api=0x7f09004e;
         public static final int btn_calculate=0x7f090022;
-        public static final int btn_compare=0x7f090040;
         public static final int btn_edit=0x7f090023;
         public static final int btn_email=0x7f090025;
         public static final int btn_favourite=0x7f090024;
-        public static final int btn_login=0x7f090042;
+        public static final int btn_login=0x7f090047;
         public static final int btn_logout=0x7f090002;
-        public static final int btn_register=0x7f090043;
-        public static final int btn_skip=0x7f090044;
-        public static final int btn_website=0x7f09004f;
+        public static final int btn_register=0x7f090040;
+        public static final int btn_skip=0x7f090041;
+        public static final int btn_website=0x7f09004d;
         public static final int buttons_block=0x7f090001;
-        public static final int compare_bank=0x7f090051;
-        public static final int compare_interest_rate=0x7f090052;
-        public static final int compare_monthly_repayment=0x7f090053;
-        public static final int compare_total_interest=0x7f090055;
-        public static final int compare_total_paid=0x7f090054;
+        public static final int compare_bank=0x7f09003f;
+        public static final int compare_interest_rate=0x7f09004f;
+        public static final int compare_monthly_repayment=0x7f090050;
+        public static final int compare_total_interest=0x7f090052;
+        public static final int compare_total_paid=0x7f090051;
         public static final int comparison_result_layout=0x7f09003d;
         public static final int content_frame=0x7f09003e;
         public static final int deposit=0x7f090018;
@@ -80,15 +77,15 @@ public final class R {
         public static final int fld_compare_house_value=0x7f09003a;
         public static final int fld_compare_term=0x7f09003c;
         public static final int fld_deposit=0x7f090019;
-        public static final int fld_email=0x7f09004a;
+        public static final int fld_email=0x7f090048;
         public static final int fld_fees=0x7f090021;
-        public static final int fld_forename=0x7f09004b;
+        public static final int fld_forename=0x7f090049;
         public static final int fld_house_value=0x7f090016;
         public static final int fld_interest_rate=0x7f09001e;
-        public static final int fld_pwd=0x7f090049;
-        public static final int fld_surname=0x7f09004c;
+        public static final int fld_pwd=0x7f090046;
+        public static final int fld_surname=0x7f09004a;
         public static final int fld_term=0x7f09001b;
-        public static final int fld_username=0x7f090047;
+        public static final int fld_username=0x7f090044;
         public static final int header=0x7f090013;
         public static final int house_value=0x7f090015;
         public static final int house_value_block=0x7f090014;
@@ -114,7 +111,7 @@ public final class R {
         public static final int property_value=0x7f090034;
         public static final int property_value_block=0x7f090032;
         public static final int pwd=0x7f090007;
-        public static final int pwd_block=0x7f090048;
+        public static final int pwd_block=0x7f090045;
         public static final int surname=0x7f09000a;
         public static final int surname_block=0x7f090009;
         public static final int term=0x7f090037;
@@ -123,8 +120,8 @@ public final class R {
         public static final int total_interest_block=0x7f09002f;
         public static final int total_paid=0x7f09002e;
         public static final int total_paid_block=0x7f09002c;
-        public static final int uname_block=0x7f090045;
-        public static final int username=0x7f090046;
+        public static final int uname_block=0x7f090042;
+        public static final int username=0x7f090043;
     }
     public static final class layout {
         public static final int activity_account=0x7f030000;
@@ -156,15 +153,19 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
-        public static final int action_websearch=0x7f050014;
+        public static final int action_websearch=0x7f050018;
         public static final int app_name=0x7f050000;
+        public static final int budget=0x7f050014;
+        public static final int calculate=0x7f050015;
         public static final int calculate_header=0x7f050004;
         public static final int calculation_results_header=0x7f050006;
+        public static final int compare=0x7f050016;
         public static final int compare_header=0x7f050005;
         public static final int comparison_results_header=0x7f050007;
         public static final int drawer_close=0x7f050012;
         public static final int drawer_open=0x7f050011;
         public static final int hello_world=0x7f050002;
+        public static final int login=0x7f050017;
         public static final int menu=0x7f050013;
         public static final int title_activity_account=0x7f05000f;
         public static final int title_activity_calculate=0x7f050008;
