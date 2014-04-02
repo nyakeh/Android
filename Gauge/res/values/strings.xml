@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Gauge</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="welcome_header">Welcome to Gauge</string>
+    <string name="calculate_header">Perform a mortgage calculation</string>
+    <string name="compare_header">Compare multiple mortgage products</string>
+    <string name="calculation_results_header">Your calculation results</string>
+    <string name="comparison_results_header">Mortgage products available</string>
+    <string name="register_header">Join to save and share calculations</string>
+    <string name="title_activity_calculate">Mortgage Calculator</string>
+    <string name="title_activity_calculation_result">Calculation Results</string>
+    <string name="title_activity_register">Create Account</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="title_activity_compare">Compare Mortgages</string>
+    <string name="title_activity_landing">Home</string>
+    <string name="title_activity_comparison_results">Comparison Results</string>
+    <string name="title_activity_account">Account</string>
+    <string name="title_activity_setting">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="menu">Sidebar</string>
+    <string name="budget">Budget</string>
+    <string name="calculate">Calculate</string>
+    <string name="compare">Compare</string>
+    <string name="login">Login</string>
+
+    <string-array name="menu_array">
+        <item>Home</item>
+        <item>Budget</item>
+        <item>Calculate</item>
+        <item>Compare</item>
+    </string-array>
+    <string-array name="account_menu_array">
+        <item>Account</item>
+        <item>Settings</item>
+    </string-array>
+    <string-array name="login_menu_array">
+        <item>Login</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string name="action_websearch">Web search</string>
+
+</resources>

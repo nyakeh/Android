@@ -1,0 +1,276 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+   	android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+	android:fitsSystemWindows="true" >
+    
+	<LinearLayout android:id="@+id/buttons_block"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center"
+	    android:layout_alignParentBottom="true" >
+	    <Button
+	    android:id="@+id/btn_edit"  
+	    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:background="#0099CC"
+	    android:textColor="@android:color/white"
+	    android:padding="10dp"
+	    android:text="Edit"
+	    style="?android:attr/buttonBarButtonStyle"	 />	
+	 <Button
+	    android:id="@+id/btn_favourite"	    
+	    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:background="#0099CC"
+	    android:textColor="@android:color/white"
+	    android:padding="10dp"
+	    android:text="Favourite"
+	    style="?android:attr/buttonBarButtonStyle"	 />		 
+	 <Button
+	    android:id="@+id/btn_email"	    
+	    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:background="#0099CC"
+	    android:textColor="@android:color/white"
+	    android:padding="10dp"
+	    android:text="Email"
+	    style="?android:attr/buttonBarButtonStyle"	 />	
+	 </LinearLayout>
+<ScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@android:color/white">
+	
+    <RelativeLayout 
+    	android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+			    
+		<TextView
+	        android:id="@+id/header" 
+	        android:text="@string/calculation_results_header"
+	        style="@style/PageTitle"
+	        />		
+	   	    
+	    <LinearLayout android:id="@+id/monthly_repayment_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/header">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_monthly_repayment"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Monthly Repayment: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/monthly_repayment"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>	
+	    
+	    <LinearLayout android:id="@+id/ltv_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/monthly_repayment_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_ltv"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Loan-To-Value: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/ltv"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>	
+	    
+	    <LinearLayout android:id="@+id/total_paid_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/ltv_block" >  
+	        
+		    <TextView
+		        android:id="@+id/lbl_total_paid"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Total Paid: " 
+		        android:gravity="right" />
+		    
+		    <TextView
+		        android:id="@+id/total_paid"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp" />
+	    </LinearLayout>	
+	    
+	    <LinearLayout android:id="@+id/total_interest_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/total_paid_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_total_interest"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Total Interest: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/total_interest"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>	
+	    
+	    <LinearLayout android:id="@+id/property_value_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/total_interest_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_property_value"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Property value: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/property_value"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/deposit_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/property_value_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_deposit"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Deposit: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/deposit"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/term_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/deposit_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_term"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Term: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/term"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/interest_rate_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/term_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_interest_rate"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Interest rate: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/interest_rate"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>
+		
+	    <LinearLayout android:id="@+id/fees_block"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="25dp"
+	        android:orientation="horizontal" 
+	        android:layout_below="@id/interest_rate_block">  
+	        
+		    <TextView
+		        android:id="@+id/lbl_fees"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="Fees: " 
+		        android:gravity="right"/>
+		    
+		    <TextView
+		        android:id="@+id/fees"
+		        android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:text="" 
+		        android:textStyle="bold"
+		        android:paddingLeft="15dp"/>
+	    </LinearLayout>		
+	</RelativeLayout>
+</ScrollView>
+</RelativeLayout>
