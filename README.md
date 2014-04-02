@@ -1,4 +1,0 @@
-Android
-=======
-
-Android App Development
