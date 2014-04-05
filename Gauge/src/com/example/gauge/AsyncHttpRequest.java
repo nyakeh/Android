@@ -75,7 +75,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		this.execute("GET",String.format("http://mortgagecalculator.cloudapp.net/api/account/%s", accountId));
 	}
 	
-	public void UpdateAccount(int accountId, String email, String forename, String surname, String password)
+	public void UpdateAccount(int accountId, String email, String forename, String surname)
 	{
 		JSONObject jsonArg = new JSONObject();
 		try {
@@ -83,7 +83,6 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			jsonArg.put("Forename", forename);
 			jsonArg.put("Surname", surname);
 			jsonArg.put("Email", email);
-			jsonArg.put("Password", password);
 		} catch (JSONException e) {
 			Log.d("Json building register JSON object exception", e.getMessage());
 		}

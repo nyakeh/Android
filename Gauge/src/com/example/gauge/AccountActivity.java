@@ -22,7 +22,6 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 	EditText email;
 	EditText forename;
 	EditText surname;
-	EditText password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,6 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		email = (EditText) findViewById(R.id.fld_account_email);
   	  	forename = (EditText) findViewById(R.id.fld_account_forename);
   	  	surname = (EditText) findViewById(R.id.fld_account_surname);
-  	  	password = (EditText) findViewById(R.id.fld_account_password);
   	  	accountId = prefs.getInt("AccountId", 0);
 		new AsyncHttpRequest(AccountActivity.this).RetrieveAccount(accountId);
 
@@ -50,7 +48,7 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		  				return;
 		    	  }
 		    	  createPopUp("Updating account details");
-		    	  new AsyncHttpRequest(AccountActivity.this).UpdateAccount(accountId,email.getText().toString(),forename.getText().toString(),surname.getText().toString(),password.getText().toString());
+		    	  new AsyncHttpRequest(AccountActivity.this).UpdateAccount(accountId,email.getText().toString(),forename.getText().toString(),surname.getText().toString());
 		      }
 		});
 		
