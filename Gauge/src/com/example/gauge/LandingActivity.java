@@ -16,9 +16,35 @@ public class LandingActivity extends DrawerActivity {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_landing);
 		
-		LinearLayout iv = (LinearLayout) findViewById(R.id.landing_budget);
-        iv.setOnClickListener(new OnClickListener() {
-
+		LinearLayout budget = (LinearLayout) findViewById(R.id.landing_budget);
+        budget.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+				startActivity(intent);
+            }
+        });
+		
+		LinearLayout calculate = (LinearLayout) findViewById(R.id.landing_calculate);
+        calculate.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	Intent intent = new Intent(LandingActivity.this, CalculateActivity.class);
+				startActivity(intent);
+            }
+        });
+		
+		LinearLayout compare = (LinearLayout) findViewById(R.id.landing_compare);
+        compare.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	Intent intent = new Intent(LandingActivity.this, CompareActivity.class);
+				startActivity(intent);
+            }
+        });
+		
+		LinearLayout login = (LinearLayout) findViewById(R.id.landing_login);
+        login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
             	Intent intent = new Intent(LandingActivity.this, MainActivity.class);
