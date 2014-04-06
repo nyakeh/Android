@@ -22,57 +22,72 @@
 		
         <LinearLayout
 	        android:id="@+id/landing_budget"
-           	style="@style/CardLayout" >		      	
+           	style="@style/LandingCardLayout" >
 		    <TextView
-		        android:layout_width="149dp"
+		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:text="@string/budget"
 		        android:textSize="30sp"
-		  		android:textStyle="bold"
-		        android:textColor="@android:color/black"
-		        android:padding="10dp"
+		        android:textColor="@android:color/white"
+		        android:padding="22dp"
+	        	android:background="#ee9a2c"
 		        android:layout_gravity="center_vertical" />
-	    </LinearLayout>	    
+		    <LinearLayout
+		        android:orientation="horizontal"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="right"
+	        	android:background="#ee9a2c" >
+		    <ImageView
+		        android:layout_width="72dp"
+		        android:layout_height="fill_parent"
+	        	android:contentDescription="pound sign" 
+	            android:src="@drawable/dollar"
+	            android:scaleType="center"
+		        android:gravity="right" />
+	    	</LinearLayout>
+	    </LinearLayout>
         
         <LinearLayout
 	        android:id="@+id/landing_calculate"
-           	style="@style/CardLayout" >		      	
+           	style="@style/LandingCardLayout" >		      	
 		    <TextView
-		        android:layout_width="149dp"
-		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
 		        android:text="@string/calculate"
 		        android:textSize="30sp"
-		  		android:textStyle="bold"
-		        android:textColor="@android:color/black"
-		        android:padding="10dp"
+		        android:textColor="@android:color/white"
+		        android:padding="22dp"
+	        	android:background="#2c980f"
 		        android:layout_gravity="center_vertical" />
 	    </LinearLayout>
         
         <LinearLayout
 	        android:id="@+id/landing_compare"
-           	style="@style/CardLayout" >		      	
+           	style="@style/LandingCardLayout" >		      	
 		    <TextView
-		        android:layout_width="149dp"
-		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
 		        android:text="@string/compare"
 		        android:textSize="30sp"
-		  		android:textStyle="bold"
-		        android:textColor="@android:color/black"
-		        android:padding="10dp"
+		        android:textColor="@android:color/white"
+		        android:padding="22dp"
+	        	android:background="#0096ff"
 		        android:layout_gravity="center_vertical" />
 	    </LinearLayout>
         
         <LinearLayout
 	        android:id="@+id/landing_login"
-           	style="@style/CardLayout" >		      	
+           	style="@style/LandingCardLayout" >		      	
 		    <TextView
-		        android:layout_width="149dp"
-		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
 		        android:text="@string/login"
 		        android:textSize="30sp"
-		  		android:textStyle="bold"
-		        android:textColor="@android:color/black"
-		        android:padding="10dp"
+		        android:textColor="@android:color/white"
+		        android:padding="22dp"
+	        	android:background="#ffc000"
+	        	android:gravity="right"
 		        android:layout_gravity="center_vertical" />
 	    </LinearLayout>
 	               

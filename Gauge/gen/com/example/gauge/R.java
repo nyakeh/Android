@@ -28,14 +28,15 @@ public final class R {
     }
     public static final class drawable {
         public static final int bg_card=0x7f020000;
-        public static final int ic_drawer=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int ic_launcher2=0x7f020003;
-        public static final int ic_launcher3=0x7f020004;
-        public static final int ic_launcher4=0x7f020005;
-        public static final int ic_pound=0x7f020006;
-        public static final int ic_years=0x7f020007;
-        public static final int loader=0x7f020008;
+        public static final int dollar=0x7f020001;
+        public static final int ic_drawer=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int ic_launcher2=0x7f020004;
+        public static final int ic_launcher3=0x7f020005;
+        public static final int ic_launcher4=0x7f020006;
+        public static final int ic_pound=0x7f020007;
+        public static final int ic_years=0x7f020008;
+        public static final int loader=0x7f020009;
     }
     public static final class id {
         public static final int action_settings=0x7f090054;
@@ -181,7 +182,7 @@ public final class R {
         public static final int welcome_header=0x7f050003;
     }
     public static final class style {
-        public static final int ActionBar_Solid_GaugeStyle=0x7f070008;
+        public static final int ActionBar_Solid_GaugeStyle=0x7f070009;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -209,11 +210,12 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
-        public static final int CardLabelText=0x7f070006;
+        public static final int CardLabelText=0x7f070007;
         public static final int CardLayout=0x7f070004;
-        public static final int CardLayoutLine=0x7f070005;
-        public static final int CardResultText=0x7f070007;
-        public static final int MyTheme_ActionBar_TitleTextStyle=0x7f070009;
+        public static final int CardLayoutLine=0x7f070006;
+        public static final int CardResultText=0x7f070008;
+        public static final int LandingCardLayout=0x7f070005;
+        public static final int MyTheme_ActionBar_TitleTextStyle=0x7f07000a;
         public static final int PageTitle=0x7f070003;
         public static final int TextButton=0x7f070002;
     }
