@@ -139,6 +139,7 @@ public class DrawerActivity extends Activity {
     	Intent intent = null;
     	switch(position) {
 	    	case 0: 
+	    		// if pageId == this pages Id, close drawer
 				intent = new Intent(DrawerActivity.this, LandingActivity.class);
 				startActivity(intent);
 				break;

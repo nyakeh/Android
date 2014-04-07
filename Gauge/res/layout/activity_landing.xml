@@ -50,45 +50,78 @@
         
         <LinearLayout
 	        android:id="@+id/landing_calculate"
-           	style="@style/LandingCardLayout" >		      	
+           	style="@style/LandingCardLayout" >	   
+		    <ImageView
+		        android:layout_width="72dp"
+		        android:layout_height="fill_parent"
+	        	android:contentDescription="pound sign" 
+	            android:src="@drawable/calculate"
+	            android:scaleType="fitEnd"
+		        android:gravity="left" 
+	        	android:background="#2c980f"
+	        	android:paddingLeft="10dp" />
 		    <TextView
 		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
+		        android:layout_height="wrap_content"
 		        android:text="@string/calculate"
 		        android:textSize="30sp"
 		        android:textColor="@android:color/white"
 		        android:padding="22dp"
 	        	android:background="#2c980f"
-		        android:layout_gravity="center_vertical" />
+		        android:layout_gravity="center_vertical"
+		        android:gravity="right" />
 	    </LinearLayout>
         
         <LinearLayout
 	        android:id="@+id/landing_compare"
            	style="@style/LandingCardLayout" >		      	
 		    <TextView
-		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
 		        android:text="@string/compare"
 		        android:textSize="30sp"
 		        android:textColor="@android:color/white"
 		        android:padding="22dp"
 	        	android:background="#0096ff"
 		        android:layout_gravity="center_vertical" />
+		    <LinearLayout
+		        android:orientation="horizontal"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="right"
+	        	android:background="#0096ff" >
+		    <ImageView
+		        android:layout_width="72dp"
+		        android:layout_height="fill_parent"
+	        	android:contentDescription="pound sign" 
+	            android:src="@drawable/dollar"
+	            android:scaleType="center"
+		        android:gravity="right" />
+	    	</LinearLayout>
 	    </LinearLayout>
         
         <LinearLayout
 	        android:id="@+id/landing_login"
-           	style="@style/LandingCardLayout" >		      	
+           	style="@style/LandingCardLayout" >	    
+		    <ImageView
+		        android:layout_width="72dp"
+		        android:layout_height="fill_parent"
+	        	android:contentDescription="pound sign" 
+	            android:src="@drawable/calculate"
+	            android:scaleType="fitEnd"
+		        android:gravity="left" 
+	        	android:background="#2c980f"
+	        	android:paddingLeft="10dp" />
 		    <TextView
 		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
+		        android:layout_height="wrap_content"
 		        android:text="@string/login"
 		        android:textSize="30sp"
 		        android:textColor="@android:color/white"
 		        android:padding="22dp"
-	        	android:background="#ffc000"
-	        	android:gravity="right"
-		        android:layout_gravity="center_vertical" />
+	        	android:background="#2c980f"
+		        android:layout_gravity="center_vertical"
+		        android:gravity="right" />
 	    </LinearLayout>
 	               
     </LinearLayout>
