@@ -2,19 +2,30 @@ package com.example.gauge;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class LandingActivity extends DrawerActivity {
-
+	Boolean loggedIn = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_landing);
+		
+		SharedPreferences prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
+		if(prefs.getInt("AccountId", 0) != 0) {
+			TextView accountBtn = (TextView) findViewById(R.id.landing_login_label);
+			accountBtn.setText("Account");
+			loggedIn = true;
+		}
+		
 		
 		LinearLayout budget = (LinearLayout) findViewById(R.id.landing_budget);
         budget.setOnClickListener(new OnClickListener() {
@@ -29,7 +40,7 @@ public class LandingActivity extends DrawerActivity {
         calculate.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-            	Intent intent = new Intent(LandingActivity.this, CalculateActivity.class);
+                	Intent intent = new Intent(LandingActivity.this, CalculateActivity.class);
 				startActivity(intent);
             }
         });
@@ -47,7 +58,12 @@ public class LandingActivity extends DrawerActivity {
         login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-            	Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+            	Intent intent;
+            	if(loggedIn) {
+                	intent = new Intent(LandingActivity.this, AccountActivity.class);
+            	} else {
+            		intent = new Intent(LandingActivity.this, MainActivity.class);
+            	}
 				startActivity(intent);
             }
         });

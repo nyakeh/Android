@@ -43,7 +43,7 @@
 		        android:layout_height="fill_parent"
 	        	android:contentDescription="pound sign" 
 	            android:src="@drawable/dollar"
-	            android:scaleType="center"
+	            android:scaleType="fitEnd"
 		        android:gravity="right" />
 	    	</LinearLayout>
 	    </LinearLayout>
@@ -94,8 +94,8 @@
 		        android:layout_width="72dp"
 		        android:layout_height="fill_parent"
 	        	android:contentDescription="pound sign" 
-	            android:src="@drawable/dollar"
-	            android:scaleType="center"
+	            android:src="@drawable/house"
+	            android:scaleType="fitEnd"
 		        android:gravity="right" />
 	    	</LinearLayout>
 	    </LinearLayout>
@@ -107,12 +107,13 @@
 		        android:layout_width="72dp"
 		        android:layout_height="fill_parent"
 	        	android:contentDescription="pound sign" 
-	            android:src="@drawable/calculate"
+	            android:src="@drawable/user"
 	            android:scaleType="fitEnd"
 		        android:gravity="left" 
 	        	android:background="#2c980f"
 	        	android:paddingLeft="10dp" />
 		    <TextView
+	        	android:id="@+id/landing_login_label"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:text="@string/login"
