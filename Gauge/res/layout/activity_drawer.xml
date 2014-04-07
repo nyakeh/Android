@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 	android:fitsSystemWindows="true"
-	android:paddingTop="@dimen/paddingTop"
-    android:background="@android:color/white">
+	android:paddingTop="@dimen/paddingTop">
     <!-- The main content view -->
     <RelativeLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" 
-		android:paddingTop="@dimen/paddingTop"/>
+		android:paddingTop="@dimen/paddingTop" />
     <!-- The navigation drawer -->
     <LinearLayout 
         android:id="@+id/drawer_block"

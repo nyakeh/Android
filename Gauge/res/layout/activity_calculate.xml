@@ -6,10 +6,9 @@
     android:fitsSystemWindows="true"
     tools:context=".CalculateActivity" >
 
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:orientation="vertical"
 		android:background="@android:color/white"
 		android:paddingTop="@dimen/paddingTop" >  
 	    <TextView
@@ -20,19 +19,19 @@
 		<ScrollView
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-    		tools:context=".CalculateActivity" >
+	        android:layout_below="@id/header"
+	        android:layout_centerHorizontal="true"  >
 		    
-		    <LinearLayout 
+		    <RelativeLayout 
 			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-    			android:orientation="vertical" >
+			    android:layout_height="wrap_content" >
 		
 			    <LinearLayout android:id="@+id/house_value_block"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			        android:layout_centerHorizontal="true"
 			        android:layout_marginTop="25dp"
-			        android:orientation="horizontal" >  
+			        android:orientation="horizontal"
+			        android:layout_centerHorizontal="true" >  
 			        
 			        <TextView android:id="@+id/house_value"
 			   		        android:layout_width="110dp"
@@ -41,8 +40,7 @@
 			                android:textSize="16sp"
 					        android:textColor="@android:color/black"
 					        android:layout_gravity="center_vertical"
-					        android:gravity="right"
-			        />
+					        android:gravity="right" />
 			
 			        <EditText
 			            android:id="@+id/fld_house_value"
@@ -189,9 +187,9 @@
 			        android:layout_centerHorizontal="true"
 			        style="@style/TextButton"      
 			     />
-		     </LinearLayout>>
+		     </RelativeLayout>>
 		</ScrollView>
-	</LinearLayout>
+	</RelativeLayout>
 <!-- The navigation drawer -->
     <LinearLayout 
         android:id="@+id/drawer_block"
