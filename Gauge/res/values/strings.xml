@@ -3,6 +3,7 @@
 
     <string name="app_name">Gauge</string>
     <string name="action_settings">Settings</string>
+    <string name="log_out">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="welcome_header">Welcome to Gauge</string>
     <string name="calculate_header">Perform a mortgage calculation</string>

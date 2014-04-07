@@ -124,6 +124,9 @@ public class DrawerActivity extends Activity {
         	Intent intent = new Intent(DrawerActivity.this, SettingActivity.class);
 			startActivity(intent);
         	return true;
+        } else if(item.getItemId() == R.id.log_out) {
+        	logOutUser();
+        	return true;
         }
         return super.onOptionsItemSelected(item);
         
@@ -232,5 +235,14 @@ public class DrawerActivity extends Activity {
 			}
 		}
 		return message;
+	}
+
+	public void logOutUser() {
+		SharedPreferences.Editor editor = prefs.edit();
+    	  editor.clear();
+    	  editor.commit();
+    	  Intent intent = new Intent(this.getApplicationContext(), LandingActivity.class);
+    	  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    	  startActivity(intent);
 	}
 }

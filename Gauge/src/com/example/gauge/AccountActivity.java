@@ -4,7 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +28,7 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		buildSideNavigation(R.layout.activity_account);
 		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
 		createPopUp("Retrieving account details");
-
+  
 		email = (EditText) findViewById(R.id.fld_account_email);
   	  	forename = (EditText) findViewById(R.id.fld_account_forename);
   	  	surname = (EditText) findViewById(R.id.fld_account_surname);
@@ -56,12 +55,7 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		logoutBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  SharedPreferences.Editor editor = prefs.edit();
-		    	  editor.clear();
-		    	  editor.commit();
-		    	  Intent intent = new Intent(AccountActivity.this, LandingActivity.class);
-		    	  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-		    	  startActivity(intent);
+		    	  logOutUser();
 		    	  Toast toast = Toast.makeText(getApplicationContext(), "Logout successfull", Toast.LENGTH_LONG);
 		    	  toast.show();
 	    	  }
@@ -78,8 +72,11 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.account, menu);
+		if(prefs.getInt("AccountId", 0) != 0) {
+			getMenuInflater().inflate(R.menu.main, menu);
+		} else {
+			getMenuInflater().inflate(R.menu.guest, menu);			
+		}
 		return true;
 	}
 

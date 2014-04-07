@@ -105,8 +105,11 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		if(prefs.getInt("AccountId", 0) != 0) {
+			getMenuInflater().inflate(R.menu.main, menu);
+		} else {
+			getMenuInflater().inflate(R.menu.guest, menu);			
+		}
 		return true;
 	}
 	
