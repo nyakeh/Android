@@ -1,29 +1,20 @@
 package com.example.gauge;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends DrawerActivity implements IGaugeAsync {	
@@ -37,7 +28,10 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		buildSideNavigation(R.layout.activity_main);
 		prefs = getSharedPreferences("gauge_app", MODE_PRIVATE);
 		
-		//if(prefs.getString("AccountId", null) != null) {} // if logged in... move forward to landing page
+		if(prefs.getInt("AccountId", 0) != 0) {
+			Intent intent = new Intent(MainActivity.this, LandingActivity.class);		    	  
+		    startActivity(intent);
+		}
 		
 		loginBtn = ( Button ) findViewById(R.id.btn_login);		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
