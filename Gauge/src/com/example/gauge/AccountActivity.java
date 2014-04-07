@@ -59,7 +59,8 @@ public class AccountActivity extends DrawerActivity implements IGaugeAsync {
 		    	  SharedPreferences.Editor editor = prefs.edit();
 		    	  editor.clear();
 		    	  editor.commit();
-		    	  Intent intent = new Intent(AccountActivity.this, MainActivity.class);
+		    	  Intent intent = new Intent(AccountActivity.this, LandingActivity.class);
+		    	  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		    	  startActivity(intent);
 		    	  Toast toast = Toast.makeText(getApplicationContext(), "Logout successfull", Toast.LENGTH_LONG);
 		    	  toast.show();
