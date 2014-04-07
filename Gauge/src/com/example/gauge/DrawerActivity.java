@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -131,30 +132,32 @@ public class DrawerActivity extends Activity {
     public class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
+        	View parentView = (View) parent.getChildAt(0);
+            Context parentContext = (Context) parentView.getContext();
+            String activityTitle = parentContext.toString();   
+            selectItem(position, activityTitle);
         }
     }
 
-    private void selectItem(int position) {
+    private void selectItem(int position, String page) {
     	Intent intent = null;
     	switch(position) {
 	    	case 0: 
-	    		// if pageId == this pages Id, close drawer
 				intent = new Intent(DrawerActivity.this, LandingActivity.class);
-				startActivity(intent);
 				break;
 			case 1: 
 				intent = new Intent(DrawerActivity.this, MainActivity.class);
-				startActivity(intent);
 				break; 
 			case 2: 
 				intent = new Intent(DrawerActivity.this, CalculateActivity.class);
-				startActivity(intent);
 				break;
 			case 3: 
 				intent = new Intent(DrawerActivity.this, CompareActivity.class);
-				startActivity(intent);
 				break;
+    	}
+    	String asd = intent.getComponent().getClassName();
+    	if(!page.contains(asd)) {
+    		startActivity(intent);
     	}
         drawerList.setItemChecked(position, true);
         mDrawerLayout.closeDrawers();
@@ -166,23 +169,34 @@ public class DrawerActivity extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         	TextView tv = (TextView) view;
-            selectAdminItem(position, tv.getText().toString());
+        	View parentView = (View) parent.getChildAt(0);
+            Context parentContext = (Context) parentView.getContext();
+            String activityTitle = parentContext.toString();            
+        	selectAdminItem(position, tv.getText().toString(), activityTitle);
         }
     }
 
-    private void selectAdminItem(int position, String title) {
+    private void selectAdminItem(int position, String title, String page) {
     	Intent intent;
     	switch(position) {
-	    	case 0: 
+	    	case 0:
     			intent = new Intent(DrawerActivity.this, MainActivity.class);
 	    		if(title.equals("Account")) {
 	    			intent = new Intent(DrawerActivity.this, AccountActivity.class);
-	    		}
-	    		startActivity(intent);				
+	    			if(!page.contains(title)) {
+		    			startActivity(intent);		
+		    		}
+	    		} else {
+	    			if(!page.contains("Main")) {
+		    			startActivity(intent);		
+		    		}
+	    		}	    		
 				break;
 			case 1: 
-				intent = new Intent(DrawerActivity.this, SettingActivity.class);
-				startActivity(intent);
+	    		if(!page.contains("Setting")) {
+					intent = new Intent(DrawerActivity.this, SettingActivity.class);
+					startActivity(intent);	    			
+	    		}
 				break;
     	}
         drawerList.setItemChecked(position, true);
