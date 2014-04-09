@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--AgileJ Ltd. (http://www.agilej.com)--><ajsv>
+    <diagram creationDate="2014-Apr-08 02:32" filterScript="" licenseGrade="evaluation" licenseeName="anon" licenseeOrganization="unknown" version="1.7.16.v20130804-1241">
+        <class className="com.example.gauge.MainActivity" project="Gauge" xLocation="2381" yLocation="1202"/>
+        <class className="com.example.gauge.AsyncHttpRequest" project="Gauge" xLocation="802" yLocation="656"/>
+        <class className="com.example.gauge.DrawerActivity" project="Gauge" xLocation="2535" yLocation="100"/>
+        <class className="com.example.gauge.ComparisonResultActivity" project="Gauge" xLocation="100" yLocation="1275"/>
+        <class className="com.example.gauge.IGaugeAsync" project="Gauge" xLocation="1452" yLocation="363"/>
+        <class className="com.example.gauge.AccountActivity" project="Gauge" xLocation="2017" yLocation="675"/>
+        <class className="com.example.gauge.CompareActivity" project="Gauge" xLocation="295" yLocation="834"/>
+        <class className="com.example.gauge.RegisterActivity" project="Gauge" xLocation="1451" yLocation="1104"/>
+        <class className="com.example.gauge.GaugeHttpResponse" project="Gauge" xLocation="1063" yLocation="1206"/>
+        <class className="com.example.gauge.SettingActivity" project="Gauge" xLocation="1991" yLocation="1178"/>
+        <class className="com.example.gauge.LandingActivity" project="Gauge" xLocation="2943" yLocation="1142"/>
+        <class className="com.example.gauge.CalculateActivity" project="Gauge" xLocation="1453" yLocation="667"/>
+        <class className="com.example.gauge.CalculationResultActivity" project="Gauge" xLocation="545" yLocation="1288"/>
+    </diagram>
+</ajsv>

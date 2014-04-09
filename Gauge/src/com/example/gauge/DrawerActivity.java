@@ -149,12 +149,9 @@ public class DrawerActivity extends Activity {
 				intent = new Intent(DrawerActivity.this, LandingActivity.class);
 				break;
 			case 1: 
-				intent = new Intent(DrawerActivity.this, MainActivity.class);
-				break; 
-			case 2: 
 				intent = new Intent(DrawerActivity.this, CalculateActivity.class);
 				break;
-			case 3: 
+			case 2: 
 				intent = new Intent(DrawerActivity.this, CompareActivity.class);
 				break;
     	}

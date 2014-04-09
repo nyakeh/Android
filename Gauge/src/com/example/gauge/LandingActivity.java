@@ -24,16 +24,6 @@ public class LandingActivity extends DrawerActivity {
 			loggedIn = true;
 		}
 		
-		
-		LinearLayout budget = (LinearLayout) findViewById(R.id.landing_budget);
-        budget.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            	Intent intent = new Intent(LandingActivity.this, MainActivity.class);
-				startActivity(intent);
-            }
-        });
-		
 		LinearLayout calculate = (LinearLayout) findViewById(R.id.landing_calculate);
         calculate.setOnClickListener(new OnClickListener() {
             @Override
