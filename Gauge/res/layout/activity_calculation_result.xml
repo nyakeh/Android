@@ -41,10 +41,12 @@
 	    android:text="Email"
 	    style="?android:attr/buttonBarButtonStyle"	 />	
 	 </LinearLayout>
-<ScrollView 
+
+<ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-	android:background="@android:color/white">
+    android:layout_height="match_parent"
+    android:layout_above="@+id/buttons_block"
+    android:background="@android:color/white" >
 	
     <RelativeLayout 
     	android:layout_width="fill_parent"

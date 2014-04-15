@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -33,7 +34,8 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		    startActivity(intent);
 		}
 		
-		loginBtn = ( Button ) findViewById(R.id.btn_login);		
+		loginBtn = (Button) findViewById(R.id.btn_login);	
+		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
@@ -50,16 +52,16 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 		      }		
 		});
 
-		Button skipBtn = ( Button ) findViewById(R.id.btn_skip);		
+		Button skipBtn = (Button) findViewById(R.id.btn_skip);
 		skipBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  Intent intent = new Intent(MainActivity.this, CalculateActivity.class);
+		    	  Intent intent = new Intent(MainActivity.this, LandingActivity.class);
 		    	  startActivity(intent);
 		      }
 		});
 		
-		Button register_btn = ( Button ) findViewById(R.id.btn_register);		
+		Button register_btn = (Button) findViewById(R.id.btn_register);		
 		register_btn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
@@ -124,7 +126,7 @@ public class MainActivity extends DrawerActivity implements IGaugeAsync {
 			} catch (JSONException e) {
 				Log.d("Json parse exception", e.getMessage());
 			}			
-	  	    Intent intent = new Intent(MainActivity.this, CalculateActivity.class);		    	  
+	  	    Intent intent = new Intent(MainActivity.this, LandingActivity.class);		    	  
 		    startActivity(intent);
 		}
   	  	toast.show();

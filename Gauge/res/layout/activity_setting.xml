@@ -24,7 +24,7 @@
                 android:layout_centerHorizontal="true"       
                 android:gravity="left|center_vertical"
                 android:paddingLeft="15dp"
-                android:text="Account"
+                android:text="Login"
 		    	style="?android:attr/buttonBarButtonStyle" />
             
             <Button                 

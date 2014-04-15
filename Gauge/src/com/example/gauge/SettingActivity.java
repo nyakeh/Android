@@ -9,20 +9,33 @@ import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingActivity extends DrawerActivity {
+	Boolean loggedIn = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		buildSideNavigation(R.layout.activity_setting);		
 		
-		Button accountBtn = ( Button ) findViewById(R.id.btn_account);		
+		if(prefs.getInt("AccountId", 0) != 0) {
+			TextView accountBtn = (TextView) findViewById(R.id.btn_account);
+			accountBtn.setText("Account");
+			loggedIn = true;
+		}
+		
+		Button accountBtn = ( Button ) findViewById(R.id.btn_account);
 		accountBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
-		    	  Intent intent = new Intent(SettingActivity.this, AccountActivity.class);
+		    	  Intent intent;
+		    	  if(loggedIn) {
+		    		  intent = new Intent(SettingActivity.this, AccountActivity.class);
+		    	  } else {
+		    		  intent = new Intent(SettingActivity.this, MainActivity.class);
+	    		  }
 		    	  startActivity(intent);
 	    	  }
 		});

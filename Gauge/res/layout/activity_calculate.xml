@@ -139,12 +139,13 @@
 			            android:id="@+id/fld_interest_rate"
 			            android:layout_width="170dp"
 			            android:layout_height="wrap_content"
-			            android:hint="4.5%"
+			            android:hint="4.5"
 			            android:layout_marginLeft="8dp"
 				        android:inputType="numberDecimal"
 				        android:paddingLeft="5dp"
 				        android:textSize="13sp"
-				        android:layout_gravity="center_vertical" />
+				        android:layout_gravity="center_vertical"
+				        android:drawableRight="@drawable/ic_percent"  />
 			  	</LinearLayout>
 			  	
 			    <LinearLayout android:id="@+id/fees_block"

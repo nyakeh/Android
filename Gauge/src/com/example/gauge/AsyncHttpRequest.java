@@ -162,10 +162,12 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 		} else if(params[0] == "PUT") {
 			HttpPut httpPut = new HttpPut(params[1]);
 			httpPut.setHeader("Content-Type", "application/json");
-			try {
-				httpPut.setEntity(new StringEntity(params[2]));
-			} catch (UnsupportedEncodingException ex) {
-				Log.d("Building httpPut - Unable to encode JsoAnrgs as StringEntity", ex.getMessage());
+			if(params.length > 2) {
+				try {
+					httpPut.setEntity(new StringEntity(params[2]));
+				} catch (UnsupportedEncodingException ex) {
+					Log.d("Building httpPut - Unable to encode JsonAnrgs as StringEntity", ex.getMessage());
+				}
 			}
 			request = httpPut;
 		} else {

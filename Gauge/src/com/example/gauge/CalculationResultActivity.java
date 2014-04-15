@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +22,7 @@ public class CalculationResultActivity extends Activity implements IGaugeAsync{
 	SharedPreferences prefs;
 	Bundle extras;
 	int calculationId;
+	Boolean loggedIn = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,23 +56,34 @@ public class CalculationResultActivity extends Activity implements IGaugeAsync{
 		setContentView(resultsView);
 		setupActionBar(); 
 
-		Button editBtn = ( Button ) findViewById(R.id.btn_edit);		
+		Button editBtn = (Button) findViewById(R.id.btn_edit);
+		Button favouriteBtn = (Button) findViewById(R.id.btn_favourite);
+		Button emailBtn = (Button) findViewById(R.id.btn_email);
+		
+		if(prefs.getInt("AccountId", 0) == 0) {
+			favouriteBtn.setEnabled(false);
+			favouriteBtn.getBackground().setAlpha(200);
+			favouriteBtn.setTextColor(Color.DKGRAY);
+			emailBtn.setEnabled(false);
+			emailBtn.setAlpha(200);
+			emailBtn.setTextColor(Color.DKGRAY);
+			loggedIn = false;
+		}
+		
 		editBtn.setOnClickListener(new View.OnClickListener() {
 		      @Override
 		      public void onClick(View v) {
 		    	  finish();
 		      }
-		});
-		
-		Button favouriteBtn = ( Button ) findViewById(R.id.btn_favourite);		
+		});		
+			
 		favouriteBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				new AsyncHttpRequest(CalculationResultActivity.this).Favourite(calculationId);
 			}
 		});  
-   	    
-		Button emailBtn = ( Button ) findViewById(R.id.btn_email);		
+   	    		
 		emailBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

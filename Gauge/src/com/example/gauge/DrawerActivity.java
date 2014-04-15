@@ -228,7 +228,7 @@ public class DrawerActivity extends Activity {
 		for(int i=0; i < invalidFields.size(); i++) {
 			message += invalidFields.get(i);
 			if(i<invalidFields.size()-1) {
-				message += " & ";
+				message += " - ";
 			}
 		}
 		return message;
