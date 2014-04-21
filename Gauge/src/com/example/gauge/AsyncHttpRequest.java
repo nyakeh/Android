@@ -3,6 +3,7 @@ package com.example.gauge;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.UUID;
 
 import org.apache.http.HttpEntity;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.DatePicker;
 
 public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse> {
 	IGaugeAsync activity;
@@ -102,6 +104,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			jsonArg.put("Fees", fees);
 			jsonArg.put("MortgageType", "repayment");
 			jsonArg.put("Source", "Gauge Android App");
+			jsonArg.put("Date", new Date());
 		} catch (JSONException e) {
 			Log.d("Json building calculate JSON object exception", e.getMessage());
 		}
@@ -119,6 +122,7 @@ public class AsyncHttpRequest extends AsyncTask <String, Void, GaugeHttpResponse
 			jsonArg.put("Term", term);
 			jsonArg.put("MortgageType", "repayment");
 			jsonArg.put("Source", "Gauge Android App");
+			jsonArg.put("Date", new Date());
 		} catch (JSONException e) {
 			Log.d("Json building compare JSON object exception", e.getMessage());
 		}
