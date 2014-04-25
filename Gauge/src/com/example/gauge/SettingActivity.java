@@ -46,7 +46,7 @@ public class SettingActivity extends DrawerActivity {
 		      public void onClick(View v) {
 					AlertDialog.Builder alert = new AlertDialog.Builder(SettingActivity.this);
 					alert.setTitle("About Gauge");
-					alert.setMessage("Hello world").setCancelable(false).setPositiveButton("Close", null);
+					alert.setMessage("This application was developed as an example client for Gauge, the mortgage calculator API. It was developed natively in Java using Asynchronous methods to perform all webservice requests. If your interested in developing your own mortgage calculator client application or website, why not check out the linked in the settings page.").setCancelable(false).setPositiveButton("Close", null);
 					alert.show();
 	    	  }
 		});
