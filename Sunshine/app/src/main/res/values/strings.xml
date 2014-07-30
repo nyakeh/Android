@@ -7,5 +7,19 @@
     <string name="action_refresh">Refresh</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="pref_location_default">94043</string>
+    <string name="pref_location_label">Location</string>
+    <string name="pref_location_key">location</string>
+    <string name="pref_temperature_label">Temperature</string>
+    <string name="pref_temperature_key">temperature</string>
+    <string name="pref_temperature_default">metric</string>
+    <string name="pref_temperature_summary">The units of temperature to display</string>
+
+    <string name="pref_units_label_metric">Metric</string>
+    <string name="pref_units_label_imperial">Imperial</string>
+    <string name="pref_units_metric">metric</string>
+    <string name="pref_units_imperial">imperial</string>
+    <string name="action_map">Map Location</string>
 
 </resources>
