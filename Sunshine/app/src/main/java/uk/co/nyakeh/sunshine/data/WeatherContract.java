@@ -101,7 +101,7 @@ public class WeatherContract {
         }
 
         public static String getStartDateFromUri(Uri uri) {
-            return uri.getPathSegments().get(COLUMN_DATETEXT);
+            return uri.getQueryParameter(COLUMN_DATETEXT);
         }
     }
 }
