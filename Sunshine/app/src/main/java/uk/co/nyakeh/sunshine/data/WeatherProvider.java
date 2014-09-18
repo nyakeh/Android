@@ -13,6 +13,8 @@ public class WeatherProvider extends ContentProvider {
     private static final int LOCATION = 100;
     private static final int LOCATION_ID = 100;
 
+    private static final UriMatcher sUriMatcher = buildUriMatcher();
+
     @Override
     public boolean onCreate() {
         return false;
@@ -25,7 +27,17 @@ public class WeatherProvider extends ContentProvider {
 
     @Override
     public String getType(Uri uri) {
-        return null;
+        final int match = sUriMatcher.match(uri);
+        switch(match) {
+            case WEATHER_WITH_LOCATION_AND_DATE:
+                return WeatherContract.WeatherEntry.CONTENT_ITEM_TYPE;
+            case WEATHER_WITH_LOCATION:
+                return WeatherContract.WeatherEntry.CONTENT_TYPE;
+            case WEATHER:
+                return WeatherContract.WeatherEntry.CONTENT_TYPE;
+            default:
+                throw new UnsupportedOperationException("Unknown Uri: " + uri);
+        }
     }
 
     @Override

@@ -33,6 +33,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.co.nyakeh.sunshine.MainActivity" />
         </activity>
+        <provider
+            android:authorities="uk.co.nyakeh.sunshine.app"
+            android:name=".data.WeatherProvider"/>
     </application>
 
 </manifest>
