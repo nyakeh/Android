@@ -19,9 +19,8 @@ public class DataLoaderFragment extends Fragment {
     public interface ProgressListener {
         /**
          * Notifies that the task has completed
-         * @param result Double result of the task
          */
-        public void onCompletion(Double result);
+        public void onCompletion();
 
         /**
          * Notifies of progress
@@ -42,11 +41,6 @@ public class DataLoaderFragment extends Fragment {
         setRetainInstance(true);
     }
 
-    /**
-     * Returns the result or {@value Double#NaN}
-     *
-     * @return the result or {@value Double#NaN}
-     */
     public Double getResult() {
         return mResult;
     }
@@ -89,25 +83,20 @@ public class DataLoaderFragment extends Fragment {
     {
         @Override
         protected Double doInBackground(Void... params) {
-            double result = 0;
-            for (int i = 0; i < 50; i++) {
-                try {
-                    result += Math.sqrt(i);
-                    Thread.sleep(50);
-                    //this.publishProgress(i);
-                } catch (InterruptedException e) {
-                    return null;
-                }
+            try {
+                Thread.sleep(2500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            return Double.valueOf(result);
+            // This is returned & ignored so that 'onPostExecute' will execute calling 'onCompletion' on the process listener
+            return 123456789d;
         }
 
         @Override
         protected void onPostExecute(Double result) {
-            mResult = result;
             mTask = null;
             if (mProgressListener != null) {
-                mProgressListener.onCompletion(mResult);
+                mProgressListener.onCompletion();
             }
         }
 

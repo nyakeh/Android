@@ -21,11 +21,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
     private SplashScreenFragment mSplashScreenFragment;
 
     @Override
-    public void onCompletion(Double result) {
-        // For the sake of brevity, we just show a TextView with the result
-        /*TextView tv = new TextView(this);
-        tv.setText(String.valueOf(result));
-        setContentView(tv);*/
+    public void onCompletion() {
         setContentView(R.layout.activity_main);
         getFragmentManager().beginTransaction()
                 .add(R.id.container, new PlaceholderFragment())
@@ -61,13 +57,6 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
             mSplashScreenFragment = new SplashScreenFragment();
             fm.beginTransaction().add(android.R.id.content, mSplashScreenFragment, TAG_SPLASH_SCREEN).commit();
         }
-
-        /*setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
     }
 
     @Override
@@ -92,7 +81,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
      */
     private boolean checkCompletionStatus() {
         if (mDataLoaderFragment.hasResult()) {
-            onCompletion(mDataLoaderFragment.getResult());
+            onCompletion();
             FragmentManager fm = getFragmentManager();
             mSplashScreenFragment = (SplashScreenFragment) fm.findFragmentByTag(TAG_SPLASH_SCREEN);
             if (mSplashScreenFragment != null) {
