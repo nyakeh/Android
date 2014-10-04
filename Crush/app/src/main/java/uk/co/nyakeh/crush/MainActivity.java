@@ -41,7 +41,6 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
                 .add(R.id.container, new PlaceholderFragment())
                 .commit();
         mDataLoaderFragment = null;
-
     }
 
     @Override
@@ -145,23 +144,9 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EditText ET_email = (EditText) rootView.findViewById(R.id.fld_account_email);
-                    EditText ET_password = (EditText) rootView.findViewById(R.id.fld_account_password);
-                    String email = ET_email.getText().toString();
-                    String password = ET_password.getText().toString();
-
-                    Toast toast = Toast.makeText(v.getContext(), "Nice Try " + email + " : " + password, Toast.LENGTH_LONG);
-                    toast.show();
-
                     final OAuth oauth = new OAuth(getActivity());
                     oauth.initialize("BpuDpu-omlcZqSRanOmIud3W7Ng");
-                    JSONObject options = new JSONObject();
-                    try {
-                        options.put("username", email);
-                        options.put("password", password);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+
                     OAuthCallback callback = new OAuthCallback() {
                         @Override
                         public void onFinished(OAuthData data) {
@@ -200,7 +185,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
                                         }
                                         JSONObject result = new JSONObject(total.toString());
 
-                                        Toast toast = Toast.makeText(rootView.getContext(), "Hello Inside" +result.getString("name") + "     " + result, Toast.LENGTH_LONG);
+                                        Toast toast = Toast.makeText(rootView.getContext(), "Hello " +result.getString("name"), Toast.LENGTH_LONG);
                                         toast.show();
                                     } catch (Exception e) { e.printStackTrace(); }
                                 }
@@ -213,8 +198,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
                             });
                         }
                     };
-                    oauth.popup("facebook", options, callback);
-
+                    oauth.popup("facebook", callback);
                 }
             });
 
