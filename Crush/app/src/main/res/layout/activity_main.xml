@@ -4,4 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame">
+
+
+<Button
+android:id="@+id/facebook"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentTop="true"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="14dp"
+android:text="Connect with facebook" />
+
+<TextView
+android:id="@+id/facebookText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/facebook"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="20dp"
+android:gravity="center_horizontal"
+android:textAppearance="?android:attr/textAppearanceLarge" />
+    </FrameLayout>
