@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements DataLoaderFragment.ProgressListener {
     private static final String TAG_DATA_LOADER = "dataLoader";
@@ -27,6 +30,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
                 .add(R.id.container, new PlaceholderFragment())
                 .commit();
         mDataLoaderFragment = null;
+
     }
 
     @Override
@@ -116,6 +120,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+        Button loginBtn;
 
         public PlaceholderFragment() {
         }
@@ -123,7 +128,23 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            loginBtn = (Button) rootView.findViewById(R.id.btn_login);
+            loginBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EditText ET_email = (EditText) rootView.findViewById(R.id.fld_account_email);
+                    EditText ET_password = (EditText) rootView.findViewById(R.id.fld_account_password);
+                    String email = ET_email.getText().toString();
+                    String password = ET_password.getText().toString();
+
+                    // TODO Make aSync oAuth request
+                    Toast toast = Toast.makeText(v.getContext(), "Nice Try " + email + " : " + password, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            });
+
             return rootView;
         }
     }
