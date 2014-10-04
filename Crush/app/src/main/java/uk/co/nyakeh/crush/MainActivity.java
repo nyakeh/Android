@@ -154,6 +154,7 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
                                 Toast toast = Toast.makeText(rootView.getContext(), "Fail: " + data.error, Toast.LENGTH_LONG);
                                 toast.show();
                             }
+                            //TODO change request to something async
                             // Let's skip the NetworkOnMainThreadException for the purpose of this sample.
                             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
 
@@ -187,6 +188,9 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
 
                                         Toast toast = Toast.makeText(rootView.getContext(), "Hello " +result.getString("name"), Toast.LENGTH_LONG);
                                         toast.show();
+
+                                        // TODO Store returned fb data
+                                        //{"id":"975569925793885","first_name":"Nyakeh","timezone":1,"email":"nyakeh@live.co.uk","verified":true,"name":"Nyakeh Rogers","locale":"en_US","link":"https:\/\/www.facebook.com\/app_scoped_user_id\/975569925793885\/","last_name":"Rogers","gender":"male","updated_time":"2014-07-15T19:46:12+0000"}
                                     } catch (Exception e) { e.printStackTrace(); }
                                 }
 
