@@ -10,4 +10,15 @@
     <string name="sign_up">Sign-up</string>
 
     <color name="crush_blue">#3EECD5</color>
+
+    <string-array name="nav_array">
+        <item>Home</item>
+        <item>Add Crush</item>
+        <item>Contact Crush</item>
+        <item>Your Settings</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="message">message</string>
 </resources>
