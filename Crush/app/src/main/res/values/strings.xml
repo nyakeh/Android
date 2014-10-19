@@ -21,4 +21,10 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="message">message</string>
+    <string name="profile">Profile</string>
+    <string name="profile_name_hint">Name</string>
+    <string name="profile_age_hint">Age</string>
+    <string name="profile_hair_colour_hint">Hair Colour</string>
+    <string name="profile_hair_length_hint">Hair Length</string>
+    <string name="profile_eye_colour_hint">Eye Colour</string>
 </resources>

@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uk.co.nyakeh.crush.AddCrushFragment">
+
+    <FrameLayout android:id="@+id/header_block"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:src="@drawable/header"
+            android:scaleType="matrix"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:layout_gravity="bottom"
+            android:paddingLeft="16dp"
+            android:paddingBottom="16dp"
+            android:textColor="#FFF"
+            android:textSize="40dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/header_block"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/profile_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/profile_name_hint"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/profile_age"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/profile_age_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/profile_hair_colour"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/profile_hair_colour_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/profile_hair_length"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/profile_hair_length_hint"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/profile_eye_colour"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/profile_eye_colour_hint"
+            android:inputType="number" />
+    </LinearLayout>
+
+
+</RelativeLayout>

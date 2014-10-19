@@ -7,21 +7,19 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
+ * {@link AddCrushFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HomeFragment#newInstance} factory method to
+ * Use the {@link AddCrushFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class HomeFragment extends Fragment {
-    public static final String ARG_PLANET_NUMBER = "planet_number";
-    private String[] mNavTitles;
+public class AddCrushFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,18 +37,18 @@ public class HomeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
+     * @return A new instance of fragment AddCrushFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
+    public static AddCrushFragment newInstance(String param1, String param2) {
+        AddCrushFragment fragment = new AddCrushFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    public HomeFragment() {
+    public AddCrushFragment() {
         // Required empty public constructor
     }
 
@@ -61,22 +59,13 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        mNavTitles = getResources().getStringArray(R.array.nav_array);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        // inflater.inflate(R.layout.fragment_home, container, false);
-
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        int i = getArguments().getInt(ARG_PLANET_NUMBER);
-        String planet = getResources().getStringArray(R.array.nav_array)[i];
-
-        TextView et=(TextView) rootView.findViewById(R.id.message);
-        et.setText(mNavTitles[i]);
-        getActivity().setTitle(planet);
-        return rootView;
+        return inflater.inflate(R.layout.fragment_add_crush, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

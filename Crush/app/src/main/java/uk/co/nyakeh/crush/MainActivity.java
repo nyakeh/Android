@@ -1,6 +1,5 @@
 package uk.co.nyakeh.crush;
 
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -204,13 +203,16 @@ public class MainActivity extends Activity implements DataLoaderFragment.Progres
 
     /** Swaps fragments in the main content view */
     private void selectItem(int position) {
-        // Create a new fragment and specify the planet to show based on position
+        // Create default empty 'homefragment'
         Fragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putInt(HomeFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
-
-        // Insert the fragment by replacing any existing fragment
+        if(position == 1) { // If AddCrush go to specific fragment
+            fragment = new AddCrushFragment();
+        } else {
+            Bundle args = new Bundle();
+            args.putInt(HomeFragment.ARG_PLANET_NUMBER, position);
+            fragment.setArguments(args);
+        }
+        // Insert fragment by replacing any existing fragment
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
