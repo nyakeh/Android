@@ -90,7 +90,8 @@
         android:orientation="horizontal"
         style="?android:buttonBarStyle"
         android:gravity="center"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/crush_grey" >
 
         <Button
             android:id="@+id/profile_appearance"
