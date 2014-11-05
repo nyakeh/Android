@@ -41,7 +41,7 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
         Place place = mData[position];
 
         nameView.setText(place.mNameOfPlace);
-        zipView.setText(place.mZipCode);
+        zipView.setText(String.valueOf(place.mZipCode));
 
         int resId = mContext.getResources().getIdentifier(place.mNameOfImage,"drawable", mContext.getPackageName());
         imageView.setImageResource(resId);
