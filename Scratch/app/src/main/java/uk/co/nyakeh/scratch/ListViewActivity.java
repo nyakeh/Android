@@ -51,7 +51,6 @@ public class ListViewActivity extends Activity {
         setContentView(R.layout.activity_list_view);
 
         mListView = (ListView) findViewById(R.id.myListView);
-
         mPlaceAdapter = new PlaceAdapter(getApplicationContext(),R.layout.row,myPlacesArray);
 
         if(mListView != null){
