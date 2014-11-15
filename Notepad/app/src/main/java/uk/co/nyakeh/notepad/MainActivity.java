@@ -1,19 +1,48 @@
 package uk.co.nyakeh.notepad;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+
+    public static final String APP_RUN_COUNT = "appRunCount";
+    TextView readingView;
+    TextView appRestartsView;
+    int appRunCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        appRestartsView = (TextView) findViewById(R.id.applicationRestarts);
+
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        appRunCount = preferences.getInt(APP_RUN_COUNT, 0);
+
+        if (appRunCount == 0){
+            Toast.makeText(this,"YoYoYo", Toast.LENGTH_LONG).show();
+        }
+        appRunCount++;
+        appRestartsView.setText(String.valueOf(appRunCount));
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(APP_RUN_COUNT, appRunCount);
+        editor.commit();
     }
 
+    public String getTextFile() {
+        return null;
+    }
+
+    public void saveTextFile(String content) {
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
