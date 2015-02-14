@@ -17,7 +17,7 @@
         android:fillViewport="true">
 
         <EditText
-            android:id="@+id/displayView"
+            android:id="@+id/note"
             android:background="#FFFFFF"
             android:gravity="left"
             android:textSize="14sp"
