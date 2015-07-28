@@ -3,6 +3,7 @@ package uk.co.nyakeh.projectkotlin
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
+import org.jetbrains.anko.text
 
 public class ForecastListAdapter(val items: List<String>): RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
@@ -11,7 +12,7 @@ public class ForecastListAdapter(val items: List<String>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ForecastListAdapter.ViewHolder, position: Int) {
-        holder.textView.setText(items.get(position))
+        holder.textView.text = items.get(position)
     }
 
     override fun getItemCount(): Int = items.size()
