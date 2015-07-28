@@ -1,4 +1,4 @@
-package uk.co.nyakeh.projectkotlin
+package uk.co.nyakeh.projectkotlin.data
 
 import android.util.Log
 import java.net.URL

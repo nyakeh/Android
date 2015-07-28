@@ -1,4 +1,4 @@
-package uk.co.nyakeh.projectkotlin
+package uk.co.nyakeh.projectkotlin.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.activity_main.*
 import org.jetbrains.anko.*
+import uk.co.nyakeh.projectkotlin.R
+import uk.co.nyakeh.projectkotlin.data.Request
+import uk.co.nyakeh.projectkotlin.ui.adapters.ForecastListAdapter
 
 public class MainActivity : AppCompatActivity() {
 
