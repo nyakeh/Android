@@ -1,28 +1,19 @@
 package uk.co.nyakeh.projectkotlin.ui.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.activity_main.*
-import org.jetbrains.anko.*
+import org.jetbrains.anko.async
+import org.jetbrains.anko.find
+import org.jetbrains.anko.uiThread
 import uk.co.nyakeh.projectkotlin.R
-import uk.co.nyakeh.projectkotlin.data.Request
+import uk.co.nyakeh.projectkotlin.domain.commands.RequestForecastCommand
 import uk.co.nyakeh.projectkotlin.ui.adapters.ForecastListAdapter
 
 public class MainActivity : AppCompatActivity() {
-
-    private val items = listOf(
-            "Mon 6/23 - Sunny - 31/17",
-            "Tue 6/24 - Foggy - 21/8",
-            "Wed 6/25 - Cloudy - 22/17",
-            "Thurs 6/26 - Rainy - 18/11",
-            "Fri 6/27 - Foggy - 21/10",
-            "Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18",
-            "Sun 6/29 - Sunny - 20/7"
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +21,12 @@ public class MainActivity : AppCompatActivity() {
 
         val forecastList: RecyclerView = find(R.id.forecast_list)
         forecastList.setLayoutManager(LinearLayoutManager(this))
-        forecastList.setAdapter(ForecastListAdapter(items))
-
-        val url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7"
-
+        //http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=metric&cnt=7&q=94043
         async {
-            Request(url).run()
-            uiThread { longToast("Request performed") }
+            val result = RequestForecastCommand("94043").execute()
+            uiThread {
+                forecastList.setAdapter(ForecastListAdapter(result))
+            }
         }
 
     }
@@ -53,4 +43,6 @@ public class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
