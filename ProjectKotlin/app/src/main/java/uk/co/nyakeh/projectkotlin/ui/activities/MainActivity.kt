@@ -12,7 +12,6 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import uk.co.nyakeh.projectkotlin.R
 import uk.co.nyakeh.projectkotlin.domain.commands.RequestForecastCommand
-import uk.co.nyakeh.projectkotlin.domain.model.Forecast
 import uk.co.nyakeh.projectkotlin.ui.adapters.ForecastListAdapter
 
 public class MainActivity : AppCompatActivity() {
@@ -27,26 +26,23 @@ public class MainActivity : AppCompatActivity() {
         async {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.setAdapter(ForecastListAdapter(result, object : ForecastListAdapter.OnItemClickListener {
-                                                                                override fun invoke(forecast: Forecast) {
-                                                                                    toast(forecast.date)
-                                                                                }
-                }))
+                val adapter = ForecastListAdapter(result, { forecast -> toast(forecast.date) })
+                forecastList.setAdapter(adapter)
             }
         }
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.menu_main, menu)
+override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    getMenuInflater().inflate(R.menu.menu_main, menu)
+    return true
+}
+
+override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    val id = item!!.getItemId()
+    if (id == R.id.action_settings) {
         return true
     }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item!!.getItemId()
-        if (id == R.id.action_settings) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
+    return super.onOptionsItemSelected(item)
+}
 }
