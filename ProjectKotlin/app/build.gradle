@@ -30,6 +30,7 @@ dependencies {
     compile "org.jetbrains.anko:anko:0.6.2-15s"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.google.code.gson:gson:2.3.1'
+    compile "com.squareup.picasso:picasso:2.5.2"
 }
 buildscript {
     ext.kotlin_version = '0.12.1218'

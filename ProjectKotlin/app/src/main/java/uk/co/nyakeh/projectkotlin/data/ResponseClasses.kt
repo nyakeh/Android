@@ -10,4 +10,4 @@ data class Forecast(val dt: Long, val temp: Temperature, val pressure: Float, va
 
 data class Temperature(val day: Float, val min: Float, val max: Float, val night: Float, val eve: Float, val morn: Float)
 
-data class Weather(val id: Long, val main: String, val description: String)
+data class Weather(val id: Long, val main: String, val description: String, val icon: String)
