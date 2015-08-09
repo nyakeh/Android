@@ -15,7 +15,7 @@ import uk.co.nyakeh.projectkotlin.domain.model.Forecast
 import uk.co.nyakeh.projectkotlin.domain.model.ForecastList
 import uk.co.nyakeh.projectkotlin.ui.utils.ctx
 
-public class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: (Forecast) -> Unit) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: (Forecast) -> Unit) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
         val view = parent.ctx.layoutInflater.inflate(R.layout.item_forecast, parent, false)
@@ -28,7 +28,7 @@ public class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: 
         }
     }
 
-    override fun getItemCount(): Int = weekForecast.size()
+    override fun getItemCount() = weekForecast.size()
 
     class ViewHolder(val view: View, val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
         private val iconView: ImageView

@@ -14,7 +14,7 @@ import uk.co.nyakeh.projectkotlin.R
 import uk.co.nyakeh.projectkotlin.domain.commands.RequestForecastCommand
 import uk.co.nyakeh.projectkotlin.ui.adapters.ForecastListAdapter
 
-public class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

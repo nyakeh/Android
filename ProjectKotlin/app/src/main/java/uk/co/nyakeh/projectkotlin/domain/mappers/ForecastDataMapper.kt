@@ -8,8 +8,8 @@ import java.text.DateFormat
 import java.util.Locale
 import uk.co.nyakeh.projectkotlin.data.Forecast as DataForecast
 
-public class ForecastDataMapper {
-    public fun convertFromDataModel(forecast: ForecastResult): ForecastList {
+class ForecastDataMapper {
+    fun convertFromDataModel(forecast: ForecastResult): ForecastList {
         return ForecastList(forecast.city.name, forecast.city.country, convertForecastToDomain(forecast.list))
     }
 
@@ -26,5 +26,5 @@ public class ForecastDataMapper {
         return df.format(date * 1000)
     }
 
-    private fun generateIconUrl(iconCode: String): String = "http://openweathermap.org/img/w/$iconCode.png"
+    private fun generateIconUrl(iconCode: String) = "http://openweathermap.org/img/w/$iconCode.png"
 }
