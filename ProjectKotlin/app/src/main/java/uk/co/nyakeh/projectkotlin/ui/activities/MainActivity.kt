@@ -8,9 +8,11 @@ import android.view.Menu
 import android.view.MenuItem
 import org.jetbrains.anko.async
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import uk.co.nyakeh.projectkotlin.R
 import uk.co.nyakeh.projectkotlin.domain.commands.RequestForecastCommand
+import uk.co.nyakeh.projectkotlin.domain.model.Forecast
 import uk.co.nyakeh.projectkotlin.ui.adapters.ForecastListAdapter
 
 public class MainActivity : AppCompatActivity() {
@@ -21,11 +23,15 @@ public class MainActivity : AppCompatActivity() {
 
         val forecastList: RecyclerView = find(R.id.forecast_list)
         forecastList.setLayoutManager(LinearLayoutManager(this))
-        //http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=metric&cnt=7&q=94043
+
         async {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.setAdapter(ForecastListAdapter(result))
+                forecastList.setAdapter(ForecastListAdapter(result, object : ForecastListAdapter.OnItemClickListener {
+                                                                                override fun invoke(forecast: Forecast) {
+                                                                                    toast(forecast.date)
+                                                                                }
+                }))
             }
         }
 
@@ -43,6 +49,4 @@ public class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }
