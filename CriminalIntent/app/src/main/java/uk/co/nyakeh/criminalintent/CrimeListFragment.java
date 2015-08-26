@@ -22,6 +22,7 @@ public class CrimeListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mCrimeAdapter;
     private boolean mSubtitleVisable;
+    private TextView mCrimeListEmptyMessageView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class CrimeListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
 
+        mCrimeListEmptyMessageView = (TextView) view.findViewById(R.id.crime_list_empty_message);
         mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -55,13 +57,22 @@ public class CrimeListFragment extends Fragment {
             mCrimeAdapter.notifyDataSetChanged();
         }
 
+        if (crimes.isEmpty()) {
+            mCrimeRecyclerView.setVisibility(View.GONE);
+            mCrimeListEmptyMessageView.setVisibility(View.VISIBLE);
+        }
+        else {
+            mCrimeRecyclerView.setVisibility(View.VISIBLE);
+            mCrimeListEmptyMessageView.setVisibility(View.GONE);
+        }
+
         updateSubtitle();
     }
 
     private void updateSubtitle() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         int crimeCount = crimeLab.getCrimes().size();
-        String subtitle = getString(R.string.subtitle_format, crimeCount);
+        String subtitle = getResources().getQuantityString(R.plurals.subtitle_plural, crimeCount, crimeCount);
 
         if (!mSubtitleVisable){
             subtitle = null;
@@ -84,9 +95,9 @@ public class CrimeListFragment extends Fragment {
 
         MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
         if (mSubtitleVisable) {
-            subtitleItem.setTitle(R.string.hide_subtitles);
+            subtitleItem.setTitle(R.string.hide_subtitle);
         } else {
-            subtitleItem.setTitle(R.string.show_subtitles);
+            subtitleItem.setTitle(R.string.show_subtitle);
         }
     }
 
