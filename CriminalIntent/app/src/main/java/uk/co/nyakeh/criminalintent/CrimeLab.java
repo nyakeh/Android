@@ -96,13 +96,7 @@ public class CrimeLab {
         return new CrimeCursorWrapper(cursor);
     }
 
-//    public void deleteCrime(UUID id) {
-//
-//        for (Crime crime : mCrimes) {
-//            if (crime.getId().equals(id)) {
-//                mCrimes.remove(crime);
-//                break;
-//            }
-//        }
-//    }
+    public void deleteCrime(UUID id) {
+        mDatabase.delete(CrimeTable.NAME, CrimeTable.Cols.UUID + " = ?", new String[] { id.toString() });
+    }
 }

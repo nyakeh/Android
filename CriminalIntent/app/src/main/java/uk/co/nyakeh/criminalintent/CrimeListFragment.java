@@ -38,7 +38,7 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             mSubtitleVisable = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
         }
 
@@ -54,14 +54,14 @@ public class CrimeListFragment extends Fragment {
             mCrimeAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mCrimeAdapter);
         } else {
+            mCrimeAdapter.setCrimes(crimes);
             mCrimeAdapter.notifyDataSetChanged();
         }
 
         if (crimes.isEmpty()) {
             mCrimeRecyclerView.setVisibility(View.GONE);
             mCrimeListEmptyMessageView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             mCrimeRecyclerView.setVisibility(View.VISIBLE);
             mCrimeListEmptyMessageView.setVisibility(View.GONE);
         }
@@ -74,7 +74,7 @@ public class CrimeListFragment extends Fragment {
         int crimeCount = crimeLab.getCrimes().size();
         String subtitle = getResources().getQuantityString(R.plurals.subtitle_plural, crimeCount, crimeCount);
 
-        if (!mSubtitleVisable){
+        if (!mSubtitleVisable) {
             subtitle = null;
         }
 
@@ -181,6 +181,10 @@ public class CrimeListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mCrimes.size();
+        }
+
+        public void setCrimes(List<Crime> crimes) {
+            mCrimes = crimes;
         }
     }
 }
