@@ -1,16 +1,24 @@
 package uk.co.nyakeh.criminalintent;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import uk.co.nyakeh.criminalintent.database.CrimeBaseHelper;
+
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
+
     private List<Crime> mCrimes;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
 
     private CrimeLab(Context context) {
+        mContext = context.getApplicationContext();
+        mDatabase = new CrimeBaseHelper(mContext).getWritableDatabase();
         mCrimes = new ArrayList<>();
     }
 
