@@ -2,9 +2,9 @@ package uk.co.nyakeh.projectkotlin.domain.model
 
 data class ForecastList(val city: String, val country: String, val dailyForecast: List<Forecast>) {
 
-    fun get(position: Int) = dailyForecast[position]
+    operator fun get(position: Int) = dailyForecast[position]
 
-    fun size() = dailyForecast.size()
+    fun size() = dailyForecast.size
 
 }
 

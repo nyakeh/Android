@@ -12,10 +12,10 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import uk.co.nyakeh.projectkotlin.R
 import uk.co.nyakeh.projectkotlin.domain.commands.RequestForecastCommand
+import uk.co.nyakeh.projectkotlin.domain.model.Forecast
 import uk.co.nyakeh.projectkotlin.ui.adapters.ForecastListAdapter
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,26 +23,28 @@ class MainActivity : AppCompatActivity() {
         val forecastList: RecyclerView = find(R.id.forecast_list)
         forecastList.setLayoutManager(LinearLayoutManager(this))
 
-        async {
+        async() {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                val adapter = ForecastListAdapter(result, { forecast -> toast(forecast.date) })
-                forecastList.setAdapter(adapter)
+                forecastList.adapter =  ForecastListAdapter(result, object : ForecastListAdapter.OnItemClickListener{
+                    override fun invoke(forecast: Forecast) {
+                        toast(forecast.date)
+                    }
+                })
             }
         }
-
     }
 
-override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    getMenuInflater().inflate(R.menu.menu_main, menu)
-    return true
-}
-
-override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-    val id = item!!.getItemId()
-    if (id == R.id.action_settings) {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        getMenuInflater().inflate(R.menu.menu_main, menu)
         return true
     }
-    return super.onOptionsItemSelected(item)
-}
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item!!.getItemId()
+        if (id == R.id.action_settings) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
