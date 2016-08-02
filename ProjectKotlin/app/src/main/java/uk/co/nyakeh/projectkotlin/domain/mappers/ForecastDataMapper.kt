@@ -4,9 +4,8 @@ import uk.co.nyakeh.projectkotlin.data.Forecast
 import uk.co.nyakeh.projectkotlin.data.ForecastResult
 import uk.co.nyakeh.projectkotlin.domain.model.ForecastList
 import java.text.DateFormat
-import java.util.Locale
+import java.util.*
 import uk.co.nyakeh.projectkotlin.domain.model.Forecast as ModelForecast
-
 
 class ForecastDataMapper {
     fun convertFromDataModel(forecast: ForecastResult): ForecastList {
@@ -18,13 +17,12 @@ class ForecastDataMapper {
     }
 
     private fun convertForecastItemToDomain(forecast: Forecast): ModelForecast {
-        return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description, forecast.temp.max.toInt(), forecast.temp.min.toInt(), generateIconUrl(forecast.weather[0].icon))
+        return ModelForecast(convertDate(forecast.dt), forecast.weather[0].description,
+                forecast.temp.max.toInt(), forecast.temp.min.toInt())
     }
 
     private fun convertDate(date: Long): String {
-        val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
-        return df.format(date * 1000)
+        val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
+        return dateFormat.format(date * 1000)
     }
-
-    private fun generateIconUrl(iconCode: String) = "http://openweathermap.org/img/w/$iconCode.png"
 }
