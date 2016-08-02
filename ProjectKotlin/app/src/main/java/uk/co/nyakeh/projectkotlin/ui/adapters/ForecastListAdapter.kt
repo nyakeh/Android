@@ -13,7 +13,7 @@ import uk.co.nyakeh.projectkotlin.domain.model.Forecast
 import uk.co.nyakeh.projectkotlin.domain.model.ForecastList
 import uk.co.nyakeh.projectkotlin.ui.utils.ctx
 
-public class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: ForecastListAdapter.OnItemClickListener) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: (Forecast) -> Unit) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.ctx)
                 .inflate(R.layout.item_forecast, parent, false)
@@ -27,7 +27,7 @@ public class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: 
 
     override fun getItemCount(): Int = weekForecast.size()
 
-    class ViewHolder(view: View, val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View, val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view){
         private val iconView: ImageView
         private val dateView: TextView
         private val descriptionView: TextView
@@ -47,14 +47,10 @@ public class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: 
                 Picasso.with(itemView.ctx).load(iconUrl).into(iconView)
                 dateView.text = date
                 descriptionView.text = description
-                maxTemperatureView.text = "${high.toString()}"
-                minTemperatureView.text = "${low.toString()}"
+                maxTemperatureView.text = "$high"
+                minTemperatureView.text = "$low"
                 itemView.setOnClickListener { itemClick(this) }
             }
         }
-    }
-
-    interface OnItemClickListener {
-        operator fun invoke(forecast: Forecast)
     }
 }
