@@ -1,7 +1,6 @@
-package uk.co.nyakeh.projectkotlin.ui
+package uk.co.nyakeh.projectkotlin.extensions
 
 import android.app.Application
-import uk.co.nyakeh.projectkotlin.ui.utils.DelegatesExt
 
 class App : Application() {
 

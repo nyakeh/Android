@@ -1,4 +1,4 @@
-package uk.co.nyakeh.projectkotlin.ui.utils
+package uk.co.nyakeh.projectkotlin.extensions
 
 import android.content.Context
 import android.view.View

@@ -1,4 +1,4 @@
-package uk.co.nyakeh.projectkotlin.data
+package uk.co.nyakeh.projectkotlin.data.server
 
 data class ForecastResult(val city: City, val list: List<Forecast>)
 

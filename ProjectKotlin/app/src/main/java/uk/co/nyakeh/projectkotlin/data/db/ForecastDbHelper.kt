@@ -3,7 +3,7 @@ package uk.co.nyakeh.projectkotlin.data.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import org.jetbrains.anko.db.*
-import uk.co.nyakeh.projectkotlin.ui.App
+import uk.co.nyakeh.projectkotlin.extensions.App
 
 class ForecastDbHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(ctx, ForecastDbHelper.DB_NAME, null, ForecastDbHelper.DB_VERSION) {
 
