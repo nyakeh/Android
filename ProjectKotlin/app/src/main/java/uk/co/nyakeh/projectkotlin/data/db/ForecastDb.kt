@@ -2,12 +2,10 @@ package uk.co.nyakeh.projectkotlin.data.db
 
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
+import uk.co.nyakeh.projectkotlin.domain.model.Forecast
 import uk.co.nyakeh.projectkotlin.domain.model.ForecastDataSource
 import uk.co.nyakeh.projectkotlin.domain.model.ForecastList
-import uk.co.nyakeh.projectkotlin.extensions.clear
-import uk.co.nyakeh.projectkotlin.extensions.parseList
-import uk.co.nyakeh.projectkotlin.extensions.parseOpt
-import uk.co.nyakeh.projectkotlin.extensions.toVarargArray
+import uk.co.nyakeh.projectkotlin.extensions.*
 import java.util.*
 
 class ForecastDb(val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance, val dataMapper: DbDataMapper = DbDataMapper()) : ForecastDataSource {
@@ -33,5 +31,12 @@ class ForecastDb(val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.insta
             insert(CityForecastTable.NAME, *map.toVarargArray())
             dailyForecast.forEach { insert(DayForecastTable.NAME, *it.map.toVarargArray()) }
         }
+    }
+
+    override fun requestDayForecast(id: Long): Forecast? = forecastDbHelper.use {
+        val forecast = select(DayForecastTable.NAME)
+                .byId(id)
+                .parseOpt { DayForecast(HashMap(it)) }
+        if (forecast != null) dataMapper.convertDayToDomain(forecast) else null
     }
 }
