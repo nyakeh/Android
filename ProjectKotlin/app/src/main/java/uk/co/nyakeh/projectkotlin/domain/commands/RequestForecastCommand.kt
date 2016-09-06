@@ -1,12 +1,14 @@
 package uk.co.nyakeh.projectkotlin.domain.commands
 
-import uk.co.nyakeh.projectkotlin.data.server.ForecastRequest
-import uk.co.nyakeh.projectkotlin.domain.mappers.ForecastDataMapper
+import uk.co.nyakeh.projectkotlin.domain.datasource.ForecastProvider
 import uk.co.nyakeh.projectkotlin.domain.model.ForecastList
 
-class RequestForecastCommand(private val zipCode: Long) : Command<ForecastList> {
+class RequestForecastCommand(private val zipCode: Long, val forecastProvider: ForecastProvider = ForecastProvider()) : Command<ForecastList> {
+    companion object {
+        val DAYS = 7
+    }
+
     override fun execute(): ForecastList {
-        val forecastRequest = ForecastRequest(zipCode)
-        return ForecastDataMapper().convertFromDataModel(zipCode, forecastRequest.execute())
+        return forecastProvider.requestByZipCode(zipCode, DAYS)
     }
 }

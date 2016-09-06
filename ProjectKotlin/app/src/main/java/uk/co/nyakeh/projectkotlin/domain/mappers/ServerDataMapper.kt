@@ -7,8 +7,8 @@ import java.text.DateFormat
 import java.util.*
 import uk.co.nyakeh.projectkotlin.domain.model.Forecast as ModelForecast
 
-class ForecastDataMapper {
-    fun convertFromDataModel(zipCode: Long, forecast: ForecastResult) = with(forecast) {
+class ServerDataMapper {
+    fun convertToDomain(zipCode: Long, forecast: ForecastResult) = with(forecast) {
         ForecastList(zipCode, forecast.city.name, forecast.city.country, convertForecastListToDomain(forecast.list))
     }
 
