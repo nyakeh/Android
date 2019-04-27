@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert' show json, utf8;
 import 'dart:io';
-import 'package:multi_pass/main.dart';
+import 'package:multi_pass/cinema_times_response.dart';
 
 class Api {
   final HttpClient _httpClient = HttpClient();
@@ -9,7 +9,7 @@ class Api {
 
   Future<List<Listing>> getMovieShowings() async {
     CinemaTimesResponse movieShowings;
-    final uri = Uri.https(_cinemaBaseUrl, '/get/times/cinema/10713', {'day':'0'});
+    final uri = Uri.https(_cinemaBaseUrl, '/get/times/cinema/10713', {'day': '0'});
     final jsonResponse = await _getJson(uri);
     print(jsonResponse);
     if (jsonResponse == null || jsonResponse['listings'] == null) {
