@@ -1,3 +1,4 @@
+
 class CinemaTimesResponse {
   List<Listing> listings;
 
@@ -5,8 +6,7 @@ class CinemaTimesResponse {
 
   factory CinemaTimesResponse.fromJson(Map<String, dynamic> parsedJson) {
     var listings = parsedJson['listings'];
-    var list = new List<Listing>.from(
-        listings.map((value) => Listing.fromJson(value)));
+    var list = new List<Listing>.from(listings.map((value) => Listing.fromJson(value)));
     return new CinemaTimesResponse(list);
   }
 }

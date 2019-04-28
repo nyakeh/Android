@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:multi_pass/cinema_times_response.dart';
-import 'movie_page.dart';
-import 'api.dart';
+import 'movie_details_route.dart';
+import 'cinema_api.dart';
 
 class CinemaRoute extends StatefulWidget {
   @override
@@ -18,12 +18,12 @@ class _CinemaRouteState extends State<CinemaRoute> {
   Future<void> didChangeDependencies() async {
     super.didChangeDependencies();
     if (_movieShowings.isEmpty) {
-      await _retrieveApiCategory();
+      await _retrieveMovieShowings();
     }
   }
 
-  Future<void> _retrieveApiCategory() async {
-    final api = Api();
+  Future<void> _retrieveMovieShowings() async {
+    final api = CinemaApi();
     final movieShowings = await api.getMovieShowings();
     if (movieShowings != null) {
       setState(() {
@@ -46,7 +46,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
           ),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.white70, size: 30.0),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailPage(movieListing)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailsRoute(movieListing)));
           },
         );
 
