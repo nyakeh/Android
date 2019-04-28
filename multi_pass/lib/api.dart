@@ -11,7 +11,6 @@ class Api {
     CinemaTimesResponse movieShowings;
     final uri = Uri.https(_cinemaBaseUrl, '/get/times/cinema/10713', {'day': '0'});
     final jsonResponse = await _getJson(uri);
-    print(jsonResponse);
     if (jsonResponse == null || jsonResponse['listings'] == null) {
       print('Error retrieving movie listings.');
       return null;
@@ -24,11 +23,8 @@ class Api {
 
   Future<Map<String, dynamic>> _getJson(Uri uri) async {
     try {
-      print(uri);
-
       final httpRequest = await _httpClient.getUrl(uri);
       final httpResponse = await httpRequest.close();
-      print(httpResponse);
 
       if (httpResponse.statusCode != HttpStatus.OK) {
         return null;

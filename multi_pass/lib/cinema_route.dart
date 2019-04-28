@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:multi_pass/cinema_times_response.dart';
+import 'movie_page.dart';
 import 'api.dart';
 
 class CinemaRoute extends StatefulWidget {
@@ -12,7 +13,6 @@ class CinemaRoute extends StatefulWidget {
 
 class _CinemaRouteState extends State<CinemaRoute> {
   final _movieShowings = <Listing>[];
-  final double _minimumPadding = 5.0;
 
   @override
   Future<void> didChangeDependencies() async {
@@ -34,49 +34,44 @@ class _CinemaRouteState extends State<CinemaRoute> {
 
   @override
   Widget build(BuildContext context) {
+    ListTile makeMovieListingTile(Listing movieListing) => ListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          title: Text(
+            movieListing.title,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            movieListing.times.toString(),
+            style: TextStyle(color: Colors.white70, fontWeight: FontWeight.normal),
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.white70, size: 30.0),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MovieDetailPage(movieListing)));
+          },
+        );
+
+    Card makeMovieListingCard(Listing movieListing) => Card(
+          elevation: 8.0,
+          margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          child: Container(
+            decoration: BoxDecoration(color: Color.fromRGBO(26, 26, 26, .9)),
+            child: makeMovieListingTile(movieListing),
+          ),
+        );
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('What\'s showing today'),
-      ),
-
-      body: Container(
-        margin: EdgeInsets.all(_minimumPadding * 2),
-        child: ListView(
-          children: buildMovieListUI(_movieShowings),
+        appBar: AppBar(
+          title: Text('What\'s showing today'),
         ),
-      ),
-    );
-  }
-
-  List<Widget> buildMovieListUI(List<Listing> movieShowings) {
-    TextStyle textStyle = Theme.of(context).textTheme.title;
-
-    var movies = <Widget>[];
-
-    movieShowings.forEach((movieShowing) {
-      movies.add(Row(children: <Widget>[
-        Expanded(
-            child: Padding(
-          padding: EdgeInsets.all(_minimumPadding * 2),
-          child: Text(
-            movieShowing.title,
-            style: textStyle,
+        body: Container(
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: _movieShowings.length,
+            itemBuilder: (BuildContext context, int index) {
+              return makeMovieListingCard(_movieShowings[index]);
+            },
           ),
-        )),
-        Container(
-          width: _minimumPadding * 5,
-        ),
-        Expanded(
-            child: Padding(
-          padding: EdgeInsets.all(_minimumPadding * 2),
-          child: Text(
-            movieShowing.times.toString(),
-            style: textStyle,
-          ),
-        )),
-      ]));
-    });
-
-    return movies;
+        ));
   }
 }
