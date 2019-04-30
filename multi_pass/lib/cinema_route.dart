@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:multi_pass/cinema_times_response.dart';
+import 'package:multi_pass/web/cache.dart';
 import 'movie_details_route.dart';
-import 'cinema_api.dart';
+import 'package:multi_pass/web/cinema_api.dart';
 
 class CinemaRoute extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class CinemaRoute extends StatefulWidget {
 
 class _CinemaRouteState extends State<CinemaRoute> {
   final _movieShowings = <Listing>[];
+  static final Cache _cache = Cache<List<Listing>>();
 
   @override
   Future<void> didChangeDependencies() async {
@@ -23,7 +25,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
   }
 
   Future<void> _retrieveMovieShowings() async {
-    final api = CinemaApi();
+    final api = CinemaApi(_cache);
     final movieShowings = await api.getMovieShowings();
     if (movieShowings != null) {
       setState(() {

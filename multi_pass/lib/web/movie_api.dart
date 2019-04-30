@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:multi_pass/api.dart';
+import 'package:multi_pass/web/api.dart';
 import 'package:multi_pass/movie_details_response.dart';
 import 'package:multi_pass/search_movies_response.dart';
 import 'secrets.dart';

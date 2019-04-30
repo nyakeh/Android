@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_pass/cinema_times_response.dart';
-import 'package:multi_pass/movie_api.dart';
+import 'package:multi_pass/web/movie_api.dart';
 import 'package:multi_pass/search_movies_response.dart';
 
 class MovieDetailsRoute extends StatefulWidget {
