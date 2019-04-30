@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:multi_pass/cinema_times_response.dart';
+import 'package:multi_pass/web/response/cinema_times_response.dart';
 import 'package:multi_pass/web/cache.dart';
 import 'movie_details_route.dart';
 import 'package:multi_pass/web/cinema_api.dart';

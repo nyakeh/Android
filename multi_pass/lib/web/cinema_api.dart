@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:multi_pass/web/api.dart';
-import 'package:multi_pass/cinema_times_response.dart';
+import 'package:multi_pass/web/response/cinema_times_response.dart';
 import 'package:multi_pass/web/cache.dart';
 
 class CinemaApi {

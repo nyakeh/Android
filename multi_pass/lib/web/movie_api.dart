@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:multi_pass/web/api.dart';
-import 'package:multi_pass/search_movies_response.dart';
+import 'package:multi_pass/web/response/search_movies_response.dart';
 import 'package:multi_pass/web/cache.dart';
 import 'secrets.dart';
 

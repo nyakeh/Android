@@ -28,7 +28,11 @@ class SearchMoviesResult {
     var genreIdsJson = parsedJson['genre_ids'];
     var genreIdsList = new List<int>.from(genreIdsJson);
     DateFormat format = new DateFormat("yyyy-MM-dd");
-    var releaseDate = format.parse(parsedJson['release_date']);
+    var releaseDate = new DateTime(1972);
+    RegExp exp = new RegExp("(\d{4}-\d{2}-\d{2})");
+    if (exp.hasMatch(parsedJson['release_date'])) {
+      releaseDate = format.parse(parsedJson['release_date']);
+    }
     return new SearchMoviesResult(parsedJson['id'], parsedJson['title'], parsedJson['overview'], parsedJson['posterPath'], releaseDate, genreIdsList);
   }
 }
