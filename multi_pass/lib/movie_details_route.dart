@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_pass/cinema_times_response.dart';
+import 'package:multi_pass/web/cache.dart';
 import 'package:multi_pass/web/movie_api.dart';
 import 'package:multi_pass/search_movies_response.dart';
 
@@ -16,6 +17,7 @@ class MovieDetailsRoute extends StatefulWidget {
 
 class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   final double _minimumPadding = 5.0;
+  static final Cache _cache = Cache<SearchMoviesResponse>();
   SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', null, null, null);
 
   Widget get movieProfile {
@@ -50,7 +52,7 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   }
 
   Future<void> _retrieveMovieDetails(String movieTitle) async {
-    final api = MovieApi();
+    final api = MovieApi(_cache);
     final searchResponse = await api.searchMovies(movieTitle);
     if (searchResponse != null && searchResponse.totalResults > 0) {
       searchResponse.results.sort((a, b) => b.releaseDate.compareTo(a.releaseDate));

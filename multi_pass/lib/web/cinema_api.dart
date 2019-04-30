@@ -11,7 +11,7 @@ class CinemaApi {
 
   Future<List<Listing>> getMovieShowings() async {
     var now = new DateTime.now();
-    var cacheKey = 'getMovieShowings ' + new DateTime(now.year, now.month, now.day, now.hour).toString();
+    var cacheKey = 'getMovieShowings_' + new DateTime(now.year, now.month, now.day, now.hour).toString();
     if (cache.contains(cacheKey)) {
       return cache.get(cacheKey);
     }
