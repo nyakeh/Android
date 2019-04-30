@@ -59,19 +59,15 @@ class _CinemaRouteState extends State<CinemaRoute> {
           ),
         );
 
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('What\'s showing today'),
-        ),
-        body: Container(
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: _movieShowings.length,
-            itemBuilder: (BuildContext context, int index) {
-              return makeMovieListingCard(_movieShowings[index]);
-            },
-          ),
-        ));
+    return Container(
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: _movieShowings.length,
+        itemBuilder: (BuildContext context, int index) {
+          return makeMovieListingCard(_movieShowings[index]);
+        },
+      ),
+    );
   }
 }
