@@ -3,6 +3,8 @@ import 'package:multi_pass/web/response/cinema_times_response.dart';
 import 'package:multi_pass/web/cache.dart';
 import 'package:multi_pass/web/movie_api.dart';
 import 'package:multi_pass/web/response/search_movies_response.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:multi_pass/web/secrets.dart';
 
 class MovieDetailsRoute extends StatefulWidget {
   final Listing movieListing;
@@ -18,14 +20,18 @@ class MovieDetailsRoute extends StatefulWidget {
 class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   final double _minimumPadding = 5.0;
   static final Cache _cache = Cache<SearchMoviesResponse>();
-  SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', null, null, null);
+  SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', '', null, null);
 
   Widget get movieProfile {
+    var imageUrl2 = Secrets().getTheMovieDatabaseImageBaseUrl() + _movieDetails.posterPath;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          CachedNetworkImage(
+            imageUrl: imageUrl2,
+          ),
           Text(
             '${widget.movieListing.title}',
             style: TextStyle(fontSize: 32.0),
