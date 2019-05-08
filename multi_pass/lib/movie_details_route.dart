@@ -50,6 +50,15 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
             margin: EdgeInsets.all(4.0),
             decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
             child: Text(
+              '${_movieDetails.genres.join(" | ")}',
+              style: TextStyle(fontSize: 14.0, color: Colors.white54),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(4.0),
+            margin: EdgeInsets.all(4.0),
+            decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
+            child: Text(
               _movieDetails.overview,
               style: TextStyle(
                 fontSize: 20.0,

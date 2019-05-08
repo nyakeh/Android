@@ -21,13 +21,36 @@ class SearchMoviesResult {
   String overview;
   String posterPath;
   DateTime releaseDate;
-  List<int> genreIds;
+  List<String> genres;
 
-  SearchMoviesResult(this.id, this.title, this.overview, this.posterPath, this.releaseDate, this.genreIds);
+  SearchMoviesResult(this.id, this.title, this.overview, this.posterPath, this.releaseDate, this.genres);
 
   factory SearchMoviesResult.fromJson(Map<String, dynamic> parsedJson) {
     var genreIdsJson = parsedJson['genre_ids'];
     var genreIdsList = new List<int>.from(genreIdsJson);
+    var genreMap = {
+      28: "Action",
+      12: "Adventure",
+      16: "Animation",
+      35: "Comedy",
+      80: "Crime",
+      99: "Documentary",
+      18: "Drama",
+      10751: "Family",
+      14: "Fantasy",
+      36: "History",
+      27: "Horror",
+      10402: "Music",
+      9648: "Mystery",
+      10749: "Romance",
+      878: "Science Fiction",
+      10770: "TV Movie",
+      53: "Thriller",
+      10752: "War",
+      37: "Western",
+    };
+    var genresList = genreIdsList.map((id) => genreMap[id]).toList();
+
     DateFormat format = new DateFormat("yyyy-MM-dd");
     var releaseDate = new DateTime(1972);
     RegExp regex = new RegExp("(\d{4}-\d{2}-\d{2})");
@@ -35,6 +58,6 @@ class SearchMoviesResult {
       releaseDate = format.parse(parsedJson['release_date']);
     }
     var posterPath = Secrets().getTheMovieDatabaseImageBaseUrl() + parsedJson['poster_path'];
-    return new SearchMoviesResult(parsedJson['id'], parsedJson['title'], parsedJson['overview'], posterPath, releaseDate, genreIdsList);
+    return new SearchMoviesResult(parsedJson['id'], parsedJson['title'], parsedJson['overview'], posterPath, releaseDate, genresList);
   }
 }
