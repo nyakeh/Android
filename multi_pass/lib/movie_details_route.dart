@@ -23,14 +23,13 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', '', null, null);
 
   Widget get movieProfile {
-    var imageUrl2 = Secrets().getTheMovieDatabaseImageBaseUrl() + _movieDetails.posterPath;
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 32.0),
+      padding: EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           CachedNetworkImage(
-            imageUrl: imageUrl2,
+            imageUrl: _movieDetails.posterPath,
           ),
           Text(
             '${widget.movieListing.title}',
@@ -76,9 +75,8 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
       appBar: AppBar(
         title: Text('${widget.movieListing.title}'),
       ),
-      body: Container(
-        margin: EdgeInsets.all(_minimumPadding * 2),
-        child: movieProfile,
+      body: SingleChildScrollView(
+        child: Container(margin: EdgeInsets.all(_minimumPadding * 2), child: movieProfile),
       ),
     );
   }

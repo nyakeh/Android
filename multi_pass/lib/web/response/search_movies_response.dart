@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:multi_pass/web/secrets.dart';
 
 class SearchMoviesResponse {
   int page;
@@ -33,6 +34,7 @@ class SearchMoviesResult {
     if (exp.hasMatch(parsedJson['release_date'])) {
       releaseDate = format.parse(parsedJson['release_date']);
     }
-    return new SearchMoviesResult(parsedJson['id'], parsedJson['title'], parsedJson['overview'], parsedJson['posterPath'], releaseDate, genreIdsList);
+    var posterPath = Secrets().getTheMovieDatabaseImageBaseUrl() + parsedJson['poster_path'];
+    return new SearchMoviesResult(parsedJson['id'], parsedJson['title'], parsedJson['overview'], posterPath, releaseDate, genreIdsList);
   }
 }
