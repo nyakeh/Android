@@ -30,8 +30,8 @@ class SearchMoviesResult {
     var genreIdsList = new List<int>.from(genreIdsJson);
     DateFormat format = new DateFormat("yyyy-MM-dd");
     var releaseDate = new DateTime(1972);
-    RegExp exp = new RegExp("(\d{4}-\d{2}-\d{2})");
-    if (exp.hasMatch(parsedJson['release_date'])) {
+    RegExp regex = new RegExp("(\d{4}-\d{2}-\d{2})");
+    if (regex.hasMatch(parsedJson['release_date'])) {
       releaseDate = format.parse(parsedJson['release_date']);
     }
     var posterPath = Secrets().getTheMovieDatabaseImageBaseUrl() + parsedJson['poster_path'];

@@ -31,17 +31,30 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
           CachedNetworkImage(
             imageUrl: _movieDetails.posterPath,
           ),
-          Text(
-            '${widget.movieListing.title}',
-            style: TextStyle(fontSize: 32.0),
-          ),
-          Text(
-            widget.movieListing.times.toString(),
-            style: TextStyle(fontSize: 20.0),
-          ),
-          Text(
-            _movieDetails.overview,
-            style: TextStyle(fontSize: 26.0),
+          Container(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                '${widget.movieListing.title}',
+                style: TextStyle(fontSize: 32.0),
+              )),
+          Container(
+              padding: EdgeInsets.all(4.0),
+              margin: EdgeInsets.all(4.0),
+              decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
+              child: Text(
+                '${widget.movieListing.times.join(", ")}',
+                style: TextStyle(fontSize: 20.0, color: Colors.white70),
+              )),
+          Container(
+            padding: EdgeInsets.all(4.0),
+            margin: EdgeInsets.all(4.0),
+            decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
+            child: Text(
+              _movieDetails.overview,
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
           ),
         ],
       ),
