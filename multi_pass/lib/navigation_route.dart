@@ -17,7 +17,7 @@ class _NavigationRouteState extends State<NavigationRoute> {
     var tabLabels = List<Tab>();
     var tabContents = List<CinemaRoute>();
     var today = new DateTime.now();
-    for (var i = 0; i <= 7; i++) {
+    for (var i = 0; i < 7; i++) {
       var currentDay = today.add(new Duration(days: i));
       tabLabels.add(Tab(text: '${DateFormat('EEEE').format(currentDay)}'));
       tabContents.add(CinemaRoute(i));
@@ -28,7 +28,7 @@ class _NavigationRouteState extends State<NavigationRoute> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(widget.title),
-            bottom: TabBar(tabs: tabLabels),
+            bottom: TabBar(tabs: tabLabels, isScrollable: true),
           ),
           body: TabBarView(children: tabContents),
         ));
