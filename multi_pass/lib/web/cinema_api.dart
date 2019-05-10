@@ -9,7 +9,7 @@ class CinemaApi {
 
   CinemaApi(this.cache);
 
-  Future<List<Listing>> getMovieShowings() async {
+  Future<List<Listing>> getMovieShowings(int dayOffset) async {
     var now = new DateTime.now();
     var cacheKey = 'getMovieShowings_' + new DateTime(now.year, now.month, now.day, now.hour).toString();
     if (cache.contains(cacheKey)) {

@@ -4,7 +4,6 @@ import 'package:multi_pass/web/cache.dart';
 import 'package:multi_pass/web/movie_api.dart';
 import 'package:multi_pass/web/response/search_movies_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:multi_pass/web/secrets.dart';
 
 class MovieDetailsRoute extends StatefulWidget {
   final Listing movieListing;

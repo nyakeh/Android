@@ -6,6 +6,10 @@ import 'movie_details_route.dart';
 import 'package:multi_pass/web/cinema_api.dart';
 
 class CinemaRoute extends StatefulWidget {
+  int dayOffset;
+
+  CinemaRoute(this.dayOffset);
+
   @override
   State<StatefulWidget> createState() {
     return _CinemaRouteState();
@@ -26,7 +30,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
 
   Future<void> _retrieveMovieShowings() async {
     final api = CinemaApi(_cache);
-    final movieShowings = await api.getMovieShowings();
+    final movieShowings = await api.getMovieShowings(this.widget.dayOffset);
     if (movieShowings != null) {
       setState(() {
         _movieShowings.addAll(movieShowings);

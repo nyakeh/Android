@@ -1,49 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:multi_pass/cinema_route.dart';
-import 'package:multi_pass/configuration_route.dart';
 
 class NavigationRoute extends StatefulWidget {
   NavigationRoute() : super();
 
-  final String title = 'What\'s showing today';
+  final String title = 'What\'s showing';
 
   @override
   _NavigationRouteState createState() => _NavigationRouteState();
 }
 
 class _NavigationRouteState extends State<NavigationRoute> {
-  int currentTabIndex = 0;
-  List<Widget> tabs = [
-    CinemaRoute(),
-    TabScreen(Colors.blue)
-  ];
-  onTapped(int index) {
-    setState(() {
-      currentTabIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: tabs[currentTabIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTapped,
-        currentIndex: currentTabIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_movies),
-            title: Text("Movies"),
+    var tabLabels = List<Tab>();
+    var tabContents = List<CinemaRoute>();
+    var today = new DateTime.now();
+    for (var i = 0; i <= 7; i++) {
+      var currentDay = today.add(new Duration(days: i));
+      tabLabels.add(Tab(text: '${DateFormat('EEEE').format(currentDay)}'));
+      tabContents.add(CinemaRoute(i));
+    }
+
+    return DefaultTabController(
+        length: 7,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.title),
+            bottom: TabBar(tabs: tabLabels),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            title: Text("Configuration"),
-          )
-        ],
-      ),
-    );
+          body: TabBarView(children: tabContents),
+        ));
   }
 }
