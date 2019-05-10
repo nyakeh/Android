@@ -16,7 +16,7 @@ class CinemaApi {
       return cache.get(cacheKey);
     }
 
-    final uri = Uri.https(_baseUrl, '/get/times/cinema/10713', {'day': '0'});
+    final uri = Uri.https(_baseUrl, '/get/times/cinema/10713', {'day': '$dayOffset'});
     final api = Api();
     final jsonResponse = await api.getJson(uri);
     if (jsonResponse == null || jsonResponse['listings'] == null) {
