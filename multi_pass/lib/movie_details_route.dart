@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:multi_pass/web/response/cinema_times_response.dart';
+import 'package:multi_pass/web/movie_showing_schedule.dart';
 import 'package:multi_pass/web/cache.dart';
 import 'package:multi_pass/web/movie_api.dart';
 import 'package:multi_pass/web/response/search_movies_response.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class MovieDetailsRoute extends StatefulWidget {
-  final Listing movieListing;
+  final MovieShowingSchedule movieListing;
 
   MovieDetailsRoute(this.movieListing);
 
@@ -19,7 +19,7 @@ class MovieDetailsRoute extends StatefulWidget {
 class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   final double _minimumPadding = 5.0;
   static final Cache _cache = Cache<SearchMoviesResponse>();
-  SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', '', null, null);
+  SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', '', null, new List<String>());
 
   Widget get movieProfile {
     return Container(

@@ -18,8 +18,8 @@ class _NavigationRouteState extends State<NavigationRoute> {
     var tabContents = List<CinemaRoute>();
     var today = new DateTime.now();
     for (var i = 0; i < 7; i++) {
-      var currentDay = today.add(new Duration(days: i));
-      tabLabels.add(Tab(text: '${DateFormat('EEEE').format(currentDay)}'));
+      var day = today.add(new Duration(days: i));
+      tabLabels.add(Tab(text: '${DateFormat('EEEE').format(day)}'));
       tabContents.add(CinemaRoute(i));
     }
 

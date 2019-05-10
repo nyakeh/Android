@@ -49,7 +49,8 @@ class SearchMoviesResult {
       10752: "War",
       37: "Western",
     };
-    var genresList = genreIdsList.map((id) => genreMap[id]).toList();
+    var genresList = new List<String>();
+    genresList.addAll(genreIdsList.map((id) => genreMap[id]));
 
     DateFormat format = new DateFormat("yyyy-MM-dd");
     var releaseDate = new DateTime(1972);
@@ -57,7 +58,8 @@ class SearchMoviesResult {
     if (regex.hasMatch(parsedJson['release_date'])) {
       releaseDate = format.parse(parsedJson['release_date']);
     }
-    var posterPath = Secrets().getTheMovieDatabaseImageBaseUrl() + parsedJson['poster_path'];
+    var posterImagePath = parsedJson['poster_path'] ?? '';
+    var posterPath = Secrets().getTheMovieDatabaseImageBaseUrl() + posterImagePath;
     return new SearchMoviesResult(parsedJson['id'], parsedJson['title'], parsedJson['overview'], posterPath, releaseDate, genresList);
   }
 }

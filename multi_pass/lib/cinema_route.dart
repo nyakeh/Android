@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:multi_pass/web/response/cinema_times_response.dart';
+import 'package:multi_pass/web/find_any_film_api.dart';
+import 'package:multi_pass/web/movie_showing_schedule.dart';
 import 'package:multi_pass/web/cache.dart';
 import 'movie_details_route.dart';
-import 'package:multi_pass/web/cinema_api.dart';
 
 class CinemaRoute extends StatefulWidget {
-  int dayOffset;
+  final int dayOffset;
 
   CinemaRoute(this.dayOffset);
 
@@ -17,8 +17,8 @@ class CinemaRoute extends StatefulWidget {
 }
 
 class _CinemaRouteState extends State<CinemaRoute> {
-  final _movieShowings = <Listing>[];
-  static final Cache _cache = Cache<List<Listing>>();
+  final _movieShowings = <MovieShowingSchedule>[];
+  static final Cache _cache = Cache<List<MovieShowingSchedule>>();
 
   @override
   Future<void> didChangeDependencies() async {
@@ -29,7 +29,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
   }
 
   Future<void> _retrieveMovieShowings() async {
-    final api = CinemaApi(_cache);
+    final api = FindAnyFilmApi(_cache);
     final movieShowings = await api.getMovieShowings(this.widget.dayOffset);
     if (movieShowings != null) {
       setState(() {
@@ -40,7 +40,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
 
   @override
   Widget build(BuildContext context) {
-    ListTile makeMovieListingTile(Listing movieListing) => ListTile(
+    ListTile makeMovieListingTile(MovieShowingSchedule movieListing) => ListTile(
           contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           title: Text(
             movieListing.title,
@@ -56,7 +56,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
           },
         );
 
-    Card makeMovieListingCard(Listing movieListing) => Card(
+    Card makeMovieListingCard(MovieShowingSchedule movieListing) => Card(
           elevation: 8.0,
           margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
           child: Container(
