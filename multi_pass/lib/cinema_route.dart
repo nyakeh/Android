@@ -47,7 +47,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            '${movieListing.times.join(", ")}',
+            '${movieListing.times.map((showing) => showing.time).join(", ")}',
             style: TextStyle(color: Colors.white70, fontWeight: FontWeight.normal),
           ),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.white70, size: 30.0),

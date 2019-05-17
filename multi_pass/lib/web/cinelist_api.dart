@@ -30,7 +30,11 @@ class CinelistApi {
 
     var movieShowingSchedule = new List<MovieShowingSchedule>();
     for (final listing in movieShowings.listings) {
-      movieShowingSchedule.add(new MovieShowingSchedule(listing.title, listing.times));
+      var showtimes = new List<MovieShowing>();
+      for (final showing in listing.times) {
+        showtimes.add(new MovieShowing(showing, ''));
+      }
+      movieShowingSchedule.add(new MovieShowingSchedule(listing.title, showtimes));
     }
 
     cache.put(cacheKey, movieShowingSchedule);

@@ -17,12 +17,12 @@ class FindAnyFilmCinema {
   factory FindAnyFilmCinema.fromJson(Map<String, dynamic> parsedJson) {
     var filmsJson = parsedJson['films'];
     var films = new List<FindAnyFilmShowings>();
-    for(final filmShowings in filmsJson.keys){
-      var temp = FindAnyFilmShowings.fromJson(filmsJson[filmShowings]);
-      films.add(temp);
+    for (final filmShowings in filmsJson.keys) {
+      if (filmsJson[filmShowings]['film_data'] != false) {
+        films.add(FindAnyFilmShowings.fromJson(filmsJson[filmShowings]));
+      }
     }
-    //var temp = FindAnyFilmShowings.fromJson(filmsJson['162171']);
-    //var films = new List<FindAnyFilmShowings>.from(filmsJson.map((value) => FindAnyFilmShowings.fromJson(value)));
+
     return new FindAnyFilmCinema(films);
   }
 }

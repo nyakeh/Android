@@ -1,6 +1,13 @@
 class MovieShowingSchedule {
   String title;
-  List<String> times;
+  List<MovieShowing> times;
 
   MovieShowingSchedule(this.title, this.times);
+}
+
+class MovieShowing {
+  String time;
+  String link;
+
+  MovieShowing(this.time, this.link);
 }

@@ -33,10 +33,9 @@ class FindAnyFilmApi {
 
     var movieShowingSchedule = new List<MovieShowingSchedule>();
     for (final film in movieShowings.cinema.films) {
-      var showtimes = new List<String>();
-      for (final showing in film.showings)
-      {
-        showtimes.add(showing.showtime);
+      var showtimes = new List<MovieShowing>();
+      for (final showing in film.showings) {
+        showtimes.add(new MovieShowing(showing.showtime, showing.link));
       }
       movieShowingSchedule.add(new MovieShowingSchedule(film.filmData.title, showtimes));
     }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:multi_pass/web/movie_showing_schedule.dart';
 import 'package:multi_pass/web/cache.dart';
 import 'package:multi_pass/web/movie_api.dart';
+import 'package:multi_pass/web/response/get_movie_response.dart';
 import 'package:multi_pass/web/response/search_movies_response.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class MovieDetailsRoute extends StatefulWidget {
   final MovieShowingSchedule movieListing;
@@ -18,8 +20,10 @@ class MovieDetailsRoute extends StatefulWidget {
 
 class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   final double _minimumPadding = 5.0;
-  static final Cache _cache = Cache<SearchMoviesResponse>();
+  static final Cache _searchMoviesCache = Cache<SearchMoviesResponse>();
+  static final Cache _getMovieCache = Cache<GetMovieResponse>();
   SearchMoviesResult _movieDetails = new SearchMoviesResult(null, null, '', '', null, new List<String>());
+  String _movieLink = "";
 
   Widget get movieProfile {
     return Container(
@@ -41,7 +45,7 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
               margin: EdgeInsets.all(4.0),
               decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
               child: Text(
-                '${widget.movieListing.times.join(", ")}',
+                '${widget.movieListing.times.map((showing) => showing.time).join(", ")}',
                 style: TextStyle(fontSize: 20.0, color: Colors.white70),
               )),
           Container(
@@ -78,23 +82,42 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
   }
 
   Future<void> _retrieveMovieDetails(String movieTitle) async {
-    final api = MovieApi(_cache);
+    final api = MovieApi(_searchMoviesCache, _getMovieCache);
     final searchResponse = await api.searchMovies(movieTitle);
     if (searchResponse != null && searchResponse.totalResults > 0) {
       searchResponse.results.sort((a, b) => b.releaseDate.compareTo(a.releaseDate));
       setState(() {
         _movieDetails = searchResponse.results.first;
       });
+      _retrieveMovieLink(searchResponse.results.first.id);
+    }
+  }
+
+  Future<void> _retrieveMovieLink(int movieId) async {
+    final api = MovieApi(_searchMoviesCache, _getMovieCache);
+    final getResponse = await api.getMovie(movieId);
+    if (getResponse != null) {
+      setState(() {
+        _movieLink = getResponse.imdbLink;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // This is a new page, so you need a new Scaffold!
     return Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
         title: Text('${widget.movieListing.title}'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.public),
+            tooltip: 'Open film in Imdb',
+            onPressed: () {
+              launch(_movieLink);
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(margin: EdgeInsets.all(_minimumPadding * 2), child: movieProfile),
