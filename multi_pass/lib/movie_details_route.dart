@@ -40,27 +40,23 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
                 '${widget.movieListing.title}',
                 style: TextStyle(fontSize: 32.0),
               )),
-          Container(
-              padding: EdgeInsets.all(4.0),
-              margin: EdgeInsets.all(4.0),
-              decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
-              child: Text(
-                '${widget.movieListing.times.map((showing) => showing.time).join(", ")}',
-                style: TextStyle(fontSize: 20.0, color: Colors.white70),
-              )),
+          new Container(
+            height: 30.0,
+            padding: EdgeInsets.only(left: 4.0, right: 4.0),
+            child: new ListView(scrollDirection: Axis.horizontal, shrinkWrap: true, children: buildBookingButtons()),
+          ),
           Container(
             padding: EdgeInsets.all(4.0),
             margin: EdgeInsets.all(4.0),
-            decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
             child: Text(
               '${_movieDetails.genres.join(" | ")}',
               style: TextStyle(fontSize: 14.0, color: Colors.white54),
             ),
           ),
+          Divider(color: Color.fromRGBO(31, 27, 36, 1)),
           Container(
             padding: EdgeInsets.all(4.0),
             margin: EdgeInsets.all(4.0),
-            decoration: BoxDecoration(border: BorderDirectional(top: BorderSide(color: Color.fromRGBO(26, 26, 26, .9)))),
             child: Text(
               _movieDetails.overview,
               style: TextStyle(
@@ -68,9 +64,24 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
               ),
             ),
           ),
+          Divider(color: Color.fromRGBO(31, 27, 36, 1))
         ],
       ),
     );
+  }
+
+  List<Widget> buildBookingButtons() {
+    var bookingTimes = <Widget>[];
+    for (var showing in widget.movieListing.times) {
+      bookingTimes.add(Container(
+          margin: EdgeInsets.only(left: 4.0, right: 4.0),
+          child: RaisedButton(
+            color: Color.fromRGBO(31, 27, 36, 1),
+            child: Text('${showing.time}'),
+            onPressed: () => launch('${showing.link}'),
+          )));
+    }
+    return bookingTimes;
   }
 
   @override
@@ -113,9 +124,7 @@ class _MovieDetailsRouteState extends State<MovieDetailsRoute> {
           IconButton(
             icon: Icon(Icons.public),
             tooltip: 'Open film in Imdb',
-            onPressed: () {
-              launch(_movieLink);
-            },
+            onPressed: () => launch(_movieLink),
           )
         ],
       ),

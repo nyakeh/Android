@@ -60,7 +60,7 @@ class _CinemaRouteState extends State<CinemaRoute> {
           elevation: 8.0,
           margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
           child: Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(26, 26, 26, .9)),
+            decoration: BoxDecoration(color: Color.fromRGBO(31, 27, 36, 1)),
             child: makeMovieListingTile(movieListing),
           ),
         );

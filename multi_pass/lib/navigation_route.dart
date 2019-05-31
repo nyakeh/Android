@@ -5,7 +5,7 @@ import 'package:multi_pass/cinema_route.dart';
 class NavigationRoute extends StatefulWidget {
   NavigationRoute() : super();
 
-  final String title = 'What\'s showing';
+  final String title = 'Multi Pass';
 
   @override
   _NavigationRouteState createState() => _NavigationRouteState();
@@ -30,7 +30,7 @@ class _NavigationRouteState extends State<NavigationRoute> {
             title: Text(widget.title),
             bottom: TabBar(tabs: tabLabels, isScrollable: true),
           ),
-          body: TabBarView(children: tabContents),
+          body: TabBarView(children: tabContents),backgroundColor: Color.fromRGBO(18, 18, 18, 1),
         ));
   }
 }
